@@ -1,0 +1,63 @@
+body {
+    font-family: 'courier new', courier, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+}
+
+h1 {
+    font-size: 36px;
+    line-height: 1.2em;
+    letter-spacing: .2em;
+}
+
+h2 {
+    font-size: 21px;
+    line-height: 1.2em;
+    letter-spacing: .05em;
+}
+
+p {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    margin-bottom: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #2ec371;
+}
+
+section {
+    padding: 30px 0;
+}
+
+header {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    text-align: center;
+    padding: 100px 0;
+    background: #000 url('../images/hero-bg-dark.jpg') no-repeat center center;
+    /* color image repeat position-top position-right */
+    background-size: cover;
+}
+
+header h1 {
+    color: #2ec371;
+    font-weight: 800;
+}
+
+header span, h2 {
+    color: #fefefe;
+    font-weight: 100;
+}
+
+h1 span {
+    font-weight: 100;
+    color: #fefefe;
+}
+
+main article {
+    width: 970px;
+    margin: 0 auto;
+}
