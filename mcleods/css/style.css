@@ -1,8 +1,17 @@
+* {
+    box-sizing: border-box;
+    border: 1px solid red !important;
+}
+
 body {
     font-family: 'courier new', courier, sans-serif;
     font-style: normal;
     font-variant: normal;
     font-weight: 500;
+}
+
+h1, h2, h3 {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 h1 {
@@ -18,7 +27,7 @@ h2 {
 }
 
 p {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 400;
     line-height: 20px;
     margin-bottom: 20px;
@@ -26,7 +35,7 @@ p {
 
 a {
     text-decoration: none;
-    color: #2ec371;
+    color: #fefefe;
 }
 
 section {
@@ -34,7 +43,6 @@ section {
 }
 
 header {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     text-align: center;
     padding: 100px 0;
     background: #000 url('../images/hero-bg-dark.jpg') no-repeat center center;
@@ -43,7 +51,7 @@ header {
 }
 
 header h1 {
-    color: #2ec371;
+    color: white;
     font-weight: 800;
 }
 
@@ -57,15 +65,59 @@ h1 span {
     color: #fefefe;
 }
 
-main {
+.container {
     width: 970px;
     margin: 0 auto;
     padding: 30px 0;
 }
+
 #todd-image {
     float: left;
     margin: 0 1.5em 1em 0;
     border-radius: 50%;
     height: 150px;
     width: 150px;
+}
+
+section {
+    background: #f9f9f9;
+}
+
+h3 {
+    font-size: 32px;
+    font-weight: 600;
+    color: #555;
+}
+
+div {
+    text-align: center;
+}
+
+.one-half {
+    background-color: #fefefe;
+    width: 46%;
+    margin: 2%;
+    float: left;
+    /*display: inline-block;*/
+}
+
+.row:before, .row:after {
+    content: "";
+    display: table;
+}
+
+.row:after {
+    clear: both;
+}
+
+.btn {
+    padding: 10px;
+    border-radius: 6px;
+    background-color: #428bca;
+    border-color: #357ebd;
+}
+
+.btn:hover {
+    background: #3276b1;
+    border-color: #285e8e;
 }
