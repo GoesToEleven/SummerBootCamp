@@ -97,18 +97,18 @@ div {
     background-color: #fefefe;
     width: 46%;
     margin: 2%;
-    float: left;
-    /*display: inline-block;*/
+    /*float: left;*/
+    display: inline-block;
 }
 
-.row:before, .row:after {
-    content: "";
-    display: table;
-}
+/*.row:before, .row:after {*/
+    /*content: "";*/
+    /*display: table;*/
+/*}*/
 
-.row:after {
-    clear: both;
-}
+/*.row:after {*/
+    /*clear: both;*/
+/*}*/
 
 .btn {
     padding: 10px;
