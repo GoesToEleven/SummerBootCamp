@@ -1,3 +1,5 @@
+/* FULL PAGE */
+
 * {
     box-sizing: border-box;
     /*border: 1px solid red !important;*/
@@ -26,6 +28,20 @@ h2 {
     letter-spacing: .05em;
 }
 
+h3 {
+    font-size: 32px;
+    font-weight: 600;
+    color: #555;
+}
+
+h4 {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
 p {
     font-size: 16px;
     font-weight: 400;
@@ -38,13 +54,24 @@ a {
     color: #2ec371;
 }
 
-.one-half a {
-    color: #fefefe;
-}
-
 section {
     padding: 30px 0;
+    background: #f2f2f2;
 }
+
+div {
+    text-align: center;
+}
+
+.container {
+    width: 970px;
+    margin: 0 auto;
+    padding: 30px 0;
+}
+
+/* HEADER */
+
+/* SECTION - banner */
 
 .banner {
     text-align: center;
@@ -69,11 +96,7 @@ h1 span {
     color: #fefefe;
 }
 
-.container {
-    width: 970px;
-    margin: 0 auto;
-    padding: 30px 0;
-}
+/* MAIN */
 
 #todd-image {
     float: left;
@@ -83,18 +106,10 @@ h1 span {
     width: 150px;
 }
 
-section {
-    background: #f2f2f2;
-}
+/* SECTION - Working On Now */
 
-h3 {
-    font-size: 32px;
-    font-weight: 600;
-    color: #555;
-}
-
-div {
-    text-align: center;
+.one-half a {
+    color: #fefefe;
 }
 
 .one-half {
@@ -102,14 +117,6 @@ div {
     width: 46%;
     margin: 2%;
     display: inline-block;
-}
-
-h4 {
-    padding-top: 20px;
-    padding-bottom: 10px;
-    color: #333;
-    font-size: 24px;
-    margin-bottom: 10px;
 }
 
 .btn {

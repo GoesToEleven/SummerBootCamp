@@ -109,3 +109,24 @@ fieldset {
     right: 5px;
 }
 
+/* FOOTER */
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    line-height: 30px;
+    background: #f2f2f2;
+    font-size: small;
+}
+
+#footer-left {
+    float: left;
+}
+
+#footer-right {
+    float: right;
+}
+
+
+
