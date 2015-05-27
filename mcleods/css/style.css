@@ -1,12 +1,12 @@
 * {
     box-sizing: border-box;
-    border: 1px solid red !important;
+    /*border: 1px solid red !important;*/
 }
 
 body {
     font-family: 'courier new', courier, sans-serif;
-    font-style: normal;
-    font-variant: normal;
+    /*font-style: normal;*/
+    /*font-variant: normal;*/
     font-weight: 500;
 }
 
@@ -35,11 +35,11 @@ p {
 
 a {
     text-decoration: none;
-    color: #fefefe;
+    color: #2ec371;
 }
 
 .one-half a {
-    color: #2ec371;
+    color: #fefefe;
 }
 
 section {
@@ -84,7 +84,7 @@ h1 span {
 }
 
 section {
-    background: #f9f9f9;
+    background: #f2f2f2;
 }
 
 h3 {
@@ -102,6 +102,14 @@ div {
     width: 46%;
     margin: 2%;
     display: inline-block;
+}
+
+h4 {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 10px;
 }
 
 .btn {

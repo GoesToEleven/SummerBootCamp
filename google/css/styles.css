@@ -1,0 +1,49 @@
+/*WHOLE DOCUMENT*/
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+body, main, figure {
+    margin: 0;
+}
+
+/*HEADER*/
+
+.header-right {
+    position: absolute;
+    right: 0;
+
+    /*another way you could position to the right*/
+    float: right;
+
+    padding-right: 25px;
+    font-size: 13px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    display: inline-block;
+    padding: 0 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #404040;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#circle {
+    color: #fff;
+    background: #db4437;
+    border-radius: 50%;
+    display: inline-block;
+    padding: 5px 9px;
+}
