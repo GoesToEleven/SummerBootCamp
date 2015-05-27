@@ -1,5 +1,10 @@
 /*WHOLE DOCUMENT*/
 
+* {
+    box-sizing: border-box;
+    border: 1px solid red;
+}
+
 body {
     font-family: 'Helvetica Neue', Helvetica, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
@@ -42,8 +47,23 @@ a:hover {
 
 #circle {
     color: #fff;
-    background: #db4437;
+    background: rgba(219, 68, 55, .8);
     border-radius: 50%;
     display: inline-block;
     padding: 5px 9px;
+}
+
+#circle:hover {
+    background: rgba(219, 68, 55, 1)
+}
+
+/* MAIN BODY */
+
+main {
+    text-align: center;
+}
+
+main img {
+    width: 269px;
+    height: 95px;
 }
