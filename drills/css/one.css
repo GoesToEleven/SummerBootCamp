@@ -1,0 +1,66 @@
+/* ENTIRE DOCUMENT */
+* {
+    font-family: sans-serif;
+    font-weight: 500;
+    box-sizing: border-box;
+    /*border: 1px solid #000000 !important;*/
+}
+
+/* HEADER layout */
+
+header div {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: .7em 3em;
+    overflow: auto;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+header:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.float-right li {
+    display: inline-block;
+}
+
+/* HEADER formatting */
+
+header {
+    background-color: #d4d4d4;
+    height: 50px;
+    font-size: large;
+}
+
+header p {
+    font-size: 24px;
+}
+
+header a {
+    text-decoration: none;
+    padding: 15px;
+}
+
+header a:hover {
+    text-decoration: underline;
+    background-color: #3276b1;
+}
+
+header li {
+    color: #596cc3;
+}
+
+.font-green {
+    color: #2ec371;
+}
+
+

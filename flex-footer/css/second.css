@@ -1,0 +1,50 @@
+/* DOCUMENT */
+
+* {
+    box-sizing: border-box;
+    border: 1px solid black !important;
+}
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    color: #555;
+    margin-top: 50px;
+}
+
+/* HEADER */
+
+header {
+    position: fixed;
+    height: 50px;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+}
+
+header ul {
+    display: flex;
+    height: 50px;
+    align-items: center;
+}
+
+header a {
+    flex-grow: 1;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+header a:hover {
+    background-color: #2ec371;
+    color: #fff;
+}
+
+#fixed-size {
+    flex-grow: 0;
+    /*flex-shrink: 1;*/
+    flex-basis: 426px;
+}
