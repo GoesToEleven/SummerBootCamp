@@ -23,15 +23,38 @@ header ul {
     border: 1px solid red;
 }
 
+header p {
+    padding: 20px;
+}
+
 header a {
     text-decoration: none;
     padding: 20px;
+    display: block;
 }
 
 header a:hover {
     background: #2ec371;
     text-decoration: underline;
 }
+
+/* drop down menu */
+
+li {
+    position: relative;
+}
+
+ul li:hover ul {
+    height: auto;
+}
+
+ul li ul {
+    position: absolute;
+    flex-direction: column;
+    height: 0;
+    overflow: hidden;
+}
+
 
 /* MEDIA QUERIES */
 /* media query - mobile */
