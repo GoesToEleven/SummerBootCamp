@@ -7,7 +7,7 @@ body {
     font-family: sans-serif;
 }
 
-/* HEADER */
+/* HEADER - mobile first */
 header {
     display: flex;
     flex-direction: column;
@@ -23,10 +23,6 @@ header ul {
     border: 1px solid red;
 }
 
-header p {
-    /*padding: 20px;*/
-}
-
 header a {
     text-decoration: none;
     padding: 20px;
@@ -37,6 +33,8 @@ header a:hover {
     text-decoration: underline;
 }
 
+/* MEDIA QUERIES */
+/* media query - mobile */
 @media (max-width: 599px) {
 
     header nav {
@@ -49,7 +47,7 @@ header a:hover {
     }
 
 }
-
+/* media query - tablet and desktop */
 @media (min-width: 600px) {
 
     header {
