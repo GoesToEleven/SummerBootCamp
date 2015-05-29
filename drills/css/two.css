@@ -13,7 +13,6 @@ header {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    max-width: 1280px;
     margin: 0 auto;
     border: 1px solid red;
 }
@@ -30,9 +29,6 @@ header p {
 
 header a {
     text-decoration: none;
-}
-
-header a {
     padding: 20px;
 }
 
@@ -41,10 +37,24 @@ header a:hover {
     text-decoration: underline;
 }
 
+@media (max-width: 599px) {
+
+    header nav {
+        width: 100%;
+    }
+
+    header a {
+        width: 100%;
+        text-align: center;
+    }
+
+}
+
 @media (min-width: 600px) {
 
     header {
         flex-direction: row;
+        max-width: 1280px;
     }
 
     header ul {
