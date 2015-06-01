@@ -1,0 +1,19 @@
+aside, article {
+    height: 400px;
+    flex-basis: 0;
+}
+
+aside {
+    background: #2ec371;
+    flex-grow: 1;
+}
+
+article {
+    background: #3276b1;
+    flex-grow: 2;
+}
+
+main {
+    display: flex;
+}
+

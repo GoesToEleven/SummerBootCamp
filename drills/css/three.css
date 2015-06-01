@@ -1,0 +1,38 @@
+/* DOCUMENT */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+/* ARTICLE */
+
+article {
+    display: flex;
+    flex-direction: column;
+}
+
+article h1 {
+    font-size: 48px;
+}
+
+.ed-redesign {
+    display: flex;
+}
+
+article section {
+    text-align: center;
+}
+
+article h2 {
+    font-size: 36px;
+}
+
+.small-svg {
+    width: 40px;
+    height: 40px;
+    /*fill: #94d31b;*/
+}
+
