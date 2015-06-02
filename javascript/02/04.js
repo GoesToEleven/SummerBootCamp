@@ -8,7 +8,7 @@ var social = {
         'facebook', 'www.facebook.com',
         'google', 'www.google.com',
     ],
-}
+};
 
 for (var i = 0; i < social.otras.length; i++) {
     console.log(social.otras[i]);
