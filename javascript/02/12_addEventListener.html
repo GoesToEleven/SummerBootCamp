@@ -59,6 +59,7 @@
 
 <script>
     var myDivs = document.querySelectorAll('div');
+
     function changeColor(event) {
         if (event.target.id == 'gray') {
             event.target.id = 'pink';
@@ -68,9 +69,11 @@
             event.target.id = 'gray';
         }
     }
+
     for (var i = 0; i < myDivs.length; i++) {
         myDivs[i].addEventListener('click', changeColor, false);
     }
+
 </script>
 </body>
 </html>
