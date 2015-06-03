@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <title></title>
     <style>
+        * {
+            border: 1px solid red !important;
+            box-sizing: border-box;
+        }
+
         header {
             display: flex;
             justify-content: space-between;
@@ -11,38 +16,71 @@
             max-width: 1280px;
             margin: 0 auto;
             background: #cecece;
+            height: 5em;
         }
 
         ul {
+            height: 100%;
             display: flex;
             list-style-type: none;
+            margin: 0;
+            padding: 0;
         }
 
         p {
-            margin: 10px;
+            padding: 10px;
         }
 
         li {
-            margin: 10px;
+            height: 100%;
+            display: flex;
+            /*justify-content: center;*/
+            align-items: center;
+            /*align-content: center;*/
+            /*padding: 10px;*/
+        }
+
+        a {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding: 15px;
         }
 
         li:hover {
             background-color: #2ec371;
+            height: 100%;
         }
 
     </style>
 </head>
 <body>
+
 <header>
     <p>Acme Co</p>
-    <ul>
-        <li id="1">Info 001</li>
-        <li id="2">Info 002</li>
-        <li id="3">Info 003</li>
-        <li id="4">Info 004</li>
-    </ul>
+
+    <ul id="myList"></ul>
 </header>
 <script>
+
+    var myNav = [
+        'Info 001', '#',
+        'Info 002', '#',
+        'Info 003', '#',
+        'Info 004', '#',
+    ]
+
+    var myList = document.querySelector('#myList');
+    for (var i = 0; i < myNav.length; i++) {
+        var myListItem = document.createElement('li');
+        myList.appendChild(myListItem);
+        var myAnchor = document.createElement('a');
+        myAnchor.innerHTML = '' + myNav[i];
+        myAnchor.id = '' + (i + 1);
+        i++;
+        myAnchor.href = myNav[i];
+        myListItem.appendChild(myAnchor);
+    }
 
     var myListItems = document.querySelectorAll('li');
 
