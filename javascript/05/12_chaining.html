@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+
+    var ray = (function () {
+        var DEFAULTS = {
+            say: 'hello',
+            changed: 'jump'
+        };
+        return {
+            unchanged: function () {
+                var myArguments = arguments[0] || '';
+                var statementOne = myArguments.say || DEFAULTS.say;
+                var statementTwo = myArguments.changed || DEFAULTS.changed;
+                console.log('------unchanged------')
+                console.log(statementOne);
+                console.log(statementTwo);
+                DEFAULTS.changed = 'skip';
+                DEFAULTS.say = 'bonjour';
+                return this;
+            },
+            changed: function () {
+                var myArguments = arguments[0] || '';
+                var statementOne = myArguments.say || DEFAULTS.say;
+                var statementTwo = myArguments.changed || DEFAULTS.changed;
+                console.log('-------changed-------')
+                console.log(statementOne);
+                console.log(statementTwo);
+                return this;
+            },
+        };
+    })();
+    //    try ONE
+    ray.changed();
+    ray.unchanged();
+
+    //    try TWO
+    //    ray.changed();
+    //    ray.unchanged();
+
+    //    try THREE
+    //    ray.unchanged().changed();
+
+</script>
+</body>
+</html>
