@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #357ebd;
+        }
+
+        main {
+            margin: 0 auto;
+        }
+
+        div {
+
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            background-color: #896d3d;
+        }
+
+    </style>
+</head>
+<body>
+
+<main>
+    <div class="row">
+        <div class="box" id="box-1"></div>
+        <div class="box" id="box-2"></div>
+        <div class="box" id="box-3"></div>
+    </div>
+    <div class="row">
+        <div class="box" id="box-4"></div>
+        <div class="box" id="box-5"></div>
+        <div class="box" id="box-6"></div>
+    </div>
+    <div class="row">
+        <div class="box" id="box-7"></div>
+        <div class="box" id="box-8"></div>
+        <div class="box" id="box-9"></div>
+    </div>
+</main>
+<script>
+
+    //    choose mole
+    var myMoleImg;
+    if (confirm('Are you a republican?')) {
+        myMoleImg = "url('15_imgs/bill-clinton.jpg')";
+    } else {
+        myMoleImg = "url('15_imgs/ronald-reagan.jpg')";
+    }
+
+    // add event listener
+    // when click run youWonFunc
+    function showImg() {
+        // clear image if already showing
+
+        // show image
+        var allBoxes = document.querySelectorAll('.box');
+        var randomBoxID = '#box-' + Math.round(Math.random() * allBoxes.length)
+        var chosenBox = document.querySelector(randomBoxID);
+        chosenBox.style.background = myMoleImg + " no-repeat center center";
+
+        // runs again in 0 - 1 second
+        setTimeout(showImg, (Math.random() * 1000));
+    }
+
+    //    run program
+    showImg();
+
+</script>
+</body>
+</html>

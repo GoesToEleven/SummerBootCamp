@@ -7,44 +7,32 @@
 <body>
 <script>
 
-    var ray = (function () {
-        var DEFAULTS = {
-            say: 'hello',
-            changed: 'jump'
-        };
+    var myObj = (function () {
         return {
-            unchanged: function () {
-                var myArguments = arguments[0] || '';
-                var statementOne = myArguments.say || DEFAULTS.say;
-                var statementTwo = myArguments.changed || DEFAULTS.changed;
-                console.log('------unchanged------')
-                console.log(statementOne);
-                console.log(statementTwo);
-                DEFAULTS.changed = 'skip';
-                DEFAULTS.say = 'bonjour';
+            first: function () {
+                this.myDog = 'fido';
+                console.log(this.myDog);
                 return this;
             },
-            changed: function () {
-                var myArguments = arguments[0] || '';
-                var statementOne = myArguments.say || DEFAULTS.say;
-                var statementTwo = myArguments.changed || DEFAULTS.changed;
-                console.log('-------changed-------')
-                console.log(statementOne);
-                console.log(statementTwo);
+            second: function () {
+                if (this.myDog !== undefined) {
+                    console.log(this.myDog);
+                } else {
+                    console.log('no dog defined')
+                }
                 return this;
             },
         };
     })();
-    //    try ONE
-    ray.changed();
-    ray.unchanged();
 
-    //    try TWO
-    //    ray.changed();
-    //    ray.unchanged();
+//    myObj.second();
+//    myObj.first();
+//    myObj.second();
+//    console.log(this.myDog);
 
-    //    try THREE
-    //    ray.unchanged().changed();
+        myObj.first().second();
+
+    //    myObj.second().first();
 
 </script>
 </body>
