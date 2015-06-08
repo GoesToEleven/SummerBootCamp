@@ -89,9 +89,10 @@
     // responds to myButton click
     function myButtonClicked() {
         myCounter = 108;
+        myButton.innerHTML = 'YOU MAY PUSH THIS BUTTON TO RESET';
         myButton.removeEventListener('click', myButtonClicked, false);
         myButton.addEventListener('click', myButtonReset, false);
-        intervalHandler = setInterval(countDown, 200);
+        intervalHandler = setInterval(countDown, 100);
     }
 
     function myButtonReset() {
@@ -101,7 +102,7 @@
         myHeading.innerHTML = '' + myCounter;
         myButton.innerHTML = 'You Are Condemned To Pressing Reset';
         myHeadingTwo.innerHTML = '&laquo; There Is No Stopping &raquo;';
-        intervalHandler = setInterval(countDown, 200);
+        intervalHandler = setInterval(countDown, 100);
     }
 
     // entry point
