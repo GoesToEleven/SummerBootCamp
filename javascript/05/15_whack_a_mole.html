@@ -26,7 +26,7 @@
         }
 
         div {
-
+            background: none;
         }
 
         .row {
@@ -64,6 +64,8 @@
 </main>
 <script>
 
+    var previousID;
+
     //    choose mole
     var myMoleImg;
     if (confirm('Are you a republican?')) {
@@ -72,23 +74,39 @@
         myMoleImg = "url('15_imgs/ronald-reagan.jpg')";
     }
 
+    // if they click the president
+    function youWon(myEvent) {
+        console.log('you won');
+        clearTimeout(myEvent.target.myTimeOut);
+    }
+
     // add event listener
     // when click run youWonFunc
-    function showImg() {
+    function runGame() {
+
         // clear image if already showing
+        if (previousID) {
+            var previousBox = document.querySelector(previousID);
+            previousBox.removeEventListener('click', youWon, false);
+            previousBox.style.background = '#896d3d';
+        }
 
         // show image
         var allBoxes = document.querySelectorAll('.box');
-        var randomBoxID = '#box-' + Math.round(Math.random() * allBoxes.length)
+        var randomBoxID = '#box-' + Math.ceil(Math.random() * allBoxes.length)
+        while (previousID == randomBoxID) {
+            randomBoxID = '#box-' + Math.ceil(Math.random() * allBoxes.length)
+        }
         var chosenBox = document.querySelector(randomBoxID);
         chosenBox.style.background = myMoleImg + " no-repeat center center";
-
-        // runs again in 0 - 1 second
-        setTimeout(showImg, (Math.random() * 1000));
+        var timeOutHandler = setTimeout(runGame, ((Math.random() * 1000) + 300));
+        chosenBox.myTimeOut = timeOutHandler;
+        previousID = randomBoxID;
+        chosenBox.addEventListener('click', youWon, false);
     }
 
     //    run program
-    showImg();
+    runGame();
 
 </script>
 </body>
