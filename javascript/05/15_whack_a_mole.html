@@ -25,10 +25,6 @@
             margin: 0 auto;
         }
 
-        div {
-            background: none;
-        }
-
         .row {
             display: flex;
             justify-content: center;
@@ -41,38 +37,53 @@
             background-color: #896d3d;
         }
 
+        .picker {
+            margin: 10px;
+        }
+
+        h1 {
+            font-size: 6em;
+            color: #f5f5f5;
+            margin: 0 0 15px 0;
+        }
+
+        h2 {
+            font-size: 3em;
+            color: #dadada;
+        }
+
     </style>
 </head>
 <body>
 
 <main>
-    <div class="row">
-        <div class="box" id="box-1"></div>
-        <div class="box" id="box-2"></div>
-        <div class="box" id="box-3"></div>
-    </div>
-    <div class="row">
-        <div class="box" id="box-4"></div>
-        <div class="box" id="box-5"></div>
-        <div class="box" id="box-6"></div>
-    </div>
-    <div class="row">
-        <div class="box" id="box-7"></div>
-        <div class="box" id="box-8"></div>
-        <div class="box" id="box-9"></div>
-    </div>
+    <header class="row">
+        <h1>Whack-A-President</h1>
+    </header>
+    <section class="row president">
+        <div class="box picker"><img src="15_imgs/george-w-bush.jpg" id="15_imgs/george-w-bush.jpg"/></div>
+        <div class="box picker"><img src="15_imgs/barack-obama.jpg" id="15_imgs/barack-obama.jpg"/></div>
+        <div class="box picker"><img src="15_imgs/arnold-schwarzenegger.jpg" id="15_imgs/arnold-schwarzenegger.jpg"/></div>
+        <div class="box picker"><img src="15_imgs/kermit-the-frog.jpg" id="15_imgs/kermit-the-frog.jpg"/></div>
+        <div class="box picker"><img src="15_imgs/ronald-reagan.jpg" id="15_imgs/ronald-reagan.jpg"/></div>
+    </section>
+    <footer class="row">
+        <h2>Choose a President to Whack</h2>
+    </footer>
 </main>
 <script>
 
+    var myMoleImg;
     var previousID;
+    var IntervalID;
+    var myMain = document.querySelector('main');
 
     //    choose mole
-    var myMoleImg;
-    if (confirm('Are you a republican?')) {
-        myMoleImg = "url('15_imgs/bill-clinton.jpg')";
-    } else {
-        myMoleImg = "url('15_imgs/ronald-reagan.jpg')";
-    }
+    var presidents = document.querySelector('.president');
+    presidents.addEventListener('click', function (e) {
+        myMoleImg = e.target.id;
+        IntervalID = setInterval(removeChooser, 100);
+    }, false);
 
     // if they click the president
     function youWon(myEvent) {
@@ -80,9 +91,30 @@
         clearTimeout(myEvent.target.myTimeOut);
     }
 
+    // build game table
+    function buildGameTable() {
+        var divIdCounter = 0;
+        for (var i = 0; i < 3; i++) {
+            var myDiv = document.createElement('div');
+            myDiv.className = 'row';
+            for (var j = 0; j < 3; j++) {
+                myInnerDiv = document.createElement('div');
+                myInnerDiv.className = 'box';
+                myInnerDiv.id = 'box-' + ++divIdCounter;
+                myDiv.appendChild(myInnerDiv);
+            }
+            myMain.appendChild(myDiv);
+        }
+    }
+
     // add event listener
     // when click run youWonFunc
     function runGame() {
+
+        // only runs first time
+        if (!previousID) {
+            buildGameTable();
+        }
 
         // clear image if already showing
         if (previousID) {
@@ -106,7 +138,7 @@
     }
 
     //    run program
-    runGame();
+    //    runGame();
 
 </script>
 </body>

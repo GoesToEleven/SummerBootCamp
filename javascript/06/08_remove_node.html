@@ -78,6 +78,10 @@
     console.dir(nodes[0]);
     console.log(nodes);
     console.log(nodes[0]);
-    nodes.
+    setInterval(function() {
+        nodes = document.querySelectorAll('div');
+        nodes[0].parentNode.removeChild(nodes[0]);
+    }, 1000);
+//    nodes[0].parentNode.removeChild(nodes[0]);
 </script>
 </html>
