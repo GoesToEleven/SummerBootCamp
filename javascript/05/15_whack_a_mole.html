@@ -59,148 +59,177 @@
 <body>
 
 <main>
-    <header class="row">
-        <h1>Whack-A-President</h1>
-    </header>
-    <section class="row president">
-        <div class="box picker"><img src="15_imgs/george-w-bush.jpg" id="15_imgs/george-w-bush.jpg"/></div>
-        <div class="box picker"><img src="15_imgs/barack-obama.jpg" id="15_imgs/barack-obama.jpg"/></div>
-        <div class="box picker"><img src="15_imgs/arnold-schwarzenegger.jpg" id="15_imgs/arnold-schwarzenegger.jpg"/>
-        </div>
-        <div class="box picker"><img src="15_imgs/kermit-the-frog.jpg" id="15_imgs/kermit-the-frog.jpg"/></div>
-        <div class="box picker"><img src="15_imgs/ronald-reagan.jpg" id="15_imgs/ronald-reagan.jpg"/></div>
-    </section>
-    <footer class="row">
-        <h2>Choose a President</h2>
-    </footer>
 </main>
 <script>
 
-    var myMoleImg;
-    var previousID;
-    var intervalID;
-    var fadeColor = 0;
-    var rgba = 'rgba(53, 126, 189, 0)';
-    var myBody = document.querySelector('body');
     var myMain = document.querySelector('main');
+    var presidents = [
+            '15_imgs/george-w-bush.jpg',
+            '15_imgs/barack-obama.jpg',
+            '15_imgs/arnold-schwarzenegger.jpg',
+            '15_imgs/kermit-the-frog.jpg',
+            '15_imgs/ronald-reagan.jpg'
+    ]
 
-    var presidents = document.querySelector('.president');
-
-    //    choose president
-    function fadeChooser() {
-        var myCover = document.createElement('div');
-        myCover.className = 'cover';
-        myMain.appendChild(myCover);
-        console.log('fadeColor: ', fadeColor);
-        console.log(myCover.style.backgroundColor);
-        console.log(rgba);
-        presidents.removeEventListener('click', fadeOutChooser, false);
-        rgba = 'rgba(53, 126, 189,' + fadeColor + ')';
-        myCover.style.backgroundColor = rgba;
-        fadeColor += .01;
-        if (fadeColor >= 1) {
-            var myHeader = document.querySelector('header');
-            var mySection = document.querySelector('section');
-            var myFooter = document.querySelector('footer');
-            console.log('----------------------- fadeColor fadeChooser: ',fadeColor);
-            console.log(myHeader);
-            console.log(mySection);
-            console.log(myFooter);
-            myMain.removeChild(myHeader);
-            myMain.removeChild(mySection);
-            myMain.removeChild(myFooter);
-            myMain.removeChild(myCover);
-            clearInterval(intervalID);
-            intervalID = setInterval(fadeInGame, 30);
+    function buildPicker() {
+        var myHeader = document.createElement('header');
+        var mySection = document.createElement('section');
+        var myFooter = document.createElement('footer');
+        myHeader.className = 'row';
+        mySection.className = 'row president';
+        myFooter.className = 'row';
+        // append to header
+        var myHeadingOne = document.createElement('h1');
+        var myHeadingOneText = document.createTextNode('Whack-A-President');
+        myHeadingOne.appendChild(myHeadingOneText);
+        myHeader.appendChild(myHeadingOne);
+        // append to section
+        for (var i = 0; i < presidents.length; i++) {
+            var myInnerDiv = document.createElement('div');
+            myInnerDiv.className = 'box picker';
+            var myInnerImg = document.createElement('img');
+            myInnerImg.src = presidents[i];
+            myInnerImg.id = presidents[i];
+            myInnerDiv.appendChild(myInnerImg);
+            mySection.appendChild(myInnerDiv)
         }
-    }
-    //    choose president
-    function fadeOutChooser(e) {
-        console.log(e.target.id);
-        myMoleImg = e.target.id;
-        intervalID = setInterval(fadeChooser, 30);
-    }
-    //    choose president
-    presidents.addEventListener('click', fadeOutChooser, false);
-
-    // if they click the president
-    function youWon(myEvent) {
-        console.log('you won');
-        clearTimeout(myEvent.target.myTimeOut);
+        // append to footer
+        var myHeadingTwo = document.createElement('h2');
+        var myHeadingTwoText = document.createTextNode('Choose a President');
+        myHeadingTwo.appendChild(myHeadingTwoText);
+        myFooter.appendChild(myHeadingTwo);
+        // append to main
+        myMain.appendChild(myHeader);
+        myMain.appendChild(mySection);
+        myMain.appendChild(myFooter);
     }
 
-    // game
-    // build game table
-    function buildGameTable() {
-        var divIdCounter = 0;
-        for (var i = 0; i < 3; i++) {
-            var myDiv = document.createElement('div');
-            myDiv.className = 'row';
-            for (var j = 0; j < 3; j++) {
-                myInnerDiv = document.createElement('div');
-                myInnerDiv.className = 'box';
-                myInnerDiv.id = 'box-' + ++divIdCounter;
-                myDiv.appendChild(myInnerDiv);
-            }
-            myMain.appendChild(myDiv);
-            console.log('appended: ', myDiv);
-        }
-    }
-    // game
-    // fade in game
-    function fadeInGame() {
-        if (fadeColor >= 1) {
-            console.log('----------------------- fadeColor fadeInGame: ',fadeColor);
-            console.log('fadeInGame fadeColor >= 1');
-            buildGameTable();
-            var myCover = document.createElement('div');
-            myCover.className = 'cover';
-            myMain.appendChild(myCover);
-        }
-        console.log('fadecolor in fadein: ', fadeColor);
-        rgba = 'rgba(53, 126, 189,' + fadeColor + ')';
-        myCover.style.backgroundColor = rgba;
-        fadeColor -= .01;
-        console.log(myCover.style.backgroundColor);
-        if (fadeColor <= .01) {
-            myCover.parentNode.removeChild(myCover);
-            clearInterval(intervalID);
-        }
-    }
-
-
-    // add event listener
-    // when click run youWonFunc
-    function runGame() {
-
-        // only runs first time
-        if (!previousID) {
-            buildGameTable();
-        }
-
-        // clear image if already showing
-        if (previousID) {
-            var previousBox = document.querySelector(previousID);
-            previousBox.removeEventListener('click', youWon, false);
-            previousBox.style.background = '#896d3d';
-        }
-
-        // show image
-        var allBoxes = document.querySelectorAll('.box');
-        var randomBoxID = '#box-' + Math.ceil(Math.random() * allBoxes.length)
-        while (previousID == randomBoxID) {
-            randomBoxID = '#box-' + Math.ceil(Math.random() * allBoxes.length)
-        }
-        var chosenBox = document.querySelector(randomBoxID);
-        chosenBox.style.background = myMoleImg + " no-repeat center center";
-        var timeOutHandler = setTimeout(runGame, ((Math.random() * 1000) + 300));
-        chosenBox.myTimeOut = timeOutHandler;
-        previousID = randomBoxID;
-        chosenBox.addEventListener('click', youWon, false);
-    }
-
-    //    run program
-    //    runGame();
+//    var myMoleImg;
+//    var previousID;
+//    var intervalID;
+//    var fadeColor = 0;
+//    var rgba = 'rgba(53, 126, 189, 0)';
+//    var myBody = document.querySelector('body');
+//
+//
+//    var presidents = document.querySelector('.president');
+//
+//
+//    //    choose president
+//    function fadeChooser() {
+//        var myCover = document.createElement('div');
+//        myCover.className = 'cover';
+//        myMain.appendChild(myCover);
+//        console.log('fadeColor: ', fadeColor);
+//        console.log(myCover.style.backgroundColor);
+//        console.log(rgba);
+//        presidents.removeEventListener('click', fadeOutChooser, false);
+//        rgba = 'rgba(53, 126, 189,' + fadeColor + ')';
+//        myCover.style.backgroundColor = rgba;
+//        fadeColor += .01;
+//        if (fadeColor >= 1) {
+//            var myHeader = document.querySelector('header');
+//            var mySection = document.querySelector('section');
+//            var myFooter = document.querySelector('footer');
+//            console.log('----------------------- fadeColor fadeChooser: ',fadeColor);
+//            console.log(myHeader);
+//            console.log(mySection);
+//            console.log(myFooter);
+//            myMain.removeChild(myHeader);
+//            myMain.removeChild(mySection);
+//            myMain.removeChild(myFooter);
+//            myMain.removeChild(myCover);
+//            clearInterval(intervalID);
+//            intervalID = setInterval(fadeInGame, 30);
+//        }
+//    }
+//    //    choose president
+//    function fadeOutChooser(e) {
+//        console.log(e.target.id);
+//        myMoleImg = e.target.id;
+//        intervalID = setInterval(fadeChooser, 30);
+//    }
+//    //    choose president
+//    presidents.addEventListener('click', fadeOutChooser, false);
+//
+//    // if they click the president
+//    function youWon(myEvent) {
+//        console.log('you won');
+//        clearTimeout(myEvent.target.myTimeOut);
+//    }
+//
+//    // game
+//    // build game table
+//    function buildGameTable() {
+//        var divIdCounter = 0;
+//        for (var i = 0; i < 3; i++) {
+//            var myDiv = document.createElement('div');
+//            myDiv.className = 'row';
+//            for (var j = 0; j < 3; j++) {
+//                myInnerDiv = document.createElement('div');
+//                myInnerDiv.className = 'box';
+//                myInnerDiv.id = 'box-' + ++divIdCounter;
+//                myDiv.appendChild(myInnerDiv);
+//            }
+//            myMain.appendChild(myDiv);
+//            console.log('appended: ', myDiv);
+//        }
+//    }
+//    // game
+//    // fade in game
+//    function fadeInGame() {
+//        if (fadeColor >= 1) {
+//            console.log('----------------------- fadeColor fadeInGame: ',fadeColor);
+//            console.log('fadeInGame fadeColor >= 1');
+//            buildGameTable();
+//            var myCover = document.createElement('div');
+//            myCover.className = 'cover';
+//            myMain.appendChild(myCover);
+//        }
+//        console.log('fadecolor in fadein: ', fadeColor);
+//        rgba = 'rgba(53, 126, 189,' + fadeColor + ')';
+//        myCover.style.backgroundColor = rgba;
+//        fadeColor -= .01;
+//        console.log(myCover.style.backgroundColor);
+//        if (fadeColor <= .01) {
+//            myCover.parentNode.removeChild(myCover);
+//            clearInterval(intervalID);
+//        }
+//    }
+//
+//
+//    // add event listener
+//    // when click run youWonFunc
+//    function runGame() {
+//
+//        // only runs first time
+//        if (!previousID) {
+//            buildGameTable();
+//        }
+//
+//        // clear image if already showing
+//        if (previousID) {
+//            var previousBox = document.querySelector(previousID);
+//            previousBox.removeEventListener('click', youWon, false);
+//            previousBox.style.background = '#896d3d';
+//        }
+//
+//        // show image
+//        var allBoxes = document.querySelectorAll('.box');
+//        var randomBoxID = '#box-' + Math.ceil(Math.random() * allBoxes.length)
+//        while (previousID == randomBoxID) {
+//            randomBoxID = '#box-' + Math.ceil(Math.random() * allBoxes.length)
+//        }
+//        var chosenBox = document.querySelector(randomBoxID);
+//        chosenBox.style.background = myMoleImg + " no-repeat center center";
+//        var timeOutHandler = setTimeout(runGame, ((Math.random() * 1000) + 300));
+//        chosenBox.myTimeOut = timeOutHandler;
+//        previousID = randomBoxID;
+//        chosenBox.addEventListener('click', youWon, false);
+//    }
+//
+//    //    run program
+//    //    runGame();
 
 </script>
 </body>
