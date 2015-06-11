@@ -18,11 +18,13 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #357ebd;
+            background-color: rgba(53, 126, 189, 1);
         }
+
 
         main {
             margin: 0 auto;
+            transition: opacity 2s;
         }
 
         .row {
@@ -63,27 +65,63 @@
     <section class="row president">
         <div class="box picker"><img src="15_imgs/george-w-bush.jpg" id="15_imgs/george-w-bush.jpg"/></div>
         <div class="box picker"><img src="15_imgs/barack-obama.jpg" id="15_imgs/barack-obama.jpg"/></div>
-        <div class="box picker"><img src="15_imgs/arnold-schwarzenegger.jpg" id="15_imgs/arnold-schwarzenegger.jpg"/></div>
+        <div class="box picker"><img src="15_imgs/arnold-schwarzenegger.jpg" id="15_imgs/arnold-schwarzenegger.jpg"/>
+        </div>
         <div class="box picker"><img src="15_imgs/kermit-the-frog.jpg" id="15_imgs/kermit-the-frog.jpg"/></div>
         <div class="box picker"><img src="15_imgs/ronald-reagan.jpg" id="15_imgs/ronald-reagan.jpg"/></div>
     </section>
     <footer class="row">
-        <h2>Choose a President to Whack</h2>
+        <h2>Choose a President</h2>
     </footer>
 </main>
 <script>
 
     var myMoleImg;
     var previousID;
-    var IntervalID;
+    var intervalID;
+    var fadeColor = 0;
+    var rgba = 'rgba(53, 126, 189, 0)';
+    var myBody = document.querySelector('body');
     var myMain = document.querySelector('main');
 
-    //    choose mole
     var presidents = document.querySelector('.president');
-    presidents.addEventListener('click', function (e) {
+
+    //    choose president
+    function fadeChooser() {
+        var myCover = document.createElement('div');
+        myCover.className = 'cover';
+        myMain.appendChild(myCover);
+        console.log('fadeColor: ', fadeColor);
+        console.log(myCover.style.backgroundColor);
+        console.log(rgba);
+        presidents.removeEventListener('click', fadeOutChooser, false);
+        rgba = 'rgba(53, 126, 189,' + fadeColor + ')';
+        myCover.style.backgroundColor = rgba;
+        fadeColor += .01;
+        if (fadeColor >= 1) {
+            var myHeader = document.querySelector('header');
+            var mySection = document.querySelector('section');
+            var myFooter = document.querySelector('footer');
+            console.log('----------------------- fadeColor fadeChooser: ',fadeColor);
+            console.log(myHeader);
+            console.log(mySection);
+            console.log(myFooter);
+            myMain.removeChild(myHeader);
+            myMain.removeChild(mySection);
+            myMain.removeChild(myFooter);
+            myMain.removeChild(myCover);
+            clearInterval(intervalID);
+            intervalID = setInterval(fadeInGame, 30);
+        }
+    }
+    //    choose president
+    function fadeOutChooser(e) {
+        console.log(e.target.id);
         myMoleImg = e.target.id;
-        IntervalID = setInterval(removeChooser, 100);
-    }, false);
+        intervalID = setInterval(fadeChooser, 30);
+    }
+    //    choose president
+    presidents.addEventListener('click', fadeOutChooser, false);
 
     // if they click the president
     function youWon(myEvent) {
@@ -91,6 +129,7 @@
         clearTimeout(myEvent.target.myTimeOut);
     }
 
+    // game
     // build game table
     function buildGameTable() {
         var divIdCounter = 0;
@@ -104,8 +143,31 @@
                 myDiv.appendChild(myInnerDiv);
             }
             myMain.appendChild(myDiv);
+            console.log('appended: ', myDiv);
         }
     }
+    // game
+    // fade in game
+    function fadeInGame() {
+        if (fadeColor >= 1) {
+            console.log('----------------------- fadeColor fadeInGame: ',fadeColor);
+            console.log('fadeInGame fadeColor >= 1');
+            buildGameTable();
+            var myCover = document.createElement('div');
+            myCover.className = 'cover';
+            myMain.appendChild(myCover);
+        }
+        console.log('fadecolor in fadein: ', fadeColor);
+        rgba = 'rgba(53, 126, 189,' + fadeColor + ')';
+        myCover.style.backgroundColor = rgba;
+        fadeColor -= .01;
+        console.log(myCover.style.backgroundColor);
+        if (fadeColor <= .01) {
+            myCover.parentNode.removeChild(myCover);
+            clearInterval(intervalID);
+        }
+    }
+
 
     // add event listener
     // when click run youWonFunc
