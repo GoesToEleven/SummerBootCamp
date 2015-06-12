@@ -123,7 +123,6 @@
         myMain.appendChild(myHeader);
         myMain.appendChild(mySection);
         myMain.appendChild(myFooter);
-        console.log('at end');
     }
     // president picker
     var playingGame = false;
@@ -182,6 +181,7 @@
                 gameCountdownNumber = 3;
                 myCountdownDiv.parentNode.removeChild(myCountdownDiv);
                 clearInterval(intervalHandler);
+                console.log('just before RUN GAME');
                 runGame();
             } else {
                 myCountdownDiv.innerHTML = '' + gameCountdownNumber;
@@ -193,19 +193,7 @@
 
     // game - run
     function runGame() {
-
-//        // only runs first time
-//        if (!previousID) {
-//            buildGameTable();
-//        }
-
-        // clear image if already showing
-        if (previousID) {
-            var previousBox = document.querySelector(previousID);
-            previousBox.removeEventListener('click', youWon, false);
-            previousBox.style.background = '#896d3d';
-        }
-
+        console.log('in RUN GAME');
         // show image
         var allBoxes = document.querySelectorAll('.box');
         var randomBoxID = '#box-' + Math.ceil(Math.random() * allBoxes.length)
@@ -214,21 +202,14 @@
         }
         var chosenBox = document.querySelector(randomBoxID);
         chosenBox.style.background = myMoleImg + " no-repeat center center";
-        var timeOutHandler = setTimeout(runGame, ((Math.random() * 1000) + 300));
-        chosenBox.myTimeOut = timeOutHandler;
+        setTimeout(runGame, ((Math.random() * 1000) + 300));
         previousID = randomBoxID;
         chosenBox.addEventListener('click', youWon, false);
     }
-    //    runGame();
 
-
-    //    var myBody = document.querySelector('body');
-    //
-    //    function youWon(myEvent) {
-    //        console.log('you won');
-    //        clearTimeout(myEvent.target.myTimeOut);
-    //    }
-
+    function youWon() {
+        console.log('you won');
+    }
 </script>
 </body>
 </html>
