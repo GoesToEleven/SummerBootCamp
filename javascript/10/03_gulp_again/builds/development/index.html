@@ -2,12 +2,14 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    <title>gulpjs</title>
     <style>
         p {
             font-weight: 900;
         }
     </style>
+    <!-- this will reference the style.css file created from the sass files -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -114,7 +116,7 @@
 
     gulp.task('default', ['webserver', 'sass']);
 
-    gulp.task('webserver', function() {
+    gulp.task('webserver', function () {
         gulp.src('builds/development')
             .pipe(webserver({
                 livereload: true,
@@ -126,7 +128,7 @@
     gulp.task('sass', function () {
         gulp.src('./sass/**/*.scss')
             .pipe(sass().on('error', sass.logError))
-            .pipe(gulp.dest('./css'));
+            .pipe(gulp.dest('builds/development/css'));
     });
 
     gulp.task('sass:watch', function () {
@@ -134,5 +136,13 @@
     });
 
 </pre>
+
+<h2>Sass & CSS</h2>
+<ul>
+    <li><a href="sass_demo.html" target="_blank">page demonstrating sass</a></li>
+    <li><a href="sass_code.html" target="_blank">sass file</a></li>
+    <li><a href="/css/style.css" target="_blank">css file</a></li>
+</ul>
+
 </body>
 </html>
