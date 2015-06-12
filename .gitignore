@@ -10,8 +10,8 @@
 .DS_Store
 
 #other
-#node_modules
-#bower_components
-#.tmp
-#.sass-cache
-#builds/**/images/*
+node_modules
+bower_components
+.tmp
+.sass-cache
+builds/**/images/*
