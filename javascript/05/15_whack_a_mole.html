@@ -3,6 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
+    <link rel="stylesheet" href="15_css_reset.css">
     <style>
 
         * {
@@ -19,6 +20,19 @@
             justify-content: center;
             align-items: center;
             background-color: rgba(53, 126, 189, 1);
+        }
+
+        .countdown {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 50em;
+            color: #cecece;
         }
 
         main {
@@ -63,9 +77,11 @@
 
     // variables - global
     var myMain = document.querySelector('main');
+    var myBody = document.querySelector('body');
     var myMoleImg;
     var previousID;
-    var intervalID;
+    var intervalHandler;
+    var gameCountdownNumber = 3;
 
     // president picker
     var presidents = [
@@ -123,7 +139,7 @@
         myMoleImg = e.target.id;
         myMain.style.opacity = 0;
         presidentContainer.removeEventListener('click', fadeOutChooser, false);
-        intervalID = setTimeout(removePresidentPicker, 1520);
+        setTimeout(removePresidentPicker, 1520);
     }
     // president picker - FADE OUT
     function removePresidentPicker() {
@@ -136,7 +152,6 @@
         myMain.removeChild(myHeader);
         myMain.removeChild(mySection);
         myMain.removeChild(myFooter);
-        clearInterval(intervalID);
         buildGame();
         myMain.style.opacity = 1;
     }
@@ -154,85 +169,65 @@
                 myDiv.appendChild(myInnerDiv);
             }
             myMain.appendChild(myDiv);
-            console.log('appended: ', myDiv);
         }
+        setTimeout(gameCountDown, 1000);
+    }
+    // game - countdown
+    function gameCountDown() {
+        var myCountdownDiv = document.createElement('div');
+        myCountdownDiv.className = 'countdown';
+        myBody.appendChild(myCountdownDiv);
+        intervalHandler = setInterval(function () {
+            if (gameCountdownNumber === 0) {
+                gameCountdownNumber = 3;
+                myCountdownDiv.parentNode.removeChild(myCountdownDiv);
+                clearInterval(intervalHandler);
+                runGame();
+            } else {
+                myCountdownDiv.innerHTML = '' + gameCountdownNumber;
+                gameCountdownNumber--;
+            }
+            console.log(gameCountdownNumber);
+        }, 1000);
     }
 
+    // game - run
+    function runGame() {
 
-    //
+//        // only runs first time
+//        if (!previousID) {
+//            buildGameTable();
+//        }
+
+        // clear image if already showing
+        if (previousID) {
+            var previousBox = document.querySelector(previousID);
+            previousBox.removeEventListener('click', youWon, false);
+            previousBox.style.background = '#896d3d';
+        }
+
+        // show image
+        var allBoxes = document.querySelectorAll('.box');
+        var randomBoxID = '#box-' + Math.ceil(Math.random() * allBoxes.length)
+        while (previousID == randomBoxID) {
+            randomBoxID = '#box-' + Math.ceil(Math.random() * allBoxes.length)
+        }
+        var chosenBox = document.querySelector(randomBoxID);
+        chosenBox.style.background = myMoleImg + " no-repeat center center";
+        var timeOutHandler = setTimeout(runGame, ((Math.random() * 1000) + 300));
+        chosenBox.myTimeOut = timeOutHandler;
+        previousID = randomBoxID;
+        chosenBox.addEventListener('click', youWon, false);
+    }
+    //    runGame();
+
+
     //    var myBody = document.querySelector('body');
     //
-    //
-    //
-    //
-    //
-
-    //
-    //
-    //    // if they click the president
     //    function youWon(myEvent) {
     //        console.log('you won');
     //        clearTimeout(myEvent.target.myTimeOut);
     //    }
-    //
-    //    // game
-    //    // build game table
-    //
-    //    // game
-    //    // fade in game
-    //    function fadeInGame() {
-    //        if (fadeColor >= 1) {
-    //            console.log('----------------------- fadeColor fadeInGame: ',fadeColor);
-    //            console.log('fadeInGame fadeColor >= 1');
-    //            buildGameTable();
-    //            var myCover = document.createElement('div');
-    //            myCover.className = 'cover';
-    //            myMain.appendChild(myCover);
-    //        }
-    //        console.log('fadecolor in fadein: ', fadeColor);
-    //        rgba = 'rgba(53, 126, 189,' + fadeColor + ')';
-    //        myCover.style.backgroundColor = rgba;
-    //        fadeColor -= .01;
-    //        console.log(myCover.style.backgroundColor);
-    //        if (fadeColor <= .01) {
-    //            myCover.parentNode.removeChild(myCover);
-    //            clearInterval(intervalID);
-    //        }
-    //    }
-    //
-    //
-    //    // add event listener
-    //    // when click run youWonFunc
-    //    function runGame() {
-    //
-    //        // only runs first time
-    //        if (!previousID) {
-    //            buildGameTable();
-    //        }
-    //
-    //        // clear image if already showing
-    //        if (previousID) {
-    //            var previousBox = document.querySelector(previousID);
-    //            previousBox.removeEventListener('click', youWon, false);
-    //            previousBox.style.background = '#896d3d';
-    //        }
-    //
-    //        // show image
-    //        var allBoxes = document.querySelectorAll('.box');
-    //        var randomBoxID = '#box-' + Math.ceil(Math.random() * allBoxes.length)
-    //        while (previousID == randomBoxID) {
-    //            randomBoxID = '#box-' + Math.ceil(Math.random() * allBoxes.length)
-    //        }
-    //        var chosenBox = document.querySelector(randomBoxID);
-    //        chosenBox.style.background = myMoleImg + " no-repeat center center";
-    //        var timeOutHandler = setTimeout(runGame, ((Math.random() * 1000) + 300));
-    //        chosenBox.myTimeOut = timeOutHandler;
-    //        previousID = randomBoxID;
-    //        chosenBox.addEventListener('click', youWon, false);
-    //    }
-    //
-    //    //    run program
-    //    //    runGame();
 
 </script>
 </body>
