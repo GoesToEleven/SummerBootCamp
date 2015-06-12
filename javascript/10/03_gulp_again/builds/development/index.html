@@ -100,5 +100,39 @@
 <h3>Find Node Packages</h3>
 <h4><a href="https://www.npmjs.com/" target="_blank">NPM</a></h4>
 <h4><a href="http://gulpjs.com/plugins/" target="_blank">Gulpjs</a></h4>
+
+<h1>Adding gulp-sass</h1>
+<ul>
+    <li><a href="https://www.npmjs.com/package/gulp-sass" target="_blank">gulp-sass</a></li>
+</ul>
+<h2>"gulpfile.js"</h2>
+<p>This is how my "gulpfile.js" looks after installing gulp web server:</p>
+<pre>
+    var gulp = require('gulp');
+    var sass = require('gulp-sass');
+    var webserver = require('gulp-webserver');
+
+    gulp.task('default', ['webserver', 'sass']);
+
+    gulp.task('webserver', function() {
+        gulp.src('builds/development')
+            .pipe(webserver({
+                livereload: true,
+                directoryListing: false,
+                open: true
+            }));
+    });
+
+    gulp.task('sass', function () {
+        gulp.src('./sass/**/*.scss')
+            .pipe(sass().on('error', sass.logError))
+            .pipe(gulp.dest('./css'));
+    });
+
+    gulp.task('sass:watch', function () {
+        gulp.watch('./sass/**/*.scss', ['sass']);
+    });
+
+</pre>
 </body>
 </html>
