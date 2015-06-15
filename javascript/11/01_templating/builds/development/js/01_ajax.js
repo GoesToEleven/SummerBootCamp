@@ -1,5 +1,7 @@
 var request = new XMLHttpRequest();
-request.open('GET', 'js/data.json');
+
+request.open('GET', 'js/01_data.json');
+
 request.addEventListener('readystatechange', function () {
     if ((request.status === 200) && (request.readyState === 4)) {
         var data = JSON.parse(request.responseText);
@@ -10,6 +12,6 @@ request.addEventListener('readystatechange', function () {
         var html = Mustache.to_html(template, data);
         document.querySelector('#socialInfo').innerHTML=html;
     }
-})
+});
 
 request.send();
