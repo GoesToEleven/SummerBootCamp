@@ -31,7 +31,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 50em;
+            font-size: 30em;
             color: #cecece;
         }
 
@@ -79,7 +79,8 @@
     var myMain = document.querySelector('main');
     var myBody = document.querySelector('body');
     var myMoleImg;
-    var previousID;
+    var chosenBox;
+    var previousID = 999;
     var intervalHandler;
     var gameCountdownNumber = 3;
 
@@ -139,6 +140,7 @@
         myMain.style.opacity = 0;
         presidentContainer.removeEventListener('click', fadeOutChooser, false);
         setTimeout(removePresidentPicker, 1520);
+        playingGame = true;
     }
     // president picker - FADE OUT
     function removePresidentPicker() {
@@ -193,23 +195,52 @@
 
     // game - run
     function runGame() {
-        console.log('in RUN GAME');
+        // clear previous img and event listener
+        if(previousID != 999) {
+            chosenBox.removeEventListener('click', youWon, false);
+            chosenBox.style.background = "#896d3d URL('') no-repeat center center";
+        }
         // show image
         var allBoxes = document.querySelectorAll('.box');
         var randomBoxID = '#box-' + Math.ceil(Math.random() * allBoxes.length)
         while (previousID == randomBoxID) {
             randomBoxID = '#box-' + Math.ceil(Math.random() * allBoxes.length)
         }
-        var chosenBox = document.querySelector(randomBoxID);
-        chosenBox.style.background = myMoleImg + " no-repeat center center";
-        setTimeout(runGame, ((Math.random() * 1000) + 300));
+        chosenBox = document.querySelector(randomBoxID);
+        chosenBox.style.background = "URL('" + myMoleImg + "') no-repeat center center";
+        setTimeout(runGame, ((Math.random() * 500) + 300));
         previousID = randomBoxID;
         chosenBox.addEventListener('click', youWon, false);
     }
 
     function youWon() {
-        console.log('you won');
+        chosenBox.removeEventListener('click', youWon, false);
+        chosenBox.style.background = "#896d3d URL('') no-repeat center center";
+        setTimeout(setWinMsg, 10);
+        setTimeout(rmvWinMsg, 4000);
     }
+
+    function setWinMsg() {
+        var winMsg = document.createElement('div');
+        winMsg.className = 'countdown';
+        myBody.appendChild(winMsg);
+        winMsg.innerHTML = 'WIN!';
+    }
+
+    function rmvWinMsg() {
+//        var winMsg = document.querySelector('.countdown');
+//        winMsg.parentNode.removeChild(winMsg);
+//        var myDivs = document.querySelectorAll('div');
+//        for(var i = 0; i < myDivs.length; i++) {
+//            myDivs[i].parentNode.removeChild(myDivs[i]);
+//        }
+        myMain.parentNode.removeChild(myMain);
+        var myMain = document.createElement('main');
+        mybody.appendChild(myMain);
+        presidentPicker();
+    }
+
+
 </script>
 </body>
 </html>
