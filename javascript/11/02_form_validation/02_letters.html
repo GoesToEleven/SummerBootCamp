@@ -6,18 +6,18 @@
 </head>
 <body>
 
-<form action="#">
-    <label for="exampleInput">Enter phone with area code:</label>
-    <input id="exampleInput">
+<form name="myForm">
+    <input name="myInput">
+    <input name="myButton" type="button" value="submit">
 </form>
 
 <script>
-    var exampleNode = document.querySelector('#exampleInput');
-    exampleNode.addEventListener('blur', function (e) {
-        var re5digit = /^\d{5}$/;
+    var exampleNode = document.forms.myForm;
+    exampleNode.myButton.addEventListener('click', function (e) {
+        var re5digit = /^[a-z]{5}$/;
         e.preventDefault();
-        if (exampleNode.value.search(re5digit) === -1) {
-            alert("Enter a 5 digit number inside form");
+        if (exampleNode.myInput.value.search(re5digit) === -1) {
+            alert("Enter five lowercase letters");
         } else {
             exampleNode.submit();
         }
