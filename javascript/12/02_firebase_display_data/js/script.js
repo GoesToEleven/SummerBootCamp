@@ -1,4 +1,4 @@
-var ref = new Firebase("https://scorching-heat-8600.firebaseio.com/");
+var ref = new Firebase("https://test-swbc-11-02-disp.firebaseio.com/");
 // on is like addEventListener in firebase
 ref.on('value', function (snapshot) {
     var data = snapshot.val();
