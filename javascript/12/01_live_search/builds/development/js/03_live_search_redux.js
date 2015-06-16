@@ -16,7 +16,6 @@ function onKeyUp() {
     }
     var html = Mustache.to_html(template, modifiedData);
     results.innerHTML = html;
-
 }
 
 function getData() {
