@@ -48,11 +48,7 @@
         .speaker {
             margin: 20px 0;
             opacity: 1;
-            animation: myanim 2s;
-        }
-
-        .speakerHidden {
-
+            animation: myanim .5s;
         }
 
         @keyframes myanim {
@@ -80,14 +76,15 @@
     <div class="speaker">
         <h3 class="names">{{name}}</h3>
         <h4>{{reknown}}</h4>
-        <p><img src="images/{{shortname}}_tn.jpg" alt=""/>{{bio}}</p>
+        <!--<img src="images/{{shortname}}_tn.jpg" alt="">-->
+        <p>{{bio}}</p>
     </div>
     {{/speakers}}
 </script>
 
 <script src="http://cdn.jsdelivr.net/mustache.js/2.1.0/mustache.min.js" type="text/javascript"></script>
 
-<script src="js/01_script.js"></script>
+<script src="js/03_live_search_redux.js"></script>
 
 </body>
 </html>

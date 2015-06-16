@@ -7,10 +7,8 @@ function onKeyUp() {
         var obj = names[i];
         if (obj.innerHTML.toLowerCase().search(regex) === -1) {
             obj.parentNode.style.display = 'none';
-            obj.parentNode.style.opacity = '0';
         } else {
             obj.parentNode.style.display = 'block';
-            obj.parentNode.style.opacity = '1';
         }
 
     }
