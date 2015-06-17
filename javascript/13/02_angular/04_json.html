@@ -14,15 +14,15 @@
 <body>
 
 <div ng-controller="MyController">
-<ul>
-    <li ng-repeat="item in artists">
-        <img ng-src="../../general-images/artists/{{item.shortname}}_tn.jpg" alt="a picture of {{item.name}}"/>
-        <div>
-            <h2>{{item.name}}</h2>
-            <h3>{{item.reknown}}</h3>
-        </div>
-    </li>
-</ul>
+    <ul>
+        <li ng-repeat="item in artists">
+            <img ng-src="../../general-images/artists/{{item.shortname}}_tn.jpg" alt="a picture of {{item.name}}"/>
+            <div>
+                <h2>{{item.name}}</h2>
+                <h3>{{item.reknown}}</h3>
+            </div>
+        </li>
+    </ul>
 </div>
 
 <script src="builds/development/js/03_controller.js"></script>
