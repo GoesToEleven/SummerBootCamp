@@ -10,10 +10,11 @@
 .DS_Store
 
 #other
-node_modules
-bower_components
+node_modules/
+bower_components/
 .tmp
 .sass-cache
 builds/**/images/*
 *.ogg
 *.mp3
+general-images/
