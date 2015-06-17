@@ -6,5 +6,5 @@ myApp.controller('MyController', function ($scope, $firebaseObject) {
     var ref = new Firebase("https://test-swbc-13-02-04.firebaseio.com");
     // download the data into a local object
     console.log($firebaseObject(ref));
-    $scope.data = $firebaseObject(ref.child('speakers'));
+    $scope.data = $firebaseObject(ref);
 });
