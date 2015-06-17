@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
-    <script src="lib/angular/angular.min.js"></script>
-    <link rel="stylesheet" href="builds/development/css/reset.css">
+    <script src="../lib/angular/angular.min.js"></script>
+    <script src="js/04_controller.js"></script>
+    <link rel="stylesheet" href="css/reset.css">
     <style>
         body{margin: 20px;}
         ul{list-style-type: none;}
@@ -13,10 +14,12 @@
 </head>
 <body>
 
+this is running
+
 <div ng-controller="MyController">
     <ul>
         <li ng-repeat="item in artists">
-            <img ng-src="../../general-images/artists/{{item.shortname}}_tn.jpg" alt="a picture of {{item.name}}"/>
+            <img ng-src="../../../../general-images/artists/{{item.shortname}}_tn.jpg" alt="a picture of {{item.name}}"/>
             <div>
                 <h2>{{item.name}}</h2>
                 <h3>{{item.reknown}}</h3>
@@ -24,8 +27,6 @@
         </li>
     </ul>
 </div>
-
-<script src="builds/development/js/03_controller.js"></script>
 
 </body>
 </html>
