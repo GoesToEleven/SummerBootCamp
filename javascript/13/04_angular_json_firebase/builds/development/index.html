@@ -3,7 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
+    <!-- AngularJS -->
     <script src="../lib/angular/angular.min.js"></script>
+    <!-- Firebase -->
+    <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/1.1.1/angularfire.min.js"></script>
+    <!-- Controller -->
     <script src="js/controller.js"></script>
     <link rel="stylesheet" href="css/reset.css">
     <style>
@@ -18,7 +24,7 @@ this is running
 
 <div ng-controller="MyController">
     <ul>
-        <li ng-repeat="item in artists">
+        <li ng-repeat="item in data">
             <img ng-src="../../../../general-images/artists/{{item.shortname}}_tn.jpg" alt="a picture of {{item.name}}"/>
             <div>
                 <h2>{{item.name}}</h2>
