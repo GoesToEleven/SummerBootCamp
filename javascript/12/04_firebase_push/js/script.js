@@ -3,13 +3,17 @@ var ref = new Firebase("https://test-swbc-11-04-push.firebaseio.com/");
 // on is like addEventListener in firebase
 ref.on('value', function (snapshot) {
     var data = snapshot.val();
-    console.log(data);
-    for (var i in data.speakers) {
-        console.log(data.speakers[i]);
+    var output = '';
+    for (var i in data) {
+        console.log(data[i]);
+        output += '<section class="wrapBox">';
+        output += '<h1>' + data[i].name + '</h1>';
+        output += '<p>' + data[i].reknown + '</p>';
+        output += '<p>' + data[i].shortname + '</p>';
+        output += '<p>' + data[i].bio + '</p>';
+        output += '</section>';
     }
-    var template = document.querySelector('#displayInfoTemplate').innerHTML;
-    var html = Mustache.to_html(template, data);
-    document.querySelector('#putDataHere').innerHTML = html;
+    document.querySelector('#putDataHere').innerHTML = output;
 });
 
 
@@ -27,10 +31,10 @@ function randomWord() {
 
 addNode.addEventListener('click', function () {
     ref.push({
-                "name": ('name' + randomWord()),
-                "shortname": ('shortname' + randomWord()),
-                "reknown": ('reknown' + randomWord()),
-                "bio": ('bio' + randomWord())
+        "name": ('name --- ' + randomWord()),
+        "shortname": ('shortname --- ' + randomWord()),
+        "reknown": ('reknown --- ' + randomWord()),
+        "bio": ('bio --- ' + randomWord())
     });
 });
 
