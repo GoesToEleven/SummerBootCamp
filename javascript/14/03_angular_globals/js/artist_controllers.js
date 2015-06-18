@@ -1,5 +1,5 @@
 var artistControllers = angular.module('artistControllers', ["firebase"]);
-var ref = new Firebase("https://test-swbc-14-02-vari.firebaseio.com/");
+var ref = new Firebase("https://test-swbc-14-01-rout.firebaseio.com/");
 
 //Now the $firebaseObject, $firebaseArray, and $firebaseAuth services are available to be injected into any controller, service, or factory.
 
