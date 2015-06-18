@@ -5,12 +5,17 @@
     <title></title>
     <!-- AngularJS -->
     <script src="../lib/angular/angular.min.js"></script>
+    <!-- AngularJS Routing -->
+    <script src="../lib/angular/angular-route.min.js"></script>
     <!-- Firebase -->
     <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
     <!-- AngularFire -->
     <script src="https://cdn.firebase.com/libs/angularfire/1.1.1/angularfire.min.js"></script>
+    <!-- App -->
+    <script src="js/app.js"></script>
     <!-- Controller -->
-    <script src="js/controller.js"></script>
+    <script src="js/artist_controllers.js"></script>
+    <!-- CSS -->
     <link rel="stylesheet" href="css/reset.css">
     <style>
         body {
@@ -32,24 +37,7 @@
 </head>
 <body>
 
-<div ng-controller="MyController">
-
-    <label for="searchBox">Search:</label>
-    <input id="searchBox" ng-model="query" placeholder="search for artists" autofocus>
-
-    <ul>
-        <li ng-repeat="item in data | filter: {name:query}">
-            <!-- below filters only by name -->
-        <!--<li ng-repeat="item in data | filter: {name:query}">-->
-            <img ng-src="../../../../general-images/artists/{{item.shortname}}_tn.jpg"
-                 alt="a picture of {{item.name}}"/>
-            <div>
-                <h2>{{item.name}}</h2>
-                <h3>{{item.reknown}}</h3>
-            </div>
-        </li>
-    </ul>
-</div>
+<div ng-view></div>
 
 </body>
 </html>
