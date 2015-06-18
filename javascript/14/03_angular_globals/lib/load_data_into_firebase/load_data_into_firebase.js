@@ -1,4 +1,4 @@
-var ref = new Firebase("https://test-swbc-14-01-rout.firebaseio.com/");
+var ref = new Firebase("https://test-swbc-14-03.firebaseio.com/");
 
 function loadAllData() {
     ref.remove();

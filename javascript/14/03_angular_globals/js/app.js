@@ -1,7 +1,9 @@
+"use strict";
+
 var myApp = angular.module('myApp', [
     'ngRoute',
     'artistControllers'
-]);
+]).constant('FIREBASE_URL', 'https://test-swbc-14-03.firebaseio.com/');
 
 myApp.config(['$routeProvider', function ($routeProvider) {
     $routeProvider.
@@ -18,3 +20,10 @@ myApp.config(['$routeProvider', function ($routeProvider) {
             redirectTo: '/list'
         });
 }]);
+
+myApp.factory('GetData', function ($firebaseArray, FIREBASE_URL) {
+    var ref = new Firebase(FIREBASE_URL);
+    return $firebaseArray(ref);
+});
+
+
