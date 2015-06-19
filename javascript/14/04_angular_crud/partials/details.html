@@ -8,17 +8,12 @@
     <a href="#/list">&laquo; Back to search</a>
 </section>
 
-<!--{{addUser.name}}-->
-<!--{{addUser.bio}}-->
-<!--{{addUser.reknown}}-->
-<!--{{addUser.shortname}}-->
-
 <h1>UPDATE THIS ARTIST</h1>
 <form ng-submit="onUpdate()">
 
     <div>
         <label for="name">name</label>
-        <input id="name" ng-model="data[whichItem].name" type="text">
+        <input id="name" ng-model="updateUser.name" type="text">
     </div>
     <div>
         <label for="bio">bio</label>

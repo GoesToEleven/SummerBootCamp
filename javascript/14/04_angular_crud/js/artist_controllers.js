@@ -21,6 +21,14 @@ artistControllers.controller('DetailsController', ['$scope', 'GetData', 'FIREBAS
 
     $scope.data = GetData;
     $scope.whichItem = $routeParams.itemId;
+    $scope.addUser = {};
+    console.log($scope.data);
+    console.log($scope.whichItem);
+    console.log($scope.addUser);
+    $scope.addUser.name = $scope.data[$scope.whichItem];
+    //addUser.bio = $scope.data[whichItem].bio;
+    //addUser.reknown = $scope.data[whichItem].reknown;
+    //addUser.shortname = $scope.data[whichItem].shortname;
 
     $scope.onUpdate = function() {
         var ref = new Firebase(FIREBASE_URL);
