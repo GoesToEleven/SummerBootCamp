@@ -27,6 +27,21 @@ ionic serve -l
 
 now you can open myApp/www/index.html and edit it
 
+in index.html
+play with adding stuff like this
+
+between these tags
+      <ion-content>
+      </ion-content>
+add a paragraph with lorem ipsum
+
+you can go to
+http://ionicframework.com/docs/components/
+and add in code from there between the ion-content tags
+
+
+
+
 
 
 
