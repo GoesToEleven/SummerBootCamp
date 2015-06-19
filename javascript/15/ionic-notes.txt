@@ -39,8 +39,20 @@ you can go to
 http://ionicframework.com/docs/components/
 and add in code from there between the ion-content tags
 
+for example
+Use the ion-header-bar
+Change color (bar-positive)
+Create a subheader (bar-subheader)
+like this:
+<ion-header-bar class="bar-positive">
+  <h1 class="title">Blank Starter</h1>
+</ion-header-bar>
+<div class="bar bar-subheader">
+  <h2 class="title">Sub Header</h2>
+</div>
 
-
+see more ray's notes about adding things here
+http://planetoftheweb.com/presentations/fresno/W03D05.html#/2
 
 
 
