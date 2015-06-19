@@ -17,7 +17,13 @@ artistControllers.controller('ListController', ['$scope', 'GetData', 'FIREBASE_U
     };
 }]);
 
-artistControllers.controller('DetailsController', function ($scope, GetData, $routeParams) {
+artistControllers.controller('DetailsController', ['$scope', 'GetData', 'FIREBASE_URL', '$routeParams', function ($scope, GetData, FIREBASE_URL, $routeParams) {
+
     $scope.data = GetData;
     $scope.whichItem = $routeParams.itemId;
-});
+
+    $scope.onUpdate = function() {
+        var ref = new Firebase(FIREBASE_URL);
+        ref.save($scope.whichItem);
+    };
+}]);
