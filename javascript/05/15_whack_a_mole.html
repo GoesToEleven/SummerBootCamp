@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    <title>Whack-A-President</title>
     <link rel="stylesheet" href="15_css_reset.css">
     <style>
 
@@ -158,7 +158,7 @@
         '15_imgs/ronald-reagan.jpg',
         '15_imgs/bill-clinton.jpg'
 
-    ]
+    ];
     // president picker
     function presidentPicker() {
         timesThrough = 0;
@@ -279,7 +279,7 @@
         }
         // show image
         var allBoxes = document.querySelectorAll('.box');
-        var randomBoxID = '#box-' + Math.ceil(Math.random() * allBoxes.length)
+        var randomBoxID = '#box-' + Math.ceil(Math.random() * allBoxes.length);
         while (previousID == randomBoxID) {
             randomBoxID = '#box-' + Math.ceil(Math.random() * allBoxes.length)
         }
