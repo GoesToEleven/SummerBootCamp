@@ -4,6 +4,7 @@ accordions.forEach(function(accordion) {
   var sections = Array.prototype.slice.call(accordion.querySelectorAll('.section'));
   sections.forEach(function(section) {
     var content = section.querySelector('.content');
+      console.count();
     section.querySelector('h2').addEventListener('click', function() {
       var closed = content.classList.contains('closed');
       allContent.forEach(function(content) {
