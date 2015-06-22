@@ -1,0 +1,23 @@
+<template id="template">
+    <style>
+        <!-- Add some styles here -->
+    </style>
+    <!-- Add HTML for your component here.
+    Try adding <content></content> to project from the light DOM -->
+</template>
+<script>
+    var createElement = function(tagName, templateId, basePrototype) {
+        basePrototype = basePrototype || HTMLElement.prototype;
+        var template = document.currentScript.ownerDocument.getElementById(templateId).content;
+        var customElementPrototype = Object.create(basePrototype);
+        customElementPrototype.createdCallback = function() {
+            var shadowRoot = this.createShadowRoot();
+            var clone = document.importNode(template, true);
+            shadowRoot.appendChild(clone);
+        };
+        return document.registerElement(tagName, {
+            prototype: customElementPrototype
+        });
+    };
+    // Initialize your component here with the above function!
+</script>
