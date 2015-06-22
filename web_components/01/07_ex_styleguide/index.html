@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Web Components Styleguide</title>
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/docs.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/default.min.css">
+    <style>.navbar-brand {
+        font-size: 250%;
+        line-height: 1.2;
+        margin: 20px 0;
+    }</style>
+    <link rel="import" href="components/hello-badge/my-first-web-component.html">
+</head>
+<body>
+
+<!-- Docs master nav -->
+<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="../" class="navbar-brand">My Web Components Styleguide</a>
+        </div>
+    </div>
+</header>
+
+<div class="container bs-docs-container">
+
+    <div class="row">
+        <div class="col-md-9">
+            <div class="bs-docs-section">
+                <!-- Component group title -->
+                <h1 id="first-component-group" class="page-header">Component Group</h1>
+                <!-- Description of component group -->
+                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium commodi fugit
+                    incidunt laborum magni maiores minima minus omnis quas, quis quo repellendus sapiente ut! Autem
+                    doloribus molestiae quasi saepe vel.</p>
+                <!-- Note callout about component group -->
+                <div class="bs-callout bs-callout-warning" id="callout-btn-group-tooltips">
+                    <h4>Note about component</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquam amet culpa dolores
+                        hic itaque magni minima minus mollitia nemo nulla numquam odit provident, quidem ratione rem
+                        tempora ullam vitae.</p>
+                </div>
+                <!-- Component title -->
+                <h2 id="hello-badge">Hello Badge</h2>
+                <!-- Component description -->
+                <p>This creates a "hello badge." It allows users to enter their name and have it displayed.</p>
+                <!-- Component code -->
+               <hello-badge></hello-badge>
+                <!-- Component code example -->
+                <div class="highlight"><code class="html">
+                    <hello-badge></hello-badge>
+                </code></div>
+                <!-- Component title -->
+                <h2 id="second-component">Second Component</h2>
+                <!-- Component description -->
+                <p>Lorem ipsum.</p>
+                <!-- Component code -->
+                <h3 style="color: blue;">Hello again.</h3>
+                <!-- Component code example -->
+                <div class="highlight"><code class="html"><h3 style="color: blue;">Hello again.</h3></code></div>
+
+            </div>
+        </div>
+
+        <div class="col-md-3" role="complementary">
+            <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm">
+                <ul class="nav bs-docs-sidenav">
+
+                    <li class="">
+                        <a href="#first-component-group">Component Group</a>
+                        <ul class="nav">
+                            <li class=""><a href="#hello-badge">Hello Badge</a></li>
+                            <li class=""><a href="#second-component">Second Component</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </nav>
+        </div>
+
+    </div>
+</div>
+
+<!-- Footer
+================================================== -->
+<footer class="bs-docs-footer" role="contentinfo">
+    <div class="container">
+
+        <p>Styleguide documentation page is forked from <a href="https://github.com/twbs/bootstrap/tree/gh-pages">Twitter
+            Bootstrap</a>, licensed under <a rel="license" href="https://github.com/twbs/bootstrap/blob/master/LICENSE"
+                                             target="_blank">MIT</a>.</p>
+
+    </div>
+</footer>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+<script>
+
+    function escapeHtml(str) {
+        var div = document.createElement('div');
+        div.appendChild(document.createTextNode(str));
+        return div.innerHTML;
+    }
+    ;
+
+    var codeNodes = Array.prototype.slice.call(document.querySelectorAll('code'));
+    codeNodes.forEach(function (el) {
+        el.innerHTML = escapeHtml(el.innerHTML);
+    });
+    codeNodes.forEach(function (el) {
+        hljs.highlightBlock(el);
+    });
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+<script src="vendor/bootstrap.min.js"></script>
+
+<script src="vendor/docs.min.js"></script>
+
+</body>
+</html>

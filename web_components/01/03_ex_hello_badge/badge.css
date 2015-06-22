@@ -10,7 +10,7 @@ section {
     background-color: #00f;
     border: 5px solid #00f;
     width: 500px;
-    border-radius: 24px;
+    border-radius:24px;
     overflow: auto;
 }
 
