@@ -20,13 +20,14 @@
         }
 
         hello-badge::shadow h3 {
-            color: red;
+            /*color: red;*/
         }
 
 
 
     </style>
     <link rel="import" href="components/hello-badge/my-first-web-component.html">
+    <link rel="import" href="components/button/button.html">
 </head>
 <body>
 
@@ -68,13 +69,15 @@
                     <hello-badge>Your Name Here</hello-badge>
                 </code></div>
                 <!-- Component title -->
-                <h2 id="second-component">Second Component</h2>
+                <h2 id="second-component">My Button</h2>
                 <!-- Component description -->
-                <p>Lorem ipsum.</p>
+                <p>This is a button.</p>
                 <!-- Component code -->
-                <h3 style="color: blue;">Hello again.</h3>
+                <my-button>Click Now</my-button>
                 <!-- Component code example -->
-                <div class="highlight"><code class="html"><h3 style="color: blue;">Hello again.</h3></code></div>
+                <div class="highlight"><code class="html">
+                    <my-button>Your Content Here</my-button>
+                </code></div>
 
             </div>
         </div>
@@ -84,10 +87,10 @@
                 <ul class="nav bs-docs-sidenav">
 
                     <li class="">
-                        <a href="#first-component-group">Component Group</a>
+                        <a href="#first-component-group">My Components</a>
                         <ul class="nav">
                             <li class=""><a href="#hello-badge">Hello Badge</a></li>
-                            <li class=""><a href="#second-component">Second Component</a></li>
+                            <li class=""><a href="#my-button">My Button</a></li>
                         </ul>
                     </li>
                 </ul>
