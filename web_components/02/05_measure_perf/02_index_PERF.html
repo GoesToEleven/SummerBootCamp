@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<div id="sample">Go look in the console for the output</div>
+
+<script>
+
+    var first = [];
+    var second = [];
+
+    for (var i = 0; i < 1000; i++) {
+        var t0 = performance.now();
+        document.getElementById('sample');
+        var t1 = performance.now();
+        first.push(t1 - t0);
+
+        t0 = performance.now();
+        document.querySelector('#sample');
+        t1 = performance.now();
+        second.push(t1 - t0);
+
+        console.log('------------' + i + '------------');
+    }
+
+    var counterOne = 0;
+    for (var i = 0; i < first.length; i++) {
+        counterOne += first[i];
+    }
+    var firstAverage = counterOne / first.length;
+
+    var counterTwo = 0;
+    for (var i = 0; i < second.length; i++) {
+        counterTwo += second[i];
+    }
+    var firstAverage = counterOne / first.length;
+    var secondAverage = counterTwo / second.length;
+
+    console.log('first average: ', firstAverage);
+    console.log('second average: ', secondAverage);
+
+</script>
+</body>
+</html>

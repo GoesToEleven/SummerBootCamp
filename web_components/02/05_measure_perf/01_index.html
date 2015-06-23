@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<div id="sample">Go look in the console for the output</div>
+
+<script>
+
+    for (var i = 0; i < 20; i++) {
+        console.time('gElId');
+        document.getElementById('sample');
+        console.timeEnd('gElId');
+
+        console.time('qSel');
+        document.querySelector('#sample');
+        console.timeEnd('qSel');
+
+        console.log('------------------------')
+
+    }
+
+</script>
+</body>
+</html>
