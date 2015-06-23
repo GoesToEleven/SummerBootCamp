@@ -1,0 +1,50 @@
+<template id="template">
+
+    <div id="mySlider">
+        <img src="../../../images/01.jpeg" alt="">
+    </div>
+
+</template>
+
+<script>
+
+    var createElement = function (tagName, templateId, basePrototype) {
+        basePrototype = basePrototype || HTMLElement.prototype;
+//        currentScript is the script that is running
+//        ownerDocument is the document/file where the script is running
+        var template = document.currentScript.ownerDocument.getElementById(templateId).content;
+        var customElementPrototype = Object.create(basePrototype);
+
+        customElementPrototype.createdCallback = function () {
+            var shadowRoot = this.createShadowRoot();
+            var clone = document.importNode(template, true);
+            shadowRoot.appendChild(clone);
+
+            var imgArray = [];
+            var myImg = shadowRoot.querySelector('img');
+
+            function changeImage() {
+                if (imgArray.length == 0) {
+                    imgArray = ['01','02','03','04','05'];
+                }
+                var imgNumber = imgArray.pop();
+                console.log(imgNumber, ' - ', imgArray);
+                console.log(myImg);
+
+                myImg.src = '../../../images/' + imgNumber + '.jpeg';
+            }
+
+            setInterval(changeImage, 600);
+
+        };
+
+        return document.registerElement(tagName, {
+            prototype: customElementPrototype
+        });
+
+    };
+    // Initialize my component here with the above function:
+    createElement('image-slider', 'template');
+    //    could do this
+    //    createElement('my-button', 'template', HTMLButtonElement);
+</script>

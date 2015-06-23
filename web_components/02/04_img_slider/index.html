@@ -6,5 +6,26 @@
 </head>
 <body>
 
+<div id="mySlider">
+    <img src="../../../images/01.jpeg" alt="">
+</div>
+
+<script>
+
+    var imgArray = [];
+    var myImg = document.querySelector('img');
+    function changeImage() {
+        if (imgArray.length == 0) {
+            imgArray = ['01','02','03','04','05'];
+        }
+        var imgNumber = imgArray.pop();
+//        console.log(imgNumber, ' - ', imgArray);
+
+        myImg.src = '../../../images/' + imgNumber + '.jpeg';
+    }
+
+    var intervalHandler = setInterval('changeImage()', 600);
+
+</script>
 </body>
 </html>
