@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+
+    console.log('hello');
+    var arr = ['a', 'b', 'c'];
+    var logVal = function (letter) {
+        console.log(letter.length);
+    };
+    for (var i = 0; i <= arr.length; i++) {
+        logVal(arr[i]);
+        console.log(i);
+
+    }
+
+//    throw new Error('whoops!');
+
+    try {
+        try {
+            throw new Error("oops");
+        }
+        finally {
+            console.log("finally");
+        }
+    }
+    catch (ex) {
+        console.error("outer", ex.message);
+    }
+
+    // Output:
+    // "finally"
+    // "outer" "oops"
+</script>
+
+</body>
+</html>

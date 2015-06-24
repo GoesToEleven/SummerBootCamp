@@ -2,3 +2,20 @@
 is content only web components?
 03/02
 
+EXERCISES
+
+developer tools / sources
+debug
+breakpoints
+step over
+step through
+
+console.log('hello');
+var arr = [];
+var logVal = function(letter) {
+	console.log(letter.length);
+};
+for (var i = 0; i <= arr.length; i++) {
+	logVal(arr[i]);
+	console.log(i);
+}
