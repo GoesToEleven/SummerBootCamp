@@ -1,0 +1,43 @@
+<template>
+    <content select="img"></content>
+    <style>::content img {
+        width: 200px;
+    }</style>
+</template>
+
+<script>
+
+    var createElement = function (tagName, basePrototype) {
+        var basePrototype = basePrototype || HTMLElement.prototype;
+        var currentScript = document._currentScript ? document._currentScript : document.currentScript;
+        var template = currentScript.ownerDocument.querySelector('template').content;
+        var customElementPrototype = Object.create(basePrototype);
+        customElementPrototype.createdCallback = function () {
+            var shadowRoot = this.createShadowRoot();
+            var clone = document.importNode(template, true);
+            shadowRoot.appendChild(clone);
+            var images = shadowRoot.querySelector('content').getDistributedNodes();
+            var imageCounter = 0;
+            // Hide images to start (except for the first one)
+            for (var i = 1; i < images.length; i++) {
+                images[i].style.display = 'none';
+            }
+            // Cycle through each image
+            window.setInterval(function () {
+                images[imageCounter].style.display = 'none';
+                if (imageCounter < images.length - 1) {
+                    imageCounter++;
+                } else {
+                    imageCounter = 0;
+                }
+                images[imageCounter].style.display = 'block';
+            }, 500);
+        };
+        return document.registerElement(tagName, {
+            prototype: customElementPrototype
+        });
+    };
+
+    window.MySlider = createElement('my-slider');
+
+</script>
