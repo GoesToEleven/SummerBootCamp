@@ -3,8 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
+    <style>
+        /*
+        Add CSS HERE (in the light DOM)
+        to change the color of the text to purple
+        */
+
+        /*this way*/
+        .component::shadow h1 {
+            color: purple;
+        }
+
+        /*or this way*/
+        ::shadow h1 {
+            color: blue;
+        }
+
+    </style>
 </head>
 <body>
+
+<div class="component"></div>
+
+<script>
+    var shadow = document.querySelector('.component').createShadowRoot();
+    shadow.innerHTML += "<div><div><h1>Good morning!</h1></div></div>";
+    shadow.innerHTML += "<style>div > div > h1 { color: forestgreen; }</style>";
+</script>
 
 </body>
 </html>
