@@ -6,5 +6,45 @@
 </head>
 <body>
 
+<div class="answer"></div>
+
+<script>
+
+    var numbersToAverage = [10, 25, 2, 32, 1, 22, 24, 28, 23, 15, 39, 23, 21, 54, 12, 9, 2, 35, 50, 20, 22, 21, 0, 1, 100, 3, 22, 25, 12, 23, 29];
+    var answer = 0;
+
+    // Add code below to find the average of all the numbers in the numbersToAverage array using a forEach loop (not a standard for loop)
+
+    var myAccumulator = 0;
+
+    numbersToAverage.forEach(function(item) {
+        myAccumulator = myAccumulator + item;
+    });
+
+    answer = myAccumulator / numbersToAverage.length;
+
+    // Don't edit the line below
+    document.querySelector('.answer').textContent = answer;
+
+
+    var myBody = document.querySelector('body');
+    var secondAccum = 0;
+    var myTemp = 0;
+
+    for (var i = 0; i < numbersToAverage.length; i++) {
+        var myParagraph = document.createElement('p');
+        var currentNumber = numbersToAverage[i];
+        myTemp = secondAccum + currentNumber;
+        myParagraph.innerHTML = secondAccum + ' + ' + currentNumber + ' = ' + (myTemp);
+        secondAccum = myTemp;
+        myBody.appendChild(myParagraph);
+    }
+
+    var myParagraph = document.createElement('p');
+    myParagraph.innerHTML = secondAccum + ' + ' + currentNumber + ' = ' + (myTemp);
+
+
+
+</script>
 </body>
 </html>
