@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<!-- Turn .component into a shadow host, and project
+ONLY the 'Hello World' text into the shadow DOM -->
+<div class="component">
+    <h1 class="webdevbootcamp">Web Dev Bootcamp</h1>
+    <h1 class="hello">Hello World</h1>
+</div>
+
+<script>
+    var shadowHost = document.querySelector('.component').createShadowRoot();
+    shadowHost.innerHTML += '<content select=".hello"></content>';
+</script>
+</body>
+</html>
