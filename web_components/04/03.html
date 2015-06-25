@@ -22,7 +22,8 @@
     console.log(fooArrayLike.constructor === Array);
 //    fooArray is an array like myObject
 //    to make it an array ...
-    var fooArray = Array.prototype.splice.call(fooArrayLike);
+    var fooArray = Array.prototype.slice.call(fooArrayLike);
+//    check that it is an array
     console.log(fooArray);
     console.log(fooArray[0]);
     console.log(fooArray[0].innerHTML);
@@ -31,8 +32,9 @@
 
     var myStr = '';
     fooArray.forEach(function(element) {
-        console.log(element);
-        myStr += element;
+//        console.log(element);
+        console.log(element.innerHTML);
+        myStr += element.innerHTML;
     });
     alert(myStr);
 
