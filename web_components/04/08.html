@@ -6,14 +6,31 @@
 </head>
 <body>
 
-
-<div class="foo"><h1>Hello world!</h1><h2>Hello again</h2><h2>And again</h2></div>
+<div class="foo">
+    <div>
+        <h2>Hello World</h2>
+        <h1>Good</h1>
+        <h1>Afternoon</h1>
+    </div>
+</div>
 
 <script>
-    var shadowRoot = document.querySelector('.foo').createShadowRoot();
-    shadowRoot.innerHTML += '<content select="h2"></content>';
+    var myHeadingTwo = document.querySelector('h2');
+    myHeadingTwo.parentNode.removeChild(myHeadingTwo);
+    var remainingNodes = document.querySelector('.foo div');
+    console.log(remainingNodes);
 
-    // Write
+    var shadowRoot = document.querySelector('.foo').createShadowRoot();
+    shadowRoot.innerHTML += '<content select="div"></content>';
+//    var myNodes = shadowRoot.querySelector('content').getDistributedNodes();
+//    console.log(myNodes);
+//    console.log(myNodes.constructor);
+
+
+    // Change this JS so that the H2 (Hello World) node isn't present, but the other h1's are.
+
+    // jsfiddle.net/p71vqp3z
+
 
 </script>
 </body>
