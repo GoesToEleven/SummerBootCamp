@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<template id="styles">
+    <style>
+        p {
+            color: red;
+        }
+    </style>
+</template>
+
+<template id="word">
+    <span>hello</span>
+</template>
+
+<template id="scripts">
+    <script>
+
+        var mySpan = document.querySelectorAll('span');
+
+        var intervalHandler = setInterval(blinkText, 300);
+
+        function blinkText() {
+
+//            ONE WAY
+            for (var i = 0; i < mySpan.length; i++) {
+                mySpan[i].style.color = mySpan[i].style.color == 'green' ? 'blue' : 'green';
+            }
+
+//            ANOTHER WAY
+//            Array.prototype.slice.call(mySpan).forEach(function (element, i) {
+//                element.style.color = element.style.color == 'green' ? 'blue' : 'green';
+//                console.log(i);
+//            });
+        }
+    </script>
+</template>
+
+<script>
+
+    var myBody = document.querySelector('body');
+    var myStyles = document.querySelector('#styles');
+
+    console.log(myStyles);
+    console.log(myStyles.content);
+
+    myBody.appendChild(document.importNode(myStyles.content, true));
+
+    var mySpan = document.querySelector('#word').content;
+
+    for (var i = 0; i < 400; i++) {
+        myBody.appendChild(document.importNode(mySpan, true));
+    }
+
+    var myScripts = document.querySelector('#scripts').content;
+    myBody.appendChild(document.importNode(myScripts, true));
+
+</script>
+
+</body>
+</html>
