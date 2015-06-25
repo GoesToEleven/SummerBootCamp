@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+
+//    ONE WAY - forEach(element, index)
+    var without = function (arr, value) {
+        var newArray = [];
+        arr.forEach( function(element, index) {
+            console.log('value --- ', value);
+            console.log('element - ', element);
+            console.log('index --- ', index);
+            console.log('--------------------');
+            if(element !== value){
+                newArray.push(element);
+            }
+        });
+        return newArray;
+    };
+
+//    ANOTHER WAY - loop
+    var withoutAlso = function (arr, value) {
+        for (var i = 0; i < arr.length; i++) {
+            var obj = arr[i];
+            if (obj == value) {
+                arr.splice(i, 1);
+            }
+        }
+        return arr;
+    };
+
+
+    /*  Complete the above function called without(arr, value)
+     *  which returns a copy of the arr with all instances of the value removed.
+     */
+    alert(without([1, 2, 1, 0, 3, 1, 4], 0));
+    alert(withoutAlso([1, 2, 1, 0, 3, 1, 4], 0));
+
+</script>
+</body>
+</html>
