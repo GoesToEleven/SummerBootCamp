@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+
+    console.log('hello');
+
+    var arr = ['a', 'b', 'c', 'd', 'e'];
+
+    var logVal = function (letter) {
+        console.log('in LOGVAL function');
+        console.log(letter.length);
+    };
+
+    //    should read: (var i = 0; i < arr.length; i++)
+    for (var i = 0; i <= arr.length; i++) {
+        console.log('in loop - ', i)
+        logVal(arr[i]);
+    }
+
+    console.log('bye');
+
+</script>
+</body>
+</html>

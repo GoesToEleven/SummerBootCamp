@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        /* Write CSS to turn the text orange.  Do not use /deep/. */
+        h1 { color: orange !important; }
+    </style>
+</head>
+<body>
+
+<div class="component"></div>
+
+<script>
+    var shadowRoot = document.querySelector('.component').createShadowRoot();
+    shadowRoot.innerHTML += '<h1 style="color: red;">Good afternoon!</h1>';
+</script>
+</body>
+</html>

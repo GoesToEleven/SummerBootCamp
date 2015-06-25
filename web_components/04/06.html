@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<div class="click-me">Click this text!</div>
+
+<script>
+    // Show an alert box with text when the .click-me div in HTML is clicked the first time only.  When it's clicked subsequent times the alert box should not appear.
+
+    var myEl = document.querySelector('.click-me');
+    myEl.addEventListener('click', myFunc);
+
+    function myFunc() {
+        alert('you clicked the text!');
+        myEl.removeEventListener('click', myFunc);
+    }
+
+</script>
+</body>
+</html>

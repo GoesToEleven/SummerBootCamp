@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+
+        my-element:unresolved {
+            color: blue;
+        }
+
+        my-element {
+            color: red;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<!--<my-element>Hello</my-element>-->
+
+<script>
+    // Use JS to register a custom element and append it to the DOM with a string as its innerHTML. Use JS only.
+
+    var myElementsPrototype = Object.create(HTMLElement.prototype);
+
+    document.registerElement('my-element', {
+        prototype: myElementsPrototype
+    });
+
+    var myBody = document.querySelector('body');
+    var myEl = document.createElement('my-element');
+    myEl.innerHTML += 'hello hello';
+    myBody.appendChild(myEl);
+
+
+</script>
+</body>
+</html>
