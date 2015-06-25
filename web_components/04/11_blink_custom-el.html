@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        ::shadow p {
+            color: green;
+            font-size: 40em;
+            padding: 0;
+            border: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<template id="#template">
+    <style>
+        p {
+            color: red;
+        }
+    </style>
+
+    <p>hello</p>
+
+    <script>
+
+        var myP = document.querySelector('::shadow p');
+
+        var intervalHandler = setInterval(blinkText, 300);
+
+        function blinkText() {
+            myP.style.display = myP.style.display == 'none' ? 'block' : 'none';
+//            myP.style.color = myP.style.color == 'green' ? 'blue' : 'green';
+            console.log(myP.style.color);
+        }
+    </script>
+</template>
+
+<div class="shadow">
+
+</div>
+
+<script>
+
+    var shadowRoot = document.querySelector('.shadow').createShadowRoot();
+
+    var template = document.getElementById('#template').content;
+    var clone = document.importNode(template, true);
+
+    // find out what everything is - testing
+    console.log('shadowRoot - ', shadowRoot);
+    console.log('shadowRoot.constructor - ', shadowRoot.constructor);
+    console.log('template - ', template);
+    console.log('template.constructor - ', template.constructor);
+    console.log('clone - ', clone);
+    console.log('clone.constructor - ', clone.constructor);
+
+    shadowRoot.appendChild(clone);
+
+</script>
+
+</body>
+</html>

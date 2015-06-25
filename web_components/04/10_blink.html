@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        p {
+            color: red;
+            font-size: 40em;
+            padding: 0;
+            border: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<p>hello</p>
+
+<script>
+
+    var myP = document.querySelector('p');
+
+    var intervalHandler = setInterval(blinkText, 500);
+
+    function blinkText() {
+//        myP.style.display = myP.style.display == 'none' ? 'block' : 'none';
+        myP.style.color = myP.style.color == 'red' ? 'blue' : 'red';
+        console.log(myP.style.color);
+    }
+</script>
+</body>
+</html>
