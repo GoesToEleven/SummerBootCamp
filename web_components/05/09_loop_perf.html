@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<div id="sample">Go look in the console for the output</div>
+
+<script>
+
+    var myArray = [];
+    for (var i = 0; i < 1000; i++) {
+        var t0 = performance.now();
+        document.getElementById('sample');
+        var t1 = performance.now();
+        myArray.push(t1 - t0);
+    }
+
+    function slowerLoop() {
+        var t0 = performance.now();
+        for (var i = 0; i < myArray.length; i++) {
+            myArray[i];
+        }
+        var t1 = performance.now();
+        return ('slower: ' + (t1 - t0));
+    }
+
+    function fasterLoop() {
+        var t0 = performance.now();
+        for (var i = 0, len = myArray.length; i < len; i++) {
+            myArray[i];
+        }
+        var t1 = performance.now();
+        return ('faster: ' + (t1 - t0));
+    }
+
+    function forEach() {
+        var t0 = performance.now();
+        myArray.forEach(function(element){
+            element;
+        });
+        var t1 = performance.now();
+        return ('forEach: ' + (t1 - t0));
+    }
+
+    console.log(slowerLoop());
+    console.log(fasterLoop());
+    console.log(forEach());
+
+</script>
+</body>
+</html>

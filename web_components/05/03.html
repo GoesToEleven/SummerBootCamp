@@ -15,9 +15,17 @@
         this.title = title;
         this.author = author;
         this.pageCount = pageCount;
-        this.info = function () {
-            return 'Book titled ' + this.title + ' by ' + this.author + '. ' + this.pageCount + ' pages.';
-        };
+//        not like this
+//        this makes an instance of the function for every object instantiated
+//        this.info = function () {
+//            return 'Book titled ' + this.title + ' by ' + this.author + '. ' + this.pageCount + ' pages.';
+//        };
+    };
+
+//    there is only one copy of the function when done this way
+//    regardless of how many instantiations
+    Book.prototype.info = function () {
+        return 'Book titled ' + this.title + ' by ' + this.author + '. ' + this.pageCount + ' pages.';
     };
 
     var book1 = new Book('Adventures of Huckleberry Finn', 'Mark Twain', 321);
@@ -33,7 +41,6 @@
     console.log(book2.author);
     console.log(book2.pageCount);
     console.log(book2.info());
-
 
 </script>
 

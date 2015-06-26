@@ -8,7 +8,6 @@
 
 <script>
 
-
     function isPalindrome(str) {
         var forwards = str.toLowerCase().split('');
         var backwards = str.toLowerCase().split('');
@@ -16,8 +15,8 @@
         backwards = removeCharacters(backwards, [' ']);
         forwards = forwards.join('');
         backwards = backwards.reverse().join('');
-        console.log(forwards);
-        console.log(backwards);
+//        console.log(forwards);
+//        console.log(backwards);
         return forwards == backwards;
     }
 
@@ -27,14 +26,22 @@
         });
     };
 
+    function isPalindromeRedux(str) {
+//        string.replace(/ /g, '');
+        var backwards = str.toLowerCase().split('').reverse().join('');
+        return str.replace(/ /g, '').toLowerCase() == backwards.replace(/ /g, '').toLowerCase();
+    }
+
+
     /* Fix the above function so it returns true if the str is a palindrome, or false if it is not.  Ignore spaces and the case of the letters. */
 
-    // should be true
     console.log(isPalindrome('A man a plan a canal Panama'));
-    // should be true
     console.log(isPalindrome('Never odd or even'));
-    // should be false
     console.log(isPalindrome('hello world'));
+
+    console.log(isPalindromeRedux('A man a plan a canal Panama'));
+    console.log(isPalindromeRedux('Never odd or even'));
+    console.log(isPalindromeRedux('hello world'));
 
 </script>
 </body>
