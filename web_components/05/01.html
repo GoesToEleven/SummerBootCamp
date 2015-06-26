@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+    var anotherWithout = function (arr, removeValues) {
+        var myArray = new Array;
+        var addToArray = true;
+        arr.forEach(function (firstEl) {
+            console.log('arr: ', firstEl);
+            removeValues.forEach(function (secondEl) {
+                console.log('remove: ', secondEl);
+                if (firstEl == secondEl) {
+                    addToArray = false;
+                }
+            });
+            if (addToArray) {
+                myArray.push(firstEl);
+            }
+            addToArray = true;
+        });
+        return myArray;
+    };
+
+    //    filter is like forEach
+    //    it takes a function
+    //    the function needs to return boolean
+    //    if TRUE it keeps it
+    //    if FALSE it filters it out
+    var oneMoreWithout = function (arrOne, arrTwo) {
+        return arrOne.filter(function (item) {
+            return arrTwo.indexOf(item) === -1;
+        });
+    };
+
+    // Fix the above function so that it returns a copy of the arr argument with every value from the removeValues argument removed.
+
+    var firstWay = anotherWithout([1, 2, 3, 4, 5, 10, 11, 12, 13, 14, 15], [2, 4, 12, 15]);
+    var secondWay = oneMoreWithout([1, 2, 3, 4, 5, 10, 11, 12, 13, 14, 15], [2, 4, 12, 15]);
+    console.log(firstWay);
+    console.log(secondWay);
+
+    var myBody = document.querySelector('body');
+
+    function arrayPrinter(array) {
+        for (var i = 0; i < array.length; i++) {
+            var myP = document.createElement('p');
+            myP.innerHTML = array[i];
+            myBody.appendChild(myP);
+        }
+    };
+
+    arrayPrinter(firstWay);
+    arrayPrinter(secondWay);
+
+</script>
+
+</body>
+</html>

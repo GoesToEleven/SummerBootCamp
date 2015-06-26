@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+    console.log('hello world');
+    console.log('hello world'[0]);
+    //    console.log('hello world'.reverse()); -- this doesn't work
+
+    function reverseString(str) {
+//        console.log(str); -- this doesn't work
+//        var newArr = document.prototype.slice.call(str); -- this doesn't work
+//        console.log(newArr.constructor); -- this doesn't work
+        return str.split('').reverse().join('');
+    }
+
+    /* Fix the above function so it returns the above string in reverse */
+
+    var reversed = reverseString('hello world');
+    console.log(reversed);
+
+
+</script>
+</body>
+</html>

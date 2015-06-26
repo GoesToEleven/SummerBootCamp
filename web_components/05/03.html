@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+
+    var Book = function (title, author, pageCount) {
+        // Fix this function so it works as a constructor and
+        // outputs the correct information when .info() is called
+        // (see below for format);
+        this.title = title;
+        this.author = author;
+        this.pageCount = pageCount;
+        this.info = function () {
+            return 'Book titled ' + this.title + ' by ' + this.author + '. ' + this.pageCount + ' pages.';
+        };
+    };
+
+    var book1 = new Book('Adventures of Huckleberry Finn', 'Mark Twain', 321);
+    // alert(book1.info()) should alert the string 'Book titled "Adventures of Huckleberry Finn" by Mark Twain.  321 pages.'
+    console.log(book1.title);
+    console.log(book1.author);
+    console.log(book1.pageCount);
+    console.log(book1.info());
+
+
+    var book2 = new Book('Darkness at the Edge of Town', 'Todd McLeod', 1200);
+    console.log(book2.title);
+    console.log(book2.author);
+    console.log(book2.pageCount);
+    console.log(book2.info());
+
+
+</script>
+
+</body>
+</html>
