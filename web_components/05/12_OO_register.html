@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+
+    //    object pattern
+
+    var CashRegister = function () {
+        total = 0
+    };
+
+    CashRegister.prototype.add = function (itemCost) {
+        this.total += itemCost;
+    };
+
+    CashRegister.prototype.scan = function (item) {
+        switch (item) {
+            case "eggs":
+                this.add(0.98);
+                break;
+            case "milk":
+                this.add(1.23);
+                break;
+            case "chocolate":
+                this.add(0.45);
+                break;
+            case "magazine":
+                this.add(4.99);
+                break;
+        }
+    };
+
+    var register1 = new CashRegister();
+    //Scan 2 eggs and 3 magazines
+    register1.scan("eggs");
+    register1.scan("eggs");
+    register1.scan("magazine");
+    register1.scan("magazine");
+    register1.scan("magazine");
+    register1.scan("milk");
+    register1.scan("milk");
+    register1.scan("milk");
+    register1.scan("chocolate");
+    register1.scan("chocolate");
+    register1.scan("chocolate");
+    //Show the total bill
+    console.log('Your bill is ' + register1.total);
+
+    //    module pattern
+    var cashRegister = {
+        total: 0,
+        add: function (itemCost) {
+            this.total += itemCost;
+        },
+        scan: function (item) {
+            switch (item) {
+                case "eggs":
+                    this.add(0.98);
+                    break;
+                case "milk":
+                    this.add(1.23);
+                    break;
+                case "chocolate":
+                    this.add(0.45);
+                    break;
+                case "magazine":
+                    this.add(4.99);
+                    break;
+            }
+            return true;
+        }
+    };
+
+    //Scan 2 eggs and 3 magazines
+    cashRegister.scan("eggs");
+    cashRegister.scan("eggs");
+    cashRegister.scan("magazine");
+    cashRegister.scan("magazine");
+    cashRegister.scan("magazine");
+    cashRegister.scan("milk");
+    cashRegister.scan("milk");
+    cashRegister.scan("milk");
+    cashRegister.scan("chocolate");
+    cashRegister.scan("chocolate");
+    cashRegister.scan("chocolate");
+    //Show the total bill
+    console.log('Your bill is ' + cashRegister.total);
+
+</script>
+</body>
+</html>
