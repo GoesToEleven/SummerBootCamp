@@ -10,19 +10,31 @@
 
 
     function isPalindrome(str) {
-        var forwards = str.toLowerCase().trim();
-        var backwards = str.toLowerCase().split('').reverse().join('').trim();
-        return str;
+        var forwards = str.toLowerCase().split('');
+        var backwards = str.toLowerCase().split('');
+        forwards = removeCharacters(forwards, [' ']);
+        backwards = removeCharacters(backwards, [' ']);
+        forwards = forwards.join('');
+        backwards = backwards.reverse().join('');
+        console.log(forwards);
+        console.log(backwards);
+        return forwards == backwards;
     }
+
+    var removeCharacters = function (arrOne, arrTwo) {
+        return arrOne.filter(function (item) {
+            return arrTwo.indexOf(item) === -1;
+        });
+    };
 
     /* Fix the above function so it returns true if the str is a palindrome, or false if it is not.  Ignore spaces and the case of the letters. */
 
     // should be true
-    //alert(isPalindrome('A man a plan a canal Panama'));
+    console.log(isPalindrome('A man a plan a canal Panama'));
     // should be true
-    //alert(isPalindrome('Never odd or even'));
+    console.log(isPalindrome('Never odd or even'));
     // should be false
-    //alert(isPalindrome('hello world');
+    console.log(isPalindrome('hello world'));
 
 </script>
 </body>
