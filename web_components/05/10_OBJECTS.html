@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+
+    // constructor pattern
+
+    var CashRegister = function() {
+        this.total = 0;
+    };
+
+    CashRegister.prototype.add = function(itemCost) {
+        this.total += itemCost;
+    };
+
+    var register1 = new CashRegister();
+
+    //call the add method for our items
+    register1.add(0.98);
+    register1.add(1.23);
+    register1.add(4.99);
+    register1.add(0.45);
+    //Show the total bill
+    console.log('Your bill is ' + register1.total);
+
+
+
+    // module pattern
+    var cashRegister = {
+        total:0,
+        add: function(itemCost){
+            this.total += itemCost;
+        }
+    };
+
+
+    //call the add method for our items
+    cashRegister.add(0.98);
+    cashRegister.add(1.23);
+    cashRegister.add(4.99);
+    cashRegister.add(0.45);
+    //Show the total bill
+    console.log('Your bill is ' + cashRegister.total);
+
+</script>
+</body>
+</html>
