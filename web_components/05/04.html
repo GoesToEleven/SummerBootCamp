@@ -7,7 +7,11 @@
 <body>
 
 <script>
+
+
     function isPalindrome(str) {
+        var forwards = str.toLowerCase().trim();
+        var backwards = str.toLowerCase().split('').reverse().join('').trim();
         return str;
     }
 
@@ -19,6 +23,7 @@
     //alert(isPalindrome('Never odd or even'));
     // should be false
     //alert(isPalindrome('hello world');
+
 </script>
 </body>
 </html>
