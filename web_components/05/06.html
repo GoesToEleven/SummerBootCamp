@@ -6,5 +6,58 @@
 </head>
 <body>
 
+<script>
+    // Create a my-custom-element
+    // that, when created, shows the text attribute as an h1
+    // in the shadow DOM.
+    // BONUS: When the text attribute is updated,
+    // the text in the shadow DOM should update too.
+
+    //    1 - create protoype upon which your new element will be based
+    //      - this is the blueprint for your new element
+    //      - you can add new methods to this prototype blueprints
+    //      - use the life-cycle methods to do this:
+    //      - - createdCallback
+    //      - - attributeChangedCallback
+    //      - - attachedCallback
+    //      - - detachedCallback
+    //      - for example, if we created a new 'blink' element
+    //      - - we could add a start() or stop() method
+    //      - - - myElementsPrototype.start = function() { --code here--};
+    //    2 - REGISTER your new element
+    //    3 - CREATE your new custom element
+    //    4 - append your new element to DOM
+    //    5 - if you want encapsulation in the DOM / scoping in CSS, then you need shadow dom
+    //    - - when the element is created (from prototype) give it a shadow root
+    //    - - - var shadowRoot = this.createShadowRoot()
+    //    - - add anything you want to shadowroot
+    //    - - - innerhtml
+    //    - - - shadowroot.appendchild(nodes)
+
+
+    var myElementsPrototype = Object.create(HTMLElement.prototype);
+
+    myElementsPrototype.createdCallback = function () {
+        // Create shadow root
+        this.createShadowRoot();
+        this.shadowRoot.innerHTML = '<h1>' + this.getAttribute('text') + '</h1>';
+    };
+
+    myElementsPrototype.attributeChangedCallback = function () {
+        this.shadowRoot.innerHTML = '<h1>' + this.getAttribute('text') + '</h1>';
+    };
+
+    document.registerElement('my-element', {
+        prototype: myElementsPrototype
+    });
+
+    //      this is the same as putthing this in your html:
+    //      <my-element text="Good afternoon"></my-element>
+    var myBody = document.querySelector('body');
+    var myEl = document.createElement('my-element');
+    myEl.setAttribute('text', 'good afternoon');
+    myBody.appendChild(myEl);
+
+</script>
 </body>
 </html>

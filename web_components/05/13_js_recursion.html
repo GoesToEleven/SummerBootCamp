@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<!--from: https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript#Functions -->
+
+<ul>
+    <li>01</li>
+    <li>02</li>
+    <li>03</li>
+    <li>04</li>
+    <li>05</li>
+    <li>06</li>
+    <li>07</li>
+    <li>08</li>
+    <li>09</li>
+    <li>10</li>
+</ul>
+
+<script>
+
+    function countChars(elm) {
+        if (elm.nodeType == 3) { // TEXT_NODE
+            console.log('elm',elm);
+            console.log('elm.nodeValue',elm.nodeValue);
+            console.log('elm.nodeValue.length',elm.nodeValue.length);
+            return elm.nodeValue.length;
+        }
+        var count = 0;
+        for (var i = 0, child; child = elm.childNodes[i]; i++) {
+            count += countChars(child);
+        }
+        return count;
+    }
+
+
+    var myEl = document.querySelector('ul');
+    var myBody = document.querySelector('body');
+    var newEl = document.createElement('p');
+    var newTextNode = document.createTextNode(countChars(myEl));
+    newEl.appendChild(newTextNode);
+    myBody.appendChild(newEl);
+
+
+</script>
+</body>
+</html>

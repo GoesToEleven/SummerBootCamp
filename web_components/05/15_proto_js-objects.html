@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+
+    function Person(first, last) {
+        this.first = first;
+        this.last = last;
+    }
+
+    Person.prototype.fullName = function () {
+        return this.first + ' ' + this.last;
+    };
+
+    Person.prototype.fullNameReversed = function () {
+        return this.last + ', ' + this.first;
+    };
+
+    var s = new Person("Simon", "Willison");
+    console.log(s); // [object Object]
+
+    Person.prototype.toString = function () {
+        return '<Person: ' + this.fullName() + '>';
+    }
+
+    console.log(s.toString()); // "<Person: Simon Willison>"
+
+</script>
+</body>
+</html>

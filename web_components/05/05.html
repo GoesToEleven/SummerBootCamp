@@ -6,5 +6,15 @@
 </head>
 <body>
 
+<div class="shadowHost"><h1>World</h1></div>
+
+<script>
+    // Using JavaScript only, add a shadow Root to the div.shadowHost and render "Hello, World!" an using the "World" that was written in the above HTML.
+
+
+    var shadowRoot = document.querySelector('.shadowHost').createShadowRoot();
+    shadowRoot.innerHTML += '<h1>hello </h1><content></content>';
+
+</script>
 </body>
 </html>
