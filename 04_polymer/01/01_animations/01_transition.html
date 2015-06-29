@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+        body {
+            color: #fff;
+            font: 600 14px/24px Sans-Serif;
+        }
+
+        .box {
+            background: #2db34a;
+            border-radius: 6px;
+            cursor: pointer;
+            height: 95px;
+            line-height: 95px;
+            text-align: center;
+            transition-property: background;
+            transition-duration: 1s;
+            transition-timing-function: linear;
+            width: 95px;
+        }
+
+        .box:hover {
+            background: #00f;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="box">Box</div>
+
+
+<!--
+
+The transition-property property determines exactly what properties will be altered in conjunction with the other transitional properties.
+
+By default, all of the properties within an element’s different states will be altered upon change. However, only the properties identified within the transition-property value will be affected by any transitions.
+
+In the example above, the background property is identified in the transition-property value. Here the background property is the only property that will change over the duration of 1 second in a linear fashion. Any other properties included when changing an element’s state, but not included within the transition-property value, will not receive the transition behaviors as set by the transition-duration or transition-timing-function properties.
+
+If multiple properties need to be transitioned they may be comma separated within the transition-property value. Additionally, the keyword value all may be used to transition all properties of an element.
+
+http://learn.shayhowe.com/advanced-html-css/transitions-animations/
+
+-->
+</body>
+</html>
