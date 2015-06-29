@@ -1,6 +1,9 @@
-'<content select=".hello"></content>';
-is content only web components?
-03/02
+TO COVER:
 
-EXERCISES
+- svg's
+- sprites
+- px, %, rem, vh vw
 
+POTENTIAL CHALLENGES:
+
+- responsive with media-query

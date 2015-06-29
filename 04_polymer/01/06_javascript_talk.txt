@@ -1,0 +1,19 @@
+alert(document.body);
+
+console.log(document.body);
+
+console.dir(document.body);
+
+console.warn('sdergdfs');
+
+console.error('yewthfgh');
+
+var myTable = [{a: 2, b: 3, c: 4},{a: true, b: false, c: true}];
+
+myTable
+
+console.table(myTable);
+
+inspect(document.body);
+
+$0
