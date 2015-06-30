@@ -1,0 +1,21 @@
+http://www.google.com/doodles/rubiks-cube
+
+open dev tools
+
+there is in iframe
+
+inside the iframe there are a bunch of script tags
+
+OPEN certificate.js (right click, choose OPEN)
+
+there is a doCertificate() function
+
+go to console
+
+switch from <TOP FRAME> to <INDEX.HTML>
+
+run the doCertificate() function
+
+
+
+

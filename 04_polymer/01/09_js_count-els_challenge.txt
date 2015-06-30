@@ -1,3 +1,9 @@
+add code to zmail js/count.js
+
+count the number of emails
+
+here's the solution
+
 var myEls = document.querySelectorAll('.email-item');
 //console.log(myEls);
 //console.log(myEls.length);

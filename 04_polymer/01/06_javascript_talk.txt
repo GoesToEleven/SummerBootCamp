@@ -17,3 +17,5 @@ console.table(myTable);
 inspect(document.body);
 
 $0
+
+$_

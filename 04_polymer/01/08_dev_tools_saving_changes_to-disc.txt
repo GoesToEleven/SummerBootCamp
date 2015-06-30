@@ -1,0 +1,19 @@
+open zeno's zmail
+
+dev tools / inspect body
+
+click pure.css
+
+click {} to unminify
+
+right click the ROOT folder, add that folder to workspace
+map it the path to your ROOT folder
+
+devtools requests full access to your path -> click ALLOW
+
+now, under the new folder in DEV TOOLS open the page
+you can edit / save / reload now
+
+if you want to get rid of a mapped folder in DEV TOOLS, right click it, REMOVE
+
+
