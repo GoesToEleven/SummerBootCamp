@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        input {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<form>
+    <label for="email">Email</label>
+    <input name="email" type="email" placeholder="your@email.com" required>
+
+    <label for="name">Name</label>
+    <input name="name" type="text" placeholder="John Wayne">
+
+    <label for="age">Age</label>
+    <input name="age" type="number" placeholder="18">
+
+    <label for="color">Favorite Color</label>
+    <input name="color" type="text" placeholder="Blue">
+
+    <label for="zip">ZIP</label>
+    <input name="zip" type="text" placeholder="XXXXX" required pattern="^\d{5}([\-]?\d{4})?$">
+
+    <input type="submit">
+</form>
+
+</body>
+</html>
