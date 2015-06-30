@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+        ul {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+
+<ul>
+    <li id="play">play</li>
+    <li id="pause">pause</li>
+    <li id="up">volume up</li>
+    <li id="down">volume down</li>
+</ul>
+
+<p id="currentTime"></p>
+
+<script>
+
+    var play = document.querySelector('#play');
+    var pause = document.querySelector('#pause');
+    var up = document.querySelector('#up');
+    var down = document.querySelector('#down');
+    var currentTime = document.querySelector('#currentTime');
+
+    var body = document.querySelector('body');
+    var list = document.querySelector('ul');
+    var player = document.createElement('audio');
+    player.src = '../../00_zeno_code/4-js/2-audio/zelda.mp3';
+    var pVolume = .5;
+    player.volume = pVolume;
+
+    list.addEventListener('click', function (e) {
+//        console.log(e.target);
+//        console.dir(e.target);
+//        console.dir(e.target.id);
+        switch (e.target.id) {
+            case 'play':
+//                console.log('play');
+                player.play();
+                break;
+            case 'pause':
+//                console.log('pause');
+                player.pause();
+                break;
+            case 'up':
+//                console.log('up');
+                pVolume += .1;
+                player.volume = pVolume;
+                console.log(pVolume);
+                break;
+            case 'down':
+//                console.log('down');
+                pVolume -= .1;
+                player.volume = pVolume;
+                console.log(pVolume);
+                break;
+        }
+    });
+
+</script>
+
+</body>
+</html>
