@@ -8,6 +8,7 @@
         ul {
             border: 1px solid red;
         }
+
     </style>
 </head>
 <body>
@@ -15,27 +16,50 @@
 <ul>
     <li id="play">play</li>
     <li id="pause">pause</li>
+    <li id="replay">replay</li>
     <li id="up">volume up</li>
     <li id="down">volume down</li>
 </ul>
 
 <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.5">
 
+<p id="time"></p>
+
 <script>
 
     var play = document.querySelector('#play');
     var pause = document.querySelector('#pause');
+    var replay = document.querySelector('#replay');
     var up = document.querySelector('#up');
     var down = document.querySelector('#down');
-    var currentTime = document.querySelector('#currentTime');
-
+    var time = document.querySelector('#time');
+    var body = document.querySelector('body');
     var volumeSlider = document.querySelector('#volumeSlider');
     var list = document.querySelector('ul');
-    var player = document.createElement('audio');
-    player.src = '../../00_zeno_code/4-js/2-audio/zelda.mp3';
-    player.volume = .5;
 
-    volumeSlider.addEventListener('input', function(e){
+    var player = document.createElement('video');
+    player.src = '../../00_zeno_code/4-js/3-video/rabbit.mp4';
+    player.volume = .5;
+    body.appendChild(player);
+
+
+    (function () {
+        var currentTime = 0;
+        var durationTime = 0;
+
+        player.addEventListener('loadedmetadata', function () {
+            durationTime = parseInt(player.duration, 10);
+            console.log(durationTime);
+        });
+
+        player.addEventListener('timeupdate', function () {
+            currentTime = parseInt(player.currentTime, 10);
+            time.textContent = currentTime + ' / ' + durationTime;
+        });
+    }());
+
+
+    volumeSlider.addEventListener('input', function (e) {
         console.log(volumeSlider.value);
         player.volume = volumeSlider.value;
     });
@@ -64,6 +88,11 @@
                 if (player.volume > 0) {
                     player.volume -= .1;
                 }
+                break;
+            case 'replay':
+//                console.log('replay');
+                player.currentTime = 0;
+                player.play();
                 break;
         }
     });
