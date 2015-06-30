@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="modernizr.min.js"></script>
+</head>
+<body>
+
+<script>
+
+    var myHTML = document.querySelector('html');
+    console.log(myHTML);
+    console.dir(myHTML);
+    console.log(myHTML.className);
+    console.log(myHTML.className.indexOf('lennon'));
+    console.log(myHTML.className.indexOf('websqldatabase'));
+
+
+    if(-1) {
+        console.log('true');
+    }
+
+    if (myHTML.className.indexOf('websqldatabase') !== -1) {
+        myHTML.style.backgroundColor = 'green';
+    } else {
+        myHTML.style.backgroundColor = 'red';
+    }
+    
+</script>
+</body>
+</html>
