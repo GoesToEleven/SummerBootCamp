@@ -11,17 +11,17 @@
 <body>
 
 <form>
-    <label for="email">Email</label>
+    <label for="email">Email*</label>
     <input name="email" type="email" placeholder="your@email.com" required>
 
     <label for="name">Name</label>
     <input name="name" type="text" placeholder="John Wayne">
 
-    <label for="age">Age</label>
-    <input name="age" type="number" placeholder="18">
+    <label for="age">Age*</label>
+    <input name="age" type="number" placeholder="18" required min="0" max="120">
 
     <label for="color">Favorite Color</label>
-    <input name="color" type="text" placeholder="Blue">
+    <input name="color" type="color">
 
     <label for="zip">ZIP</label>
     <input name="zip" type="text" placeholder="XXXXX" required pattern="^\d{5}([\-]?\d{4})?$">
