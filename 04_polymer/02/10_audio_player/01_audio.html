@@ -33,8 +33,7 @@
     var list = document.querySelector('ul');
     var player = document.createElement('audio');
     player.src = '../../00_zeno_code/4-js/2-audio/zelda.mp3';
-    var pVolume = .5;
-    player.volume = pVolume;
+    player.volume = .5;
 
     list.addEventListener('click', function (e) {
 //        console.log(e.target);
@@ -51,15 +50,15 @@
                 break;
             case 'up':
 //                console.log('up');
-                pVolume += .1;
-                player.volume = pVolume;
-                console.log(pVolume);
+                if (player.volume < 1) {
+                    player.volume += .1;
+                }
                 break;
             case 'down':
 //                console.log('down');
-                pVolume -= .1;
-                player.volume = pVolume;
-                console.log(pVolume);
+                if (player.volume > 0) {
+                    player.volume -= .1;
+                }
                 break;
         }
     });
