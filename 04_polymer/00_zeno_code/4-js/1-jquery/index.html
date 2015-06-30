@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="jquery.min.js"></script>
+</head>
+<body>
+	<div id="box" class="box" width="300"></div>
+
+	<script>
+	// 1
+	$(function() {
+
+	});
+
+	// 2
+	$("#box");
+
+	// 3
+	$(".box");
+
+	// 4
+	$("div");
+
+	// 5
+	$(".box").get(0);
+
+	// 6
+	$(document).on('click', function(event) {
+		console.log(event);
+	});
+
+	// 7
+	$("#box").text("lorem");
+
+	// 8
+	$("#box").html("<p>lorem</p>");
+
+	// 9
+	$("#box").append("<p>lorem</p>");
+
+	// 10
+	$("#box").attr("width");
+
+	// 11
+	$("#box").attr("width", "400");
+
+	// 12
+	$("#box").removeAttr("width");
+
+	// 13
+	$("#box").addClass("selected");
+
+	// 14
+	$("#box").removeClass("selected");
+
+	// 15
+	$("#box").toggleClass("selected");
+
+	// 16
+	$("#box").hasClass("box");
+
+	// 17
+	$("#box").css({
+		"background": "#F60",
+		"height": "300"
+	});
+	</script>
+</body>
+</html>
