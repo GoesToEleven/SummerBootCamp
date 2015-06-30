@@ -4,29 +4,50 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <script src="modernizr.min.js"></script>
+    <style>
+
+        /*html {*/
+            /*background-color: red;*/
+        /*}*/
+
+        /*html.websqldatabase {*/
+            /*background-color: green;*/
+        /*}*/
+
+    </style>
 </head>
 <body>
 
 <script>
 
     var myHTML = document.querySelector('html');
-    console.log(myHTML);
-    console.dir(myHTML);
-    console.log(myHTML.className);
-    console.log(myHTML.className.indexOf('lennon'));
-    console.log(myHTML.className.indexOf('websqldatabase'));
-
-
-    if(-1) {
-        console.log('true');
-    }
-
-    if (myHTML.className.indexOf('websqldatabase') !== -1) {
+//    console.log(myHTML);
+//    console.dir(myHTML);
+//    console.log(myHTML.className);
+//    console.log(myHTML.className.indexOf('lennon'));
+//    console.log(myHTML.className.indexOf('websqldatabase'));
+//
+//
+//    if(-1) {
+//        console.log('true');
+//    }
+//
+// this doesn't work for some reason
+//    if (myHTML.className.indexOf('websqldatabase') !== -1) {
+//        myHTML.style.backgroundColor = 'green';
+//    } else {
+//        myHTML.style.backgroundColor = 'red';
+//    }
+//
+////
+    if (myHTML.classList.contains('websqldatabase')) {
         myHTML.style.backgroundColor = 'green';
     } else {
         myHTML.style.backgroundColor = 'red';
     }
-    
+
+
+
 </script>
 </body>
 </html>
