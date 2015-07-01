@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        /*
+
+        :required
+        :optional
+        The :required and :optional pseudo-classes
+        allow writing selectors that match form elements that have
+        the required attribute, or that don't have it
+
+        :valid
+        :invalid
+        The :valid and :invalid pseudo-classes
+        are used to represent <input> elements whose content validates
+        and fails to validate respectively according to the input's type setting.
+
+        */
+
+        input:valid {
+            border: 1px solid green;
+        }
+
+        input:invalid {
+            border: 1px solid red;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<form>
+    <label for="name">Name *</label>
+    <input name="name" id="name" type="text" placeholder="John Wayne" required>
+    <label for="phone">Phone *</label>
+    <input name="phone" id="phone" type="tel" placeholder="XXX-XXX-XXXX" required
+           pattern="[0-9]{3}[\-][0-9]{3}[\-][0-9]{4}">
+    <input type="submit" value="Send">
+</form>
+
+<script>
+
+    /*
+     The element.setCustomValidity(error) method
+     is used to set a custom error message to be displayed
+     when a form is submitted. The method works by taking a string parameter error.
+     */
+
+    /*
+     try this:
+     var input = document.querySelector('input');
+     input.setCustomValidity('wassup');
+     */
+
+
+    var inputs = document.querySelectorAll('input');
+
+    for (var i = 0; i < inputs.length; i++) {
+        inputs[i].addEventListener('invalid', function (e) {
+//            console.log(e.target);
+            setValidationMsg(e.target);
+        });
+        inputs[i].addEventListener('input', function (e) {
+            setValidationMsg(e.target);
+        });
+    }
+
+    function setValidationMsg(input) {
+//        console.log(input.validity);
+        input.setCustomValidity('');
+        if (input.validity.valueMissing) {
+            input.setCustomValidity('fill this out');
+        }
+        if (input.validity.patternMismatch) {
+            input.setCustomValidity('fill as XXX-XXX-XXXX');
+        }
+    }
+
+</script>
+</body>
+</html>

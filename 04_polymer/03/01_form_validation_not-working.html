@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        /*
+
+        :required
+        :optional
+        The :required and :optional pseudo-classes
+        allow writing selectors that match form elements that have
+        the required attribute, or that don't have it
+
+        :valid
+        :invalid
+        The :valid and :invalid pseudo-classes
+        are used to represent <input> elements whose content validates
+        and fails to validate respectively according to the input's type setting.
+
+        */
+
+        input:required {
+            background-color: rgba(0, 0, 0, .1);
+        }
+
+        input:valid {
+            border: 1px solid green;
+        }
+
+        input:invalid {
+            border: 1px solid red;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<form>
+    <label for="name">Name *</label>
+    <input name="name" id="name" type="text" placeholder="John Wayne" required>
+    <label for="phone">Phone *</label>
+    <input name="phone" id="phone" type="tel" placeholder="XXX-XXX-XXXX" required pattern="\d{3}[\-]\d{3}[\-]\d{4}">
+    <input type="submit" value="Send">
+</form>
+
+<script>
+
+    /*
+     The element.setCustomValidity(error) method
+     is used to set a custom error message to be displayed
+     when a form is submitted. The method works by taking a string parameter error.
+     */
+
+    var myName = document.querySelector('#name');
+    var myPhone = document.querySelector('#phone');
+    var inputs = document.querySelectorAll('input');
+
+    console.dir(myName);
+    console.dir(document.querySelector('input'));
+
+    for (var i = 0; i < inputs.length; i++) {
+        var obj = inputs[i];
+        obj.addEventListener('invalid', function(e){
+//            console.log(e.target);
+            console.dir(e.target);
+            console.log(e.target.validity);
+            console.log(e.target.validity.valueMissing);
+            console.log(e.target.validity.valueMissing = true);
+            if(!e.target.validity.valueMissing) {
+                e.target.validationMessage = 'wassup? ';
+            }
+            console.log(e.target.validationMessage);
+        });
+    }
+
+</script>
+</body>
+</html>
