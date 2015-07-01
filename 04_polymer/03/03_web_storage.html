@@ -23,7 +23,9 @@
     var textArea = document.querySelector('textarea');
     console.dir(textArea);
 
-    textArea.value = localStorage.getItem('entry');
+    if(localStorage.getItem('entry')){
+        textArea.value = localStorage.getItem('entry');
+    }
 
     // 'input' is better than 'keypress'
 
@@ -31,7 +33,7 @@
 //        console.log('textContent -- ',textArea.textContent);
 //        console.log('innerHTML ---- ',textArea.innerHTML);
 //        console.log('innerText ---- ',textArea.innerText);
-        console.log('value -------- ',textArea.value);
+//        console.log('value -------- ',textArea.value);
         localStorage.setItem('entry', textArea.value);
     });
 

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        input {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<h1>To Do</h1>
+<form>
+    <textarea name="entry" id="entry" cols="70" rows="5" placeholder="enter your items"></textarea>
+    <input type="submit" value="clear">
+</form>
+
+<script>
+
+    var textArea = document.querySelector('textarea');
+
+    if(localStorage.getItem('todo')){
+        textArea.value = localStorage.getItem('todo');
+    }
+
+    textArea.addEventListener('input', function(){
+        localStorage.setItem('todo', textArea.value);
+    });
+
+
+</script>
+
+
+</body>
+</html>
