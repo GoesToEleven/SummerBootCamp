@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+<canvas width="800" height="800"></canvas>
+
+<script>
+
+    var canvas = document.querySelector('canvas');
+    var context = canvas.getContext('2d');
+
+
+    context.strokeStyle = 'red';
+    context.lineWidth = 10;
+    context.strokeRect(10, 10, 700, 700);
+    context.strokeRect(175, 200, 40, 40);
+    context.strokeRect(515, 200, 40, 40);
+
+    context.moveTo(100, 500);
+    context.lineTo(600, 500);
+
+    // hair
+    for (var i = 20; i < 710; i += 10) {
+        var length = (70 + (Math.random()*40));
+        context.moveTo(i, 10);
+        context.lineTo(i, length);
+    }
+
+    context.stroke();
+
+</script>
+</body>
+</html>

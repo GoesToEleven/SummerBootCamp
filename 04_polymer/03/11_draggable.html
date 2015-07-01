@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<img src="../../images/hawaii.jpeg" alt="hawaii" draggable="true">
+
+</body>
+
+<script>
+
+    var img = document.querySelector('img');
+
+    document.addEventListener('dragstart', function(e){
+        console.log('dragstart');
+    });
+
+    document.addEventListener('drag', function(e){
+        console.log('draggin around');
+    });
+
+    document.addEventListener('dragend', function(e){
+        console.log('no more dragging');
+    });
+
+
+</script>
+</html>
