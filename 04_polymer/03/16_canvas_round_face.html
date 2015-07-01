@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+<canvas width="800" height="800"></canvas>
+
+<script>
+
+    var canvas = document.querySelector('canvas');
+    var context = canvas.getContext('2d');
+
+    context.strokeStyle = 'red';
+    context.lineWidth = 10;
+
+    // arc(x, y, radius, startAngle, endAngle, anticlockwise)
+    context.arc(400, 400, 300,  Math.PI *2, Math.PI *0, true );
+    context.arc(300, 300, 50,  Math.PI *2, Math.PI *0, true );
+    context.arc(200, 200, 50,  Math.PI *2, Math.PI *0, true );
+
+    context.moveTo(104, 350);
+    context.quadraticCurveTo(120,520,300,400);
+    context.stroke();
+
+</script>
+</body>
+</html>
