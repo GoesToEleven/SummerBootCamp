@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+<form>
+    <label for="title">Entry Name</label>
+    <input name="title" type="text" placeholder="Name this entry">
+    <label for="entry">Entry</label>
+    <textarea name="entry" id="entry" cols="30" rows="10" placeholder="write what's going on ...."></textarea>
+    <input type="submit" value="Send">
+</form>
+
+<script>
+
+    var textArea = document.querySelector('textarea');
+    console.dir(textArea);
+
+    textArea.value = localStorage.getItem('entry');
+
+    // 'input' is better than 'keypress'
+
+    textArea.addEventListener('input', function(){
+//        console.log('textContent -- ',textArea.textContent);
+//        console.log('innerHTML ---- ',textArea.innerHTML);
+//        console.log('innerText ---- ',textArea.innerText);
+        console.log('value -------- ',textArea.value);
+        localStorage.setItem('entry', textArea.value);
+    });
+
+</script>
+
+</body>
+</html>
