@@ -6,9 +6,10 @@
 </head>
 <body>
 
+<video src></video>
 <script>
 
-    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
+    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
     var options = {
         audio: false,
@@ -17,10 +18,16 @@
 
     function success(result) {
         console.log(result);
+        var video = document.querySelector('video');
+        video.src = window.URL.createObjectURL(result);
+        video.onloadedmetadata = function () {
+            video.play();
+        };
     }
 
-    function error(result) {
-        console.log(result);
+    function error(error) {
+        console.log(error);
+        console.error(error);
     }
 
     navigator.getUserMedia(options, success, error);
