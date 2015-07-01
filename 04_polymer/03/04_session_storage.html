@@ -12,23 +12,22 @@
 <body>
 
 <h1>To Do</h1>
-<form>
-    <textarea name="entry" id="entry" cols="70" rows="5" placeholder="enter your items"></textarea>
-    <input type="submit" value="clear">
-</form>
+<ol contenteditable>
+    <li></li>
+</ol>
+<input type="submit" value="clear">
 
 <script>
 
-    var textArea = document.querySelector('textarea');
+    var ol = document.querySelector('ol');
 
-    if(localStorage.getItem('todo')){
-        textArea.value = localStorage.getItem('todo');
-    }
-
-    textArea.addEventListener('input', function(){
-        localStorage.setItem('todo', textArea.value);
+    ol.addEventListener('input', function(){
+        sessionStorage.setItem('todo', ol.innerHTML);
     });
 
+    if(sessionStorage.getItem('todo')){
+        ol.innerHTML = sessionStorage.getItem('todo');
+    }
 
 </script>
 
