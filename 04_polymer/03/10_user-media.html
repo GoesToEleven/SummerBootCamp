@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+
+    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
+
+    var options = {
+        audio: false,
+        video: true
+    }
+
+    function success(result) {
+        console.log(result);
+    }
+
+    function error(result) {
+        console.log(result);
+    }
+
+    navigator.getUserMedia(options, success, error);
+
+</script>
+</body>
+</html>

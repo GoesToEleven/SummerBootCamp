@@ -1,0 +1,8 @@
+at terminal
+npm i -g http-server
+same as
+npm install --global http-server
+
+at terminal
+navigate to your "root" folder
+http-server

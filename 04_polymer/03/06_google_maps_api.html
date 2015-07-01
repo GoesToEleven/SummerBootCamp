@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<img src="https://maps.googleapis.com/maps/api/
+staticmap?center=40.7127,-74.0059&zoom=10&size=700x700&maptype=roadmap" alt="map">
+
+<script>
+
+    /*
+     Geolocation
+
+     navigator.geolocation
+     The geolocation API is published through this object.
+     If the object exists, geolocation services are available.
+
+     navigator.geolocation.getCurrentPosition()
+     Initiates an asynchronous request to detect the user's position,
+     and queries the positioning hardware to get up-to-date information.
+     */
+
+//    console.dir(navigator);
+//    console.dir(navigator.geolocation);
+
+    //    next line throws error:
+    //    console.dir(navigator.geolocation.getCurrentPosition());
+    //    so add this code below from mdn getcurrentposition
+
+
+    //    this is the MDN way
+    //    var options = {
+    //        enableHighAccuracy: true,
+    //        timeout: 5000,
+    //        maximumAge: 0
+    //    };
+    //
+    //    function success(pos) {
+    //        var crd = pos.coords;
+    //
+    //        console.log('Your current position is:');
+    //        console.log('Latitude : ' + crd.latitude);
+    //        console.log('Longitude: ' + crd.longitude);
+    //        console.log('More or less ' + crd.accuracy + ' meters.');
+    //
+    //        // the below is my code, not mdn
+    //        var img = document.querySelector('img');
+    //        var myUrl = 'https://maps.googleapis.com/maps/api/staticmap?center=' + crd.latitude + ','
+    //                + crd.longitude + '&zoom=10&size=700x700&maptype=roadmap';
+    //        img.src = myUrl;
+    //        // my code end
+    //    };
+    //
+    //    function error(err) {
+    //        console.warn('ERROR(' + err.code + '): ' + err.message);
+    //    };
+
+    //    navigator.geolocation.getCurrentPosition(success, error, options);
+
+
+    //  this is the ZENO ROCHA way
+    navigator.geolocation.getCurrentPosition(function (e) {
+        console.log(e);
+        console.log(e.coords);
+        console.log(e.coords.latitude);
+        console.log(e.coords.longitude);
+        var img = document.querySelector('img');
+        var myUrl = 'https://maps.googleapis.com/maps/api/staticmap?center=' + e.coords.latitude + ','
+                + e.coords.longitude + '&zoom=10&size=700x700&maptype=roadmap';
+        img.src = myUrl;
+    });
+
+</script>
+
+</body>
+</html>

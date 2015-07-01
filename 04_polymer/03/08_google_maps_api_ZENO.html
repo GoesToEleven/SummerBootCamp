@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+
+    navigator.geolocation.getCurrentPosition(function (e) {
+        var img = new Image();
+        img.alt = 'My Map';
+        img.src = 'https://maps.googleapis.com/maps/api/staticmap?center='
+                + e.coords.latitude + ',' + e.coords.longitude
+                + '&zoom=19&size=700x700&maptype=roadmap';
+        document.body.appendChild(img);
+    });
+
+</script>
+
+</body>
+</html>
