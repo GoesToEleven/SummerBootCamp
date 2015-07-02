@@ -5,7 +5,7 @@
     <title></title>
     <style>
         h1 {
-            color: red;
+            color: green;
         }
     </style>
 </head>
@@ -16,12 +16,21 @@
 <template>
     <style>
         h1 {
-            color: green;
+            color: red;
         }
     </style>
 
     <h1>inside</h1>
 </template>
+
+<h1-example></h1-example>
+<h1-example></h1-example>
+<h1-example></h1-example>
+<h1-example></h1-example>
+<h1-example></h1-example>
+<h1-example></h1-example>
+<h1-example></h1-example>
+<h1-example></h1-example>
 
 <script>
     var proto = Object.create(HTMLElement.prototype);
@@ -29,8 +38,12 @@
     proto.attachedCallback = function() {
         var clone = template.cloneNode(true);
         var shadowRoot = this.createShadowRoot();
+        shadowRoot.appendChild(clone);
     };
+    //register element
+    document.registerElement('h1-example',{prototype: proto});
 
 </script>
+
 </body>
 </html>
