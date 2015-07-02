@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<fcc-map lat="48.428611" long="-123.365556" zoom="12"></fcc-map>
+
+<script>
+
+    var elementPrototype = Object.create(HTMLElement.prototype);
+
+    //    this will be executed when we put our elementProto into the DOM
+    elementPrototype.attachedCallback = function () {
+        var lat = this.getAttribute('lat');
+        var long = this.getAttribute('long');
+        var zoom = this.getAttribute('zoom');
+        this.innerHTML = '<img src="https://maps.googleapis.com/maps/api/staticmap?center='+ lat +','+ long +'&zoom='+zoom+'&size=700x700&maptype=roadmap">';
+    };
+
+    document.registerElement('fcc-map', {
+        prototype: elementPrototype
+    });
+
+</script>
+</body>
+</html>

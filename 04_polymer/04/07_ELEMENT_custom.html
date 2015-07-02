@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<fcc-hello></fcc-hello>
+
+<script>
+
+    var element = Object.create(HTMLElement.prototype);
+
+    //    this will be executed when we put our elementProto into the DOM
+    //    you want to attach your attachedCallback before you register your element (below)
+    element.attachedCallback = function () {
+        this.innerHTML = '<h1>Hello Fresno</h1>';
+    };
+
+    document.registerElement('fcc-hello', {
+        prototype: element
+    });
+
+    var el = document.querySelector('fcc-hello');
+    console.log(el);
+    console.dir(el);
+
+</script>
+</body>
+</html>

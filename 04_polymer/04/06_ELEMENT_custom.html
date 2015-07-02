@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<fcc-hello></fcc-hello>
+
+<script>
+
+//    could do it this way
+
+    var element = Object.create(HTMLElement);
+
+    document.prototype.registerElement('fcc-hello', {
+        prototype: element.prototype
+    });
+
+    var el = document.querySelector('fcc-hello');
+    console.log(el);
+    console.dir(el);
+
+</script>
+</body>
+</html>

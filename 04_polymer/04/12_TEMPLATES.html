@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<template>
+    <img src="1-fresno-night.jpg" alt="Fresno by night" width="84">
+</template>
+
+<!--<img src="1-fresno-day.png" alt="Fresno by day">-->
+
+<script>
+    var template = document.querySelector('template').content;
+
+    for (var i = 0; i < 300; i++) {
+        var clone = template.cloneNode(true);
+        if (i % 2 === 0) {
+            clone.querySelector('img').src = '1-fresno-night.jpg';
+        } else {
+            clone.querySelector('img').src = '1-fresno-day.png';
+        }
+        document.body.appendChild(clone);
+        console.log(i);
+    }
+
+</script>
+</body>
+</html>

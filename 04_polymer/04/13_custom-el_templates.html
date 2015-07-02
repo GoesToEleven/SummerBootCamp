@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<fcc-logo></fcc-logo>
+
+<template>
+    <img src="../../images/hawaii.jpeg">
+</template>
+
+<script>
+
+    // create prototype
+    var elementPrototype = Object.create(HTMLElement.prototype);
+
+    // template
+    var clone = template.cloneNode(true);
+    var template = document.querySelector('template').content;
+    clone.querySelector('img').src = '1-fresno-day.png';
+    console.log(clone.querySelector('img'));
+    document.body.appendChild(clone);
+
+    //    this will be executed when we put our elementProto into the DOM
+    elementPrototype.attachedCallback = function () {
+        this.innerHTML = '<img src="../../images/hawaii.jpeg">';
+    };
+
+    // register element
+    document.registerElement('fcc-logo', {
+        prototype: elementPrototype
+    });
+
+
+</script>
+
+
+</body>
+</html>

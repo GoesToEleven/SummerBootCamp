@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+    function Cow(name, age, brothers, sisters, sad) {
+        this.name = name;
+        this.age = age;
+        this.brothers = brothers;
+        this.sisters = sisters;
+        this.sad = sad;
+    }
+
+    Cow.prototype.isSad = function () {
+        if (this.sad) {
+            return 'Ohh :(';
+        }
+        else {
+            return 'Yay!';
+        }
+    };
+
+
+    var cow1 = new Cow('Martha', 10, ['John', 'Joanna'], null, true);
+    var cow2 = new Cow('Trudy', 18, ['Bruno'], null, false);
+
+    console.log(cow1);
+    console.log(cow2);
+
+</script>
+</body>
+</html>

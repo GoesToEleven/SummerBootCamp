@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    var cow = {};
+
+    cow.name = "Martha";
+    cow.age = 10;
+    cow.brothers = ["John", "Joanna", "qweqwe"];
+    cow.sisters = null;
+    cow.sad = true;
+
+    function isSad() {
+        if (cow.sad) {
+            return 'Ohh :(';
+        }
+        else {
+            return 'Yay!';
+        }
+    }
+
+    for (var i = 0; i < cow.brothers.length; i++) {
+        console.log(cow.brothers[i]);
+    }
+</script>
+</body>
+</html>
