@@ -27,6 +27,7 @@
 
     //    this will be executed when we put our elementProto into the DOM
     elementPrototype.attachedCallback = function () {
+        // clone
         var clone = template.cloneNode(true);
         this.appendChild(clone);
     };

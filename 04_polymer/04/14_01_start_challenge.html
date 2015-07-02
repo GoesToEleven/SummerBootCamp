@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<h1>List of aiports</h1>
+<ol id="airportList"></ol>
+
+<script>
+    var airportList = document.querySelector('#airportList');
+
+    var airports = {
+        "ATL": {
+            "IATA": "ATL",
+            "ICAO": "KATL",
+            "city": "Atlanta",
+            "delay": false,
+            "name": "The William B Hartsfield International",
+            "state": "Georgia",
+            "status": {
+                "avgDelay": "",
+                "closureBegin": "",
+                "closureEnd": "",
+                "endTime": "",
+                "maxDelay": "",
+                "minDelay": "",
+                "reason": "No known delays for this airport.",
+                "trend": "",
+                "type": ""
+            },
+            "weather": {
+                "temp": "84.0 F (28.9 C)",
+                "visibility": 10,
+                "weather": "Mostly Cloudy",
+                "wind": "West at 13.8mph"
+            }
+        },
+        "BNA": {
+            "IATA": "BNA",
+            "ICAO": "KBNA",
+            "city": "Nashville",
+            "delay": false,
+            "name": "Nashville International",
+            "state": "Tennessee",
+            "status": {
+                "avgDelay": "",
+                "closureBegin": "",
+                "closureEnd": "",
+                "endTime": "",
+                "maxDelay": "",
+                "minDelay": "",
+                "reason": "No known delays for this airport.",
+                "trend": "",
+                "type": ""
+            },
+            "weather": {
+                "temp": "76.0 F (24.4 C)",
+                "visibility": 10,
+                "weather": "Mostly Cloudy",
+                "wind": "South at 9.2mph"
+            }
+        },
+        "BOS": {
+            "IATA": "BOS",
+            "ICAO": "KBOS",
+            "city": "Boston",
+            "delay": false,
+            "name": "General Edward Lawrence Logan International",
+            "state": "Massachusetts",
+            "status": {
+                "avgDelay": "",
+                "closureBegin": "",
+                "closureEnd": "",
+                "endTime": "",
+                "maxDelay": "",
+                "minDelay": "",
+                "reason": "No known delays for this airport.",
+                "trend": "",
+                "type": ""
+            },
+            "weather": {
+                "temp": "78.0 F (25.6 C)",
+                "visibility": 10,
+                "weather": "Partly Cloudy",
+                "wind": "West at 12.7mph"
+            }
+        },
+        "BWI": {
+            "IATA": "BWI",
+            "ICAO": "KBWI",
+            "city": "Baltimore",
+            "delay": false,
+            "name": "Baltimore-Washington International",
+            "state": "Maryland",
+            "status": {
+                "avgDelay": "",
+                "closureBegin": "",
+                "closureEnd": "",
+                "endTime": "",
+                "maxDelay": "",
+                "minDelay": "",
+                "reason": "No known delays for this airport.",
+                "trend": "",
+                "type": ""
+            },
+            "weather": {
+                "temp": "73.0 F (22.8 C)",
+                "visibility": 7,
+                "weather": "Overcast",
+                "wind": "Northeast at 5.8mph"
+            }
+        },
+        "CLE": {
+            "IATA": "CLE",
+            "ICAO": "KCLE",
+            "city": "Cleveland",
+            "delay": false,
+            "name": "Cleveland Hopkins International",
+            "state": "Ohio",
+            "status": {
+                "avgDelay": "",
+                "closureBegin": "",
+                "closureEnd": "",
+                "endTime": "",
+                "maxDelay": "",
+                "minDelay": "",
+                "reason": "No known delays for this airport.",
+                "trend": "",
+                "type": ""
+            },
+            "weather": {
+                "temp": "69.0 F (20.6 C)",
+                "visibility": 10,
+                "weather": "Partly Cloudy",
+                "wind": "North at 13.8mph"
+            }
+        },
+        "CLT": {
+            "IATA": "CLT",
+            "ICAO": "KCLT",
+            "city": "Charlotte",
+            "delay": false,
+            "name": "Charlotte Douglas International",
+            "state": "North Carolina",
+            "status": {
+                "avgDelay": "",
+                "closureBegin": "",
+                "closureEnd": "",
+                "endTime": "",
+                "maxDelay": "",
+                "minDelay": "",
+                "reason": "No known delays for this airport.",
+                "trend": "",
+                "type": ""
+            },
+            "weather": {
+                "temp": "83.0 F (28.3 C)",
+                "visibility": 10,
+                "weather": "Partly Cloudy",
+                "wind": "Southwest at 9.2mph"
+            }
+        },
+        "CVG": {
+            "IATA": "CVG",
+            "ICAO": "KCVG",
+            "city": "Covington/Cincinnati, OH",
+            "delay": false,
+            "name": "Cincinnati/Northern Kentucky International",
+            "state": "Kentucky",
+            "status": {
+                "avgDelay": "",
+                "closureBegin": "",
+                "closureEnd": "",
+                "endTime": "",
+                "maxDelay": "",
+                "minDelay": "",
+                "reason": "No known delays for this airport.",
+                "trend": "",
+                "type": ""
+            },
+            "weather": {
+                "temp": "72.0 F (22.2 C)",
+                "visibility": 3,
+                "weather": "Overcast with Haze",
+                "wind": "Southeast at 5.8mph"
+            }
+        },
+        "DCA": {
+            "IATA": "DCA",
+            "ICAO": "KDCA",
+            "city": "Washington",
+            "delay": false,
+            "name": "Ronald Reagan Washington National",
+            "state": "District of Columbia",
+            "status": {
+                "avgDelay": "",
+                "closureBegin": "",
+                "closureEnd": "",
+                "endTime": "",
+                "maxDelay": "",
+                "minDelay": "",
+                "reason": "No known delays for this airport.",
+                "trend": "",
+                "type": ""
+            },
+            "weather": {
+                "temp": "76.0 F (24.4 C)",
+                "visibility": 9,
+                "weather": "Overcast",
+                "wind": "North at 0.0mph"
+            }
+        },
+        "DEN": {
+            "IATA": "DEN",
+            "ICAO": "KDEN",
+            "city": "Denver",
+            "delay": false,
+            "name": "Denver International",
+            "state": "Colorado",
+            "status": {
+                "avgDelay": "",
+                "closureBegin": "",
+                "closureEnd": "",
+                "endTime": "",
+                "maxDelay": "",
+                "minDelay": "",
+                "reason": "No known delays for this airport.",
+                "trend": "",
+                "type": ""
+            },
+            "weather": {
+                "temp": "71.0 F (21.7 C)",
+                "visibility": 10,
+                "weather": "Partly Cloudy",
+                "wind": "Southwest at 10.4mph"
+            }
+        },
+        "DFW": {
+            "IATA": "DFW",
+            "ICAO": "KDFW",
+            "city": "Dallas-Ft Worth",
+            "delay": false,
+            "name": "Dallas/Ft Worth International",
+            "state": "Texas",
+            "status": {
+                "avgDelay": "",
+                "closureBegin": "",
+                "closureEnd": "",
+                "endTime": "",
+                "maxDelay": "",
+                "minDelay": "",
+                "reason": "No known delays for this airport.",
+                "trend": "",
+                "type": ""
+            },
+            "weather": {
+                "temp": "87.0 F (30.6 C)",
+                "visibility": 10,
+                "weather": "A Few Clouds and Breezy",
+                "wind": "Southwest at 24.2mph"
+            }
+        },
+        "DTW": {
+            "IATA": "DTW",
+            "ICAO": "KDTW",
+            "city": "Detroit",
+            "delay": false,
+            "name": "Detroit Metropolitan Wayne County",
+            "state": "Michigan",
+            "status": {
+                "avgDelay": "",
+                "closureBegin": "",
+                "closureEnd": "",
+                "endTime": "",
+                "maxDelay": "",
+                "minDelay": "",
+                "reason": "No known delays for this airport.",
+                "trend": "",
+                "type": ""
+            },
+            "weather": {
+                "temp": "71.0 F (21.7 C)",
+                "visibility": 10,
+                "weather": "Mostly Cloudy",
+                "wind": "North at 9.2mph"
+            }
+        },
+        "EWR": {
+            "IATA": "EWR",
+            "ICAO": "KEWR",
+            "city": "Newark",
+            "delay": false,
+            "name": "Newark International",
+            "state": "New Jersey",
+            "status": {
+                "avgDelay": "",
+                "closureBegin": "",
+                "closureEnd": "",
+                "endTime": "",
+                "maxDelay": "",
+                "minDelay": "",
+                "reason": "No known delays for this airport.",
+                "trend": "",
+                "type": ""
+            },
+            "weather": {
+                "temp": "80.0 F (26.7 C)",
+                "visibility": 10,
+                "weather": "Mostly Cloudy",
+                "wind": "East at 6.9mph"
+            }
+        },
+        "FLL": {
+            "IATA": "FLL",
+            "ICAO": "KFLL",
+            "city": "Fort Lauderdale",
+            "delay": false,
+            "name": "Fort Lauderdale/Hollywood International",
+            "state": "Florida",
+            "status": {
+                "avgDelay": "",
+                "closureBegin": "",
+                "closureEnd": "",
+                "endTime": "",
+                "maxDelay": "",
+                "minDelay": "",
+                "reason": "No known delays for this airport.",
+                "trend": "",
+                "type": ""
+            },
+            "weather": {
+                "temp": "89.0 F (31.7 C)",
+                "visibility": 10,
+                "weather": "A Few Clouds",
+                "wind": "Southeast at 8.1mph"
+            }
+        },
+        "IAD": {
+            "IATA": "IAD",
+            "ICAO": "KIAD",
+            "city": "Washington",
+            "delay": false,
+            "name": "Washington Dulles International",
+            "state": "District of Columbia",
+            "status": {
+                "avgDelay": "",
+                "closureBegin": "",
+                "closureEnd": "",
+                "endTime": "",
+                "maxDelay": "",
+                "minDelay": "",
+                "reason": "No known delays for this airport.",
+                "trend": "",
+                "type": ""
+            },
+            "weather": {
+                "temp": "72.0 F (22.2 C)",
+                "visibility": 10,
+                "weather": "Overcast",
+                "wind": "North at 8.1mph"
+            }
+        },
+        "IAH": {
+            "IATA": "IAH",
+            "ICAO": "KIAH",
+            "city": "Houston",
+            "delay": false,
+            "name": "George Bush Intercontinental/Houston",
+            "state": "Texas",
+            "status": {
+                "avgDelay": "",
+                "closureBegin": "",
+                "closureEnd": "",
+                "endTime": "",
+                "maxDelay": "",
+                "minDelay": "",
+                "reason": "No known delays for this airport.",
+                "trend": "",
+                "type": ""
+            },
+            "weather": {
+                "temp": "88.0 F (31.1 C)",
+                "visibility": 10,
+                "weather": "Overcast",
+                "wind": "South at 8.1mph"
+            }
+        },
+        "IND": {
+            "IATA": "IND",
+            "ICAO": "KIND",
+            "city": "Indianapolis",
+            "delay": false,
+            "name": "Indianapolis International",
+            "state": "Indiana",
+            "status": {
+                "avgDelay": "",
+                "closureBegin": "",
+                "closureEnd": "",
+                "endTime": "",
+                "maxDelay": "",
+                "minDelay": "",
+                "reason": "No known delays for this airport.",
+                "trend": "",
+                "type": ""
+            },
+            "weather": {
+                "temp": "76.0 F (24.4 C)",
+                "visibility": 10,
+                "weather": "Mostly Cloudy",
+                "wind": "North at 9.2mph"
+            }
+        },
+        "JFK": {
+            "IATA": "JFK",
+            "ICAO": "KJFK",
+            "city": "New York",
+            "delay": false,
+            "name": "John F Kennedy International",
+            "state": "New York",
+            "status": {
+                "avgDelay": "",
+                "closureBegin": "",
+                "closureEnd": "",
+                "endTime": "",
+                "maxDelay": "",
+                "minDelay": "",
+                "reason": "No known delays for this airport.",
+                "trend": "",
+                "type": ""
+            },
+            "weather": {
+                "temp": "78.0 F (25.6 C)",
+                "visibility": 10,
+                "weather": "Overcast",
+                "wind": "South at 9.2mph"
+            }
+        },
+        "LAS": {
+            "IATA": "LAS",
+            "ICAO": "KLAS",
+            "city": "Las Vegas",
+            "delay": false,
+            "name": "Las Vegas McCarran International",
+            "state": "Nevada",
+            "status": {
+                "avgDelay": "",
+                "closureBegin": "",
+                "closureEnd": "",
+                "endTime": "",
+                "maxDelay": "",
+                "minDelay": "",
+                "reason": "No known delays for this airport.",
+                "trend": "",
+                "type": ""
+            },
+            "weather": {
+                "temp": "90.0 F (32.2 C)",
+                "visibility": 10,
+                "weather": "Mostly Cloudy",
+                "wind": "South at 9.2mph"
+            }
+        },
+        "LAX": {
+            "IATA": "LAX",
+            "ICAO": "KLAX",
+            "city": "Los Angeles",
+            "delay": false,
+            "name": "Los Angeles International",
+            "state": "California",
+            "status": {
+                "avgDelay": "",
+                "closureBegin": "",
+                "closureEnd": "",
+                "endTime": "",
+                "maxDelay": "",
+                "minDelay": "",
+                "reason": "No known delays for this airport.",
+                "trend": "",
+                "type": ""
+            },
+            "weather": {
+                "temp": "68.0 F (20.0 C)",
+                "visibility": 10,
+                "weather": "Mostly Cloudy",
+                "wind": "West at 8.1mph"
+            }
+        },
+        "LGA": {
+            "IATA": "LGA",
+            "ICAO": "KLGA",
+            "city": "New York",
+            "delay": false,
+            "name": "La Guardia",
+            "state": "New York",
+            "status": {
+                "avgDelay": "",
+                "closureBegin": "",
+                "closureEnd": "",
+                "endTime": "",
+                "maxDelay": "",
+                "minDelay": "",
+                "reason": "No known delays for this airport.",
+                "trend": "",
+                "type": ""
+            },
+            "weather": {
+                "temp": "79.0 F (26.1 C)",
+                "visibility": 10,
+                "weather": "Overcast",
+                "wind": "Northeast at 6.9mph"
+            }
+        },
+        "MCI": {
+            "IATA": "MCI",
+            "ICAO": "KMCI",
+            "city": "Kansas City",
+            "delay": false,
+            "name": "Kansas City International",
+            "state": "Missouri",
+            "status": {
+                "avgDelay": "",
+                "closureBegin": "",
+                "closureEnd": "",
+                "endTime": "",
+                "maxDelay": "",
+                "minDelay": "",
+                "reason": "No known delays for this airport.",
+                "trend": "",
+                "type": ""
+            },
+            "weather": {
+                "temp": "71.0 F (21.7 C)",
+                "visibility": 7,
+                "weather": "Overcast",
+                "wind": "East at 8.1mph"
+            }
+        },
+        "MCO": {
+            "IATA": "MCO",
+            "ICAO": "KMCO",
+            "city": "Orlando",
+            "delay": false,
+            "name": "Orlando International",
+            "state": "Florida",
+            "status": {
+                "avgDelay": "",
+                "closureBegin": "",
+                "closureEnd": "",
+                "endTime": "",
+                "maxDelay": "",
+                "minDelay": "",
+                "reason": "No known delays for this airport.",
+                "trend": "",
+                "type": ""
+            },
+            "weather": {
+                "temp": "91.0 F (32.8 C)",
+                "visibility": 10,
+                "weather": "Partly Cloudy",
+                "wind": "Southwest at 6.9mph"
+            }
+        },
+        "MDW": {
+            "IATA": "MDW",
+            "ICAO": "KMDW",
+            "city": "Chicago",
+            "delay": false,
+            "name": "Chicago Midway",
+            "state": "Illinois",
+            "status": {
+                "avgDelay": "",
+                "closureBegin": "",
+                "closureEnd": "",
+                "endTime": "",
+                "maxDelay": "",
+                "minDelay": "",
+                "reason": "No known delays for this airport.",
+                "trend": "",
+                "type": ""
+            },
+            "weather": {
+                "temp": "70.0 F (21.1 C)",
+                "visibility": 10,
+                "weather": "A Few Clouds",
+                "wind": "Northeast at 12.7mph"
+            }
+        },
+        "MEM": {
+            "IATA": "MEM",
+            "ICAO": "KMEM",
+            "city": "Memphis",
+            "delay": false,
+            "name": "Memphis International",
+            "state": "Tennessee",
+            "status": {
+                "avgDelay": "",
+                "closureBegin": "",
+                "closureEnd": "",
+                "endTime": "",
+                "maxDelay": "",
+                "minDelay": "",
+                "reason": "No known delays for this airport.",
+                "trend": "",
+                "type": ""
+            },
+            "weather": {
+                "temp": "80.0 F (26.7 C)",
+                "visibility": 10,
+                "weather": "Mostly Cloudy",
+                "wind": "Southwest at 11.5mph"
+            }
+        },
+        "MIA": {
+            "IATA": "MIA",
+            "ICAO": "KMIA",
+            "city": "Miami",
+            "delay": false,
+            "name": "Miami International",
+            "state": "Florida",
+            "status": {
+                "avgDelay": "",
+                "closureBegin": "",
+                "closureEnd": "",
+                "endTime": "",
+                "maxDelay": "",
+                "minDelay": "",
+                "reason": "No known delays for this airport.",
+                "trend": "",
+                "type": ""
+            },
+            "weather": {
+                "temp": "89.0 F (31.7 C)",
+                "visibility": 10,
+                "weather": "A Few Clouds",
+                "wind": "Variable at 5.8mph"
+            }
+        },
+        "MSP": {
+            "IATA": "MSP",
+            "ICAO": "KMSP",
+            "city": "Minneapolis",
+            "delay": false,
+            "name": "Minneapolis-St Paul International/Wold-Chamberlain",
+            "state": "Minnesota",
+            "status": {
+                "avgDelay": "",
+                "closureBegin": "",
+                "closureEnd": "",
+                "endTime": "",
+                "maxDelay": "",
+                "minDelay": "",
+                "reason": "No known delays for this airport.",
+                "trend": "",
+                "type": ""
+            },
+            "weather": {
+                "temp": "73.0 F (22.8 C)",
+                "visibility": 10,
+                "weather": "Partly Cloudy",
+                "wind": "Southeast at 4.6mph"
+            }
+        },
+        "ORD": {
+            "IATA": "ORD",
+            "ICAO": "KORD",
+            "city": "Chicago",
+            "delay": false,
+            "name": "Chicago OHare International",
+            "state": "Illinois",
+            "status": {
+                "avgDelay": "",
+                "closureBegin": "",
+                "closureEnd": "",
+                "endTime": "",
+                "maxDelay": "",
+                "minDelay": "",
+                "reason": "No known delays for this airport.",
+                "trend": "",
+                "type": ""
+            },
+            "weather": {
+                "temp": "66.0 F (18.9 C)",
+                "visibility": 10,
+                "weather": "Partly Cloudy",
+                "wind": "Northeast at 15.0mph"
+            }
+        },
+        "PDX": {
+            "IATA": "PDX",
+            "ICAO": "KPDX",
+            "city": "Portland",
+            "delay": false,
+            "name": "Portland International",
+            "state": "Oregon",
+            "status": {
+                "avgDelay": "",
+                "closureBegin": "",
+                "closureEnd": "",
+                "endTime": "",
+                "maxDelay": "",
+                "minDelay": "",
+                "reason": "No known delays for this airport.",
+                "trend": "",
+                "type": ""
+            },
+            "weather": {
+                "temp": "77.0 F (25.0 C)",
+                "visibility": 10,
+                "weather": "Fair",
+                "wind": "West at 8.1mph"
+            }
+        },
+        "PHL": {
+            "IATA": "PHL",
+            "ICAO": "KPHL",
+            "city": "Philadelphia",
+            "delay": false,
+            "name": "Philadelphia International",
+            "state": "Pennsylvania",
+            "status": {
+                "avgDelay": "",
+                "closureBegin": "",
+                "closureEnd": "",
+                "endTime": "",
+                "maxDelay": "",
+                "minDelay": "",
+                "reason": "No known delays for this airport.",
+                "trend": "",
+                "type": ""
+            },
+            "weather": {
+                "temp": "75.0 F (23.9 C)",
+                "visibility": 10,
+                "weather": "Overcast",
+                "wind": "East at 6.9mph"
+            }
+        },
+        "PHX": {
+            "IATA": "PHX",
+            "ICAO": "KPHX",
+            "city": "Phoenix",
+            "delay": false,
+            "name": "Phoenix Sky Harbor International",
+            "state": "Arizona",
+            "status": {
+                "avgDelay": "",
+                "closureBegin": "",
+                "closureEnd": "",
+                "endTime": "",
+                "maxDelay": "",
+                "minDelay": "",
+                "reason": "No known delays for this airport.",
+                "trend": "",
+                "type": ""
+            },
+            "weather": {
+                "temp": "95.0 F (35.0 C)",
+                "visibility": 10,
+                "weather": "A Few Clouds",
+                "wind": "West at 6.9mph"
+            }
+        },
+        "PIT": {
+            "IATA": "PIT",
+            "ICAO": "KPIT",
+            "city": "Pittsburgh",
+            "delay": false,
+            "name": "Pittsburgh International",
+            "state": "Pennsylvania",
+            "status": {
+                "avgDelay": "",
+                "closureBegin": "",
+                "closureEnd": "",
+                "endTime": "",
+                "maxDelay": "",
+                "minDelay": "",
+                "reason": "No known delays for this airport.",
+                "trend": "",
+                "type": ""
+            },
+            "weather": {
+                "temp": "72.0 F (22.2 C)",
+                "visibility": 10,
+                "weather": "Overcast",
+                "wind": "North at 5.8mph"
+            }
+        },
+        "RDU": {
+            "IATA": "RDU",
+            "ICAO": "KRDU",
+            "city": "Raleigh/Durham",
+            "delay": false,
+            "name": "Raleigh-Durham International",
+            "state": "North Carolina",
+            "status": {
+                "avgDelay": "",
+                "closureBegin": "",
+                "closureEnd": "",
+                "endTime": "",
+                "maxDelay": "",
+                "minDelay": "",
+                "reason": "No known delays for this airport.",
+                "trend": "",
+                "type": ""
+            },
+            "weather": {
+                "temp": "85.0 F (29.4 C)",
+                "visibility": 10,
+                "weather": "Mostly Cloudy",
+                "wind": "West at 9.2mph"
+            }
+        },
+        "SAN": {
+            "IATA": "SAN",
+            "ICAO": "KSAN",
+            "city": "San Diego",
+            "delay": false,
+            "name": "San Diego-Lindbergh Field",
+            "state": "California",
+            "status": {
+                "avgDelay": "",
+                "closureBegin": "",
+                "closureEnd": "",
+                "endTime": "",
+                "maxDelay": "",
+                "minDelay": "",
+                "reason": "No known delays for this airport.",
+                "trend": "",
+                "type": ""
+            },
+            "weather": {
+                "temp": "69.0 F (20.6 C)",
+                "visibility": 7,
+                "weather": "Overcast",
+                "wind": "South at 3.5mph"
+            }
+        },
+        "SEA": {
+            "IATA": "SEA",
+            "ICAO": "KSEA",
+            "city": "Seattle",
+            "delay": false,
+            "name": "Seattle-Tacoma International",
+            "state": "Washington",
+            "status": {
+                "avgDelay": "",
+                "closureBegin": "",
+                "closureEnd": "",
+                "endTime": "",
+                "maxDelay": "",
+                "minDelay": "",
+                "reason": "No known delays for this airport.",
+                "trend": "",
+                "type": ""
+            },
+            "weather": {
+                "temp": "80.0 F (26.7 C)",
+                "visibility": 10,
+                "weather": "Fair",
+                "wind": "North at 5.8mph"
+            }
+        },
+        "SFO": {
+            "IATA": "SFO",
+            "ICAO": "KSFO",
+            "city": "San Francisco",
+            "delay": false,
+            "name": "San Francisco International",
+            "state": "California",
+            "status": {
+                "avgDelay": "",
+                "closureBegin": "",
+                "closureEnd": "",
+                "endTime": "",
+                "maxDelay": "",
+                "minDelay": "",
+                "reason": "No known delays for this airport.",
+                "trend": "",
+                "type": ""
+            },
+            "weather": {
+                "temp": "66.0 F (18.9 C)",
+                "visibility": 10,
+                "weather": "Mostly Cloudy",
+                "wind": "North at 3.5mph"
+            }
+        },
+        "SJC": {
+            "IATA": "SJC",
+            "ICAO": "KSJC",
+            "city": "San Jose",
+            "delay": false,
+            "name": "San Jose International",
+            "state": "California",
+            "status": {
+                "avgDelay": "",
+                "closureBegin": "",
+                "closureEnd": "",
+                "endTime": "",
+                "maxDelay": "",
+                "minDelay": "",
+                "reason": "No known delays for this airport.",
+                "trend": "",
+                "type": ""
+            },
+            "weather": {
+                "temp": "72.0 F (22.2 C)",
+                "visibility": 10,
+                "weather": "Mostly Cloudy",
+                "wind": "Variable at 3.5mph"
+            }
+        },
+        "SLC": {
+            "IATA": "SLC",
+            "ICAO": "KSLC",
+            "city": "Salt Lake City",
+            "delay": false,
+            "name": "Salt Lake City International",
+            "state": "Utah",
+            "status": {
+                "avgDelay": "",
+                "closureBegin": "",
+                "closureEnd": "",
+                "endTime": "",
+                "maxDelay": "",
+                "minDelay": "",
+                "reason": "No known delays for this airport.",
+                "trend": "",
+                "type": ""
+            },
+            "weather": {
+                "temp": "90.0 F (32.2 C)",
+                "visibility": 10,
+                "weather": "Partly Cloudy",
+                "wind": "Northwest at 6.9mph"
+            }
+        },
+        "STL": {
+            "IATA": "STL",
+            "ICAO": "KSTL",
+            "city": "St Louis",
+            "delay": false,
+            "name": "Lambert-St Louis International",
+            "state": "Missouri",
+            "status": {
+                "avgDelay": "",
+                "closureBegin": "",
+                "closureEnd": "",
+                "endTime": "",
+                "maxDelay": "",
+                "minDelay": "",
+                "reason": "No known delays for this airport.",
+                "trend": "",
+                "type": ""
+            },
+            "weather": {
+                "temp": "69.0 F (20.6 C)",
+                "visibility": 10,
+                "weather": "Overcast",
+                "wind": "Northeast at 9.2mph"
+            }
+        },
+        "TEB": {
+            "IATA": "TEB",
+            "ICAO": "KTEB",
+            "city": "Teterboro",
+            "delay": false,
+            "name": "Teterboro",
+            "state": "New Jersey",
+            "status": {
+                "avgDelay": "",
+                "closureBegin": "",
+                "closureEnd": "",
+                "endTime": "",
+                "maxDelay": "",
+                "minDelay": "",
+                "reason": "No known delays for this airport.",
+                "trend": "",
+                "type": ""
+            },
+            "weather": {
+                "temp": "80.0 F (26.7 C)",
+                "visibility": 10,
+                "weather": "A Few Clouds",
+                "wind": "Northwest at 4.6mph"
+            }
+        },
+        "TPA": {
+            "IATA": "TPA",
+            "ICAO": "KTPA",
+            "city": "Tampa",
+            "delay": false,
+            "name": "Tampa International",
+            "state": "Florida",
+            "status": {
+                "avgDelay": "",
+                "closureBegin": "",
+                "closureEnd": "",
+                "endTime": "",
+                "maxDelay": "",
+                "minDelay": "",
+                "reason": "No known delays for this airport.",
+                "trend": "",
+                "type": ""
+            },
+            "weather": {
+                "temp": "89.0 F (31.7 C)",
+                "visibility": 10,
+                "weather": "Thunderstorm",
+                "wind": "Southwest at 8.1mph"
+            }
+        }
+    };
+
+    var listItem = '';
+
+    for (var airportCode in airports) {
+        listItem += '<li>' +
+                '<p>' +
+                '<strong>✈ </strong>' +
+                '<span>' + airports[airportCode].name + '</span>' +
+                '<em> (' + airports[airportCode].city + ', ' + airports[airportCode].state + ')</em>' +
+                '</p>' +
+                '</li>';
+    }
+
+    airportList.innerHTML = listItem;
+</script>
+</body>
+</html>
