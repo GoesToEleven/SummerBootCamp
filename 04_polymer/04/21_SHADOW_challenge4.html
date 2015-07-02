@@ -23,13 +23,18 @@
     <h1>inside</h1>
 </template>
 
+<my-h1></my-h1>
+<my-h1></my-h1>
+<my-h1></my-h1>
 <script>
     var proto = Object.create(HTMLElement.prototype);
     var template = document.querySelector('template').content;
     proto.attachedCallback = function() {
         var clone = template.cloneNode(true);
         var shadowRoot = this.createShadowRoot();
+        shadowRoot.appendChild(clone);
     };
+    document.registerElement('my-h1',{prototype: proto});
 
 </script>
 </body>
