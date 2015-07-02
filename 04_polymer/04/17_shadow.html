@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        h1 {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+<h1>Foo</h1>
+<div id="bar"></div>
+
+<!-- these elements built with shadow dom -->
+<!-- inspect them in dev tools -->
+
+<input type="password">
+
+<video src=""></video>
+
+<script>
+
+    var bar = document.querySelector('#bar');
+    var shadowRoot = bar.createShadowRoot();
+    //    bar.innerHTML = '<h1>qwe</h1>'
+    shadowRoot.innerHTML = '<style>h1{color:red;}</style><h1>bar</h1>'
+
+</script>
+</body>
+</html>

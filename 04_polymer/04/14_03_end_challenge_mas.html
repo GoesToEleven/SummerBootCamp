@@ -15,10 +15,10 @@
             <span>airport name</span>
             <em>airport city, airport state</em>
         <ul>
-            <li>temp</li>
-            <li>visibility</li>
-            <li>weather</li>
-            <li>wind</li>
+            <li id="temp">temp</li>
+            <li id="visibility">visibility</li>
+            <li id="weather">weather</li>
+            <li id="wind">wind</li>
         </ul>
         </p>
     </li>
@@ -1037,14 +1037,18 @@
     for (var i in airports) {
         var clone = template.cloneNode(true);
         clone.querySelector('span').textContent = airports[i].name;
-        clone.querySelector('em').textContent = airports[i].city +', ' + airports[i].state;
-        for (var j = 0; j < airports[i].weather.length; i++) {
-            clone.querySelector('').textContent =
+        clone.querySelector('em').textContent = airports[i].city + ', ' + airports[i].state;
+//        console.log(airports[i].weather);
+        for (var j in airports[i].weather) {
+//            console.log(airports[i].weather[j]);
+//            console.log(clone.querySelector('ul>li:nth-child(1)'));
+//            console.log(j);
+//            console.log(clone.querySelector('#' + j));
+            clone.querySelector('#' + j).textContent = j + ': ' + airports[i].weather[j];
         }
         airportList.appendChild(clone);
-        console.log(i);
+//        console.log(i);
     }
-
 
 </script>
 </body>

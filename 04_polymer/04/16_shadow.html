@@ -13,11 +13,11 @@
 <div id="bar"></div>
 
 <script>
-// no shadow dom
 
     var bar = document.querySelector('#bar');
-    bar.innerHTML = '<h1>qwe</h1>'
-//    bar.innerHTML = '<style>h1{color:red;}</style><h1>qwe</h1>'
+    var shadowRoot = bar.createShadowRoot();
+    //    bar.innerHTML = '<h1>qwe</h1>'
+    shadowRoot.innerHTML = '<style>h1{color:red;}</style><h1>bar</h1>'
 
 </script>
 </body>
