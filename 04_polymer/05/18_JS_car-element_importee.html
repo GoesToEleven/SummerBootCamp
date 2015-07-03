@@ -1,0 +1,25 @@
+<template>
+    <p>I have a <strong></strong> <em></em> built in <span></span></p>
+</template>
+
+<script>
+    var proto = Object.create(HTMLElement.prototype);
+    var current = document.currentScript.ownerDocument;
+    var template = current.querySelector('template').content;
+
+    proto.attachedCallback = function() {
+        var make = this.getAttribute('make');
+        var name = this.getAttribute('name');
+        var year = this.getAttribute('year');
+
+        var clone = template.cloneNode(true);
+
+        clone.querySelector('strong').textContent = make;
+        clone.querySelector('em').textContent = name;
+        clone.querySelector('span').textContent = year;
+
+        this.appendChild(clone);
+    };
+
+    document.registerElement('my-car', {prototype: proto});
+</script>

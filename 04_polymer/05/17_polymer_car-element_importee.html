@@ -1,0 +1,27 @@
+<link rel="import" href="../05/04_polymer_TOC-toggle/bower_components/polymer/polymer.html"/>
+
+<dom-module id="my-car">
+    <template>
+        <p>I have a <strong></strong> <em></em> built in <span></span></p>
+    </template>
+</dom-module>
+
+<script>
+
+    Polymer({
+        is: 'my-car',
+
+        properties: {
+            make: String,
+            name: String,
+            year: Number
+        },
+
+        attached: function(){
+            this.querySelector('strong').textContent = this.make;
+            this.querySelector('em').textContent = this.name;
+            this.querySelector('span').textContent = this.year;
+        }
+
+    });
+</script>

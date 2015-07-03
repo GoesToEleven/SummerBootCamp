@@ -1,0 +1,27 @@
+<link rel="import" href="../05/04_polymer_TOC-toggle/bower_components/polymer/polymer.html"/>
+
+<dom-module id="my-diploma">
+    <template>
+        <p><strong></strong> graduated from <em></em> in the <span></span> course</p>
+    </template>
+</dom-module>
+
+<script>
+
+    Polymer({
+        is: 'my-diploma',
+
+        properties: {
+            name: String,
+            school: String,
+            course: String
+        },
+
+        attached: function(){
+            this.querySelector('strong').textContent = this.name;
+            this.querySelector('em').textContent = this.school;
+            this.querySelector('span').textContent = this.course;
+        }
+
+    });
+</script>

@@ -17,8 +17,8 @@
 
         properties: {
             interval: {
-                type: String,
-                value: '100'
+                type: Number,
+                value: 100
             }
         },
 
@@ -27,14 +27,8 @@
         },
 
         attached: function () {
-            var that = this;
-            this.timer = setInterval(function () {
-                if (that.style.visibility === 'visible') {
-                    that.style.visibility = 'hidden';
-                } else {
-                    that.style.visibility = 'visible';
-                }
-            }, this.interval)
+            this.toggleVisibility();
+            console.log('attached ', this.interval);
         },
 
         attributeChanged: function (attr, oldVal, newVal) {
@@ -42,23 +36,30 @@
             console.log(attr);
             console.log(oldVal);
             console.log(newVal);
-            var that = this;
+            console.log('attributeChanged ', this.interval);
 
             if (attr === 'interval') {
                 clearInterval(this.timer);
-                this.timer = setInterval(function () {
-                    if (that.style.visibility === 'visible') {
-                        that.style.visibility = 'hidden';
-                    } else {
-                        that.style.visibility = 'visible';
-                    }
-                }, this.interval)
+                this.toggleVisibility();
             }
+        },
+
+        toggleVisibility: function(interval) {
+            var that = this;
+            this.timer = setInterval(function () {
+                if (that.style.visibility === 'visible') {
+                    that.style.visibility = 'hidden';
+                } else {
+                    that.style.visibility = 'visible';
+                }
+            }, this.interval);
+            console.log('toggleVisibility ', this.interval);
         },
 
         detached: function () {
             clearInterval(this.timer);
-        },
+        }
+
     });
 
 </script>
