@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="import" href="../05/04_polymer_TOC-toggle/bower_components/polymer/polymer.html"/>
+
+</head>
+<body>
+<my-element>this blinks</my-element>
+
+<script>
+
+    Polymer({
+        is: 'my-element',
+
+        created: function () {
+            console.log('created');
+        },
+
+        attached: function () {
+            var that = this;
+            this.timer = setInterval(function () {
+                if (that.style.visibility === 'visible') {
+                    that.style.visibility = 'hidden';
+                } else {
+                    that.style.visibility = 'visible';
+                }
+            }, 300)
+        },
+
+        detached: function () {
+            clearInterval(this.timer);
+        },
+
+        attributeChangedCallback: function () {
+            console.log('attribute changed');
+        },
+    });
+
+</script>
+
+</body>
+</html>

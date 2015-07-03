@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<my-blink interval="1000">this blinks</my-blink>
+<!--<my-blink interval="500">this blinks slower</my-blink>-->
+<!--<my-blink>this blinks slowest</my-blink>-->
+
+<script>
+    var proto = Object.create(HTMLElement.prototype);
+
+    proto.attachedCallback = function () {
+        var interval = this.getAttribute('interval') || '1000';
+//        var interval = this.attributes.interval.nodeValue;
+        console.log(interval);
+
+        var that = this;
+        this.timer = setInterval(function () {
+            if (that.style.visibility === 'visible') {
+                that.style.visibility = 'hidden';
+            } else {
+                that.style.visibility = 'visible';
+            }
+        }, interval);
+    };
+
+    proto.detachedCallback = function () {
+        clearInterval(this.timer);
+    }
+
+    proto.attributeChangedCallback = function() {
+        var interval = this.getAttribute('interval') || '1000';
+        clearInterval(this.timer);
+        var that = this;
+        this.timer = setInterval(function () {
+            if (that.style.visibility === 'visible') {
+                that.style.visibility = 'hidden';
+            } else {
+                that.style.visibility = 'visible';
+            }
+        }, interval);
+    };
+
+    document.registerElement('my-blink', {prototype: proto});
+
+</script>
+</body>
+</html>
