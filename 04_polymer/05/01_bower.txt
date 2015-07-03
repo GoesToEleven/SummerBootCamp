@@ -1,0 +1,27 @@
+sudo npm install -g bower
+
+
+mkdir newFolder
+cd newFolder
+
+bower init
+
+created for you: bower.json
+
+edit json file
+add dependencies
+
+///
+
+
+bower install github-owner/github-repo[#git-tag]
+example: bower install Polymer/polymer#1.0.0
+
+///
+
+semantic versioning
+http://semver.npmjs.com/
+
+///
+when install a component, add save:
+bower install ...name of component... --save

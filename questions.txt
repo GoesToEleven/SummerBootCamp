@@ -3,7 +3,3 @@ TO COVER:
 - svg's
 - sprites
 - px, %, rem, vh vw
-
-POTENTIAL CHALLENGES:
-
-- responsive with media-query

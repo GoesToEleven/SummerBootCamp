@@ -4,12 +4,15 @@
 
 <script>
     var proto = Object.create(HTMLElement.prototype);
+
     var component = document.currentScript.ownerDocument;
     var template = component.querySelector('template').content;
 
     proto.attachedCallback = function () {
         var headings = document.querySelectorAll('h2');
         var shadowRoot = this.createShadowRoot();
+
+
         for (var i = 0; i < headings.length; i++) {
             var clone = template.cloneNode(true);
             clone.querySelector('a').href = '#' + headings[i].id;

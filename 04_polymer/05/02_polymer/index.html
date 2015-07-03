@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="import" href="bower_components/iron-collapse/iron-collapse.html">
+</head>
+<body>
+
+<button on-click="{{toggle}}">toggle collapse</button>
+
+<iron-collapse id="collapse">
+    <div>Content goes here...</div>
+</iron-collapse>
+
+<script>
+    var myButton = document.querySelector('button');
+    function myToggle() {
+
+    }
+
+    toggle: function() {
+        this.$.collapse.toggle();
+    }
+
+</script>
+
+
+</body>
+</html>
