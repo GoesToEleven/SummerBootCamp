@@ -6,17 +6,7 @@
 <body>
 <h1>FAQ</h1>
 
-<nav></nav>
-
-<!--<p><a href="#one">What is the TEAS exam?</a></p>-->
-<!--<p><a href="#two">How much will the TEAS exam cost me?</a></p>-->
-<!--<p><a href="#three">What if I forgot my password?</a></p>-->
-<!--<p><a href="#four">What do I need to take care of children in my home?</a></p>-->
-<!--<p><a href="#five">What education do I need to teach in a preschool center?</a></p>-->
-<!--<p><a href="#six">What do I need to start my own Child Development Center?</a></p>-->
-<!--<p><a href="#seven">How do I get started at Fresno City College?</a></p>-->
-<!--<p><a href="#eight">What is the cancellation policy?</a></p>-->
-<!--<p><a href="#nine">How do I register for a FCC Training Institute program?</a></p>-->
+<div id="table-of-contents"></div>
 
 <h2 id="one">What is the TEAS exam?</h2>
 
@@ -85,14 +75,25 @@
     eligibility for not only the Pell Grant, but also used by other financial aid providers to determine eligibility for
     other financial aid such as the Cal Grant, the Board of Governor’s Fee Waiver, federally funded loans and more.</p>
 
+
+<template>
+    <p><a href=''></a></p>
+</template>
+
+
 <script>
     var headings = document.querySelectorAll('h2');
-    var nav = document.querySelector('nav');
-    var myString = '';
+    var template = document.querySelector('template').content;
     for (var i = 0; i < headings.length; i++) {
-        myString += '<p><a href="#' + headings[i].id + '">' + headings[i].textContent + '</a></p>';
+        var href = '#' + headings[i].id;
+        var text = headings[i].textContent;
+        console.log(href);
+        console.log(text);
+        var clone = template.cloneNode(true);
+        clone.querySelector('a').href = href;
+        clone.querySelector('a').textContent = text;
+        document.querySelector('#table-of-contents').appendChild(clone);
     }
-    document.querySelector('nav').innerHTML = myString;
 </script>
 
 </body>

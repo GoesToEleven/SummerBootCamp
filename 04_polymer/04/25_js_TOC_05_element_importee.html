@@ -1,0 +1,30 @@
+<template>
+    <p><a href=''></a></p>
+</template>
+
+<script>
+    var proto = Object.create(HTMLElement.prototype);
+
+    var component = document.currentScript.ownerDocument;
+    var template = component.querySelector('template').content;
+
+    proto.attachedCallback = function () {
+        var headings = document.querySelectorAll('h2');
+        var toc = document.querySelector('#table-of-contents');
+        var shadowRoot = toc.createShadowRoot();
+
+        for (var i = 0; i < headings.length; i++) {
+            var href = '#' + headings[i].id;
+            var text = headings[i].textContent;
+
+            var clone = template.cloneNode(true);
+
+            clone.querySelector('a').href = href;
+            clone.querySelector('a').textContent = text;
+            shadowRoot.appendChild(clone);
+        }
+    };
+
+    document.registerElement('table-of-contents',{prototype:proto});
+
+</script>
