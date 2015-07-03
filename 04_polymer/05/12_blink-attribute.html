@@ -14,6 +14,7 @@
     var proto = Object.create(HTMLElement.prototype);
 
     proto.attachedCallback = function () {
+//        var interval = document.querySelector('my-blink').getAttribute('interval') || '1000';
         var interval = this.getAttribute('interval') || '1000';
 //        var interval = this.attributes.interval.nodeValue;
         console.log(interval);
