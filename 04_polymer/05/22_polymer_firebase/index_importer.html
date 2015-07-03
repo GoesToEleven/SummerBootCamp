@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="import" href="bower_components/paper-drawer-panel/paper-drawer-panel.html">
+	<link rel="import" href="bower_components/paper-toolbar/paper-toolbar.html">
+	<link rel="import" href="bower_components/paper-menu/paper-menu.html">
+	<link rel="import" href="bower_components/iron-icons/iron-icons.html">
+	<link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
+	<link rel="import" href="bower_components/iron-pages/iron-pages.html">
+	<link rel="import" href="bower_components/paper-material/paper-material.html">
+	<link rel="import" href="bower_components/paper-styles/paper-styles-classes.html">
+	<link rel="import" href="style.html">
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+</head>
+<body>
+
+	<template is="dom-bind" id="app">
+
+    <paper-drawer-panel id="paperDrawerPanel">
+      <paper-header-panel drawer mode="seam">
+
+        <!-- Drawer Toolbar -->
+        <paper-toolbar id="drawerToolbar">
+          <span class="paper-font-title">Menu</span>
+        </paper-toolbar>
+
+        <!-- Drawer Content -->
+        <paper-menu class="list">
+          <a href="/">
+            <iron-icon icon="home"></iron-icon>
+            <span>Home</span>
+          </a>
+
+          <a href="/users">
+            <iron-icon icon="info"></iron-icon>
+            <span>Users</span>
+          </a>
+
+          <a href="/contact">
+            <iron-icon icon="mail"></iron-icon>
+            <span>Contact</span>
+          </a>
+        </paper-menu>
+      </paper-header-panel>
+      <paper-header-panel main mode="waterfall-tall">
+
+        <!-- Main Toolbar -->
+        <paper-toolbar id="mainToolbar">
+          <paper-icon-button id="paperToggle" icon="menu" paper-drawer-toggle></paper-icon-button>
+          <span class="flex"></span>
+
+          <!-- Toolbar icons -->
+          <paper-icon-button icon="refresh"></paper-icon-button>
+          <paper-icon-button icon="search"></paper-icon-button>
+
+          <!-- Application name -->
+          <div class="middle paper-font-display2 app-name">Fresno City College Chat</div>
+
+          <!-- Application sub title -->
+          <div class="bottom title"></div>
+
+        </paper-toolbar>
+
+        <!-- Main Content -->
+        <div class="content">
+            <!--<blog-post>PUT IT HERE</blog-post>-->
+        </div>
+      </paper-header-panel>
+    </paper-drawer-panel>
+
+  </template>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="import" href="21_polymer_firebase_importee.html">
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+</head>
+<body>
+
+<!--<blog-post title="{{}}" message="{{}}"></blog-post>-->
+
+<script>
+    var url = 'https://test-swbc-13-01-form.firebaseio.com/';
+    var ref = new Firebase(url);
+
+    // on is like addEventListener in firebase
+    ref.on('value', function (snapshot) {
+        var data = snapshot.val();
+        var body = document.querySelector('body');
+        var post = document.createElement('blog-post');
+        for (var i in data) {
+            var post = document.createElement('blog-post');
+            post.setAttribute('title', data[i].title);
+            post.setAttribute('message', data[i].message);
+            body.appendChild(post);
+            var delButton = document.createElement('button');
+            delButton.setAttribute('id', i);
+            delButton.setAttribute('class', 'deleter');
+            body.appendChild(delButton);
+        }
+    });
+
+//    document.querySelector('#mySubmit').addEventListener('click', function () {
+//        ref.push({
+//            "title": (document.forms[0].myFrmTitle.value),
+//            "message": (document.forms[0].myTextArea.value)
+//        });
+//    });
+
+    document.querySelector('body').addEventListener('click', function(e){
+        if(e.target.className == 'deleter') {
+            console.log(e.target.id);
+            var deleteURL = url + e.target.id;
+            console.log(deleteURL);
+            var deleteMe = new Firebase(deleteURL);
+            deleteMe.remove();
+        }
+    });
+
+
+//    document.querySelector('#removeAllDate').addEventListener('click', function () {
+//        ref.remove();
+//    });
+//
+</script>
+</body>
+</html>

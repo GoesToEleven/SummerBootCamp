@@ -1,0 +1,26 @@
+<link rel="import" href="../05/04_polymer_TOC-toggle/bower_components/polymer/polymer.html"/>
+
+<dom-module id="blog-post">
+
+    <style>
+        :host {
+            color: blue;
+        }
+    </style>
+    <template>
+        <h1>{{title}}</h1>
+        <p>{{message}}</p>
+    </template>
+</dom-module>
+
+<script>
+
+    Polymer({
+        is: 'blog-post',
+
+        properties: {
+            title: String,
+            message: String
+        }
+    });
+</script>

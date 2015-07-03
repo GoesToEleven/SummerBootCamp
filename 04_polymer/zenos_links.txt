@@ -32,3 +32,5 @@ bit.ly/fresno-6-slide
 bit.ly/fresno-7-code
 
 bit.ly/fresno-7-slides
+
+bit.ly/fresno-8-code
