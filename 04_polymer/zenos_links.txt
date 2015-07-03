@@ -28,3 +28,7 @@ download polymer zip
 http://goo.gl/6u84fo
 
 bit.ly/fresno-6-slide
+
+bit.ly/fresno-7-code
+
+bit.ly/fresno-7-slides

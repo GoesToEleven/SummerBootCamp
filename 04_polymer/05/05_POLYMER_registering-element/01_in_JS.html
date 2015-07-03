@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+    var proto = Object.create(HTMLElement.prototype);
+    document.registerElement('my-tag', {prototype: proto});
+</script>
+</body>
+</html>

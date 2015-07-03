@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+
+    //    definition
+    var proto = Object.create(HTMLElement.prototype);
+
+    proto.createdCallback = function () {
+        console.log('created!');
+    };
+    proto.attachedCallback = function () {
+        console.log('attached!');
+    };
+    proto.detachedCallback = function () {
+        console.log('detached!');
+    };
+    proto.attributeChangedCallback = function (attr, oldVal, newVal) {
+        console.log('attribute: ', attr);
+        console.log('old value: ', oldVal);
+        console.log('new value:', newVal);
+    };
+
+    document.registerElement('my-tag', {prototype: proto});
+
+    //    usage
+    var myTag = document.createElement('my-tag'); // created
+    document.body.appendChild(myTag); // attached
+    var a = document.createAttribute('blah');
+    a.value = "500";
+    myTag.setAttributeNode(a); //attributeChanged
+    document.body.removeChild(myTag); // detached
+
+</script>
+
+</body>
+</html>

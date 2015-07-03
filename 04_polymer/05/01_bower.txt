@@ -6,6 +6,8 @@ cd newFolder
 
 bower init
 
+///
+
 created for you: bower.json
 
 edit json file
@@ -25,3 +27,4 @@ http://semver.npmjs.com/
 ///
 when install a component, add save:
 bower install ...name of component... --save
+eg, bower install PolymerElements/iron-collapse --save
