@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="import" href="../05/04_polymer_TOC-toggle/bower_components/polymer/polymer.html"/>
+
+</head>
+<body>
+<my-element interval="900">this blinksssss</my-element>
+<my-element>this blinksssss</my-element>
+
+<script>
+
+    Polymer({
+        is: 'my-element',
+
+        properties: {
+            interval: {
+                type: String,
+                value: '100'
+            }
+        },
+
+        created: function () {
+            console.log('created');
+        },
+
+        attached: function () {
+            var that = this;
+            this.timer = setInterval(function () {
+                if (that.style.visibility === 'visible') {
+                    that.style.visibility = 'hidden';
+                } else {
+                    that.style.visibility = 'visible';
+                }
+            }, this.interval)
+        },
+
+        attributeChangedCallback: function (attr, oldVal, newVal) {
+            console.log('attribute changed');
+            console.log(attr);
+            console.log(oldVal);
+            console.log(newVal);
+            var that = this;
+
+            if (attr === 'interval') {
+                clearInterval(this.timer);
+                this.timer = setInterval(function () {
+                    if (that.style.visibility === 'visible') {
+                        that.style.visibility = 'hidden';
+                    } else {
+                        that.style.visibility = 'visible';
+                    }
+                }, newVal)
+            }
+        },
+
+        detached: function () {
+            clearInterval(this.timer);
+        },
+    });
+
+</script>
+
+</body>
+</html>
