@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="import" href="bower_components/iron-collapse/iron-collapse.html">
+</head>
+<body>
+
+<button id="one">toggle collapse</button>
+
+<iron-collapse id="collapse">
+    <div>Content goes here...</div>
+</iron-collapse>
+
+<script>
+    var buttonOne = document.querySelector('#one');
+    buttonOne.addEventListener('click', function(){
+        document.querySelector('#collapse').toggle();
+    });
+</script>
+
+</body>
+</html>

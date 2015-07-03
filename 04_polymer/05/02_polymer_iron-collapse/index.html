@@ -7,24 +7,11 @@
 </head>
 <body>
 
-<button on-click="{{toggle}}">toggle collapse</button>
+<button onclick="document.querySelector('#collapse').toggle();">toggle collapse</button>
 
 <iron-collapse id="collapse">
     <div>Content goes here...</div>
 </iron-collapse>
-
-<script>
-    var myButton = document.querySelector('button');
-    function myToggle() {
-
-    }
-
-    toggle: function() {
-        this.$.collapse.toggle();
-    }
-
-</script>
-
 
 </body>
 </html>
