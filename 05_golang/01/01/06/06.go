@@ -2,12 +2,12 @@ package main
 
 import "fmt"
 
-const mToKm = 1.60934
+const metersToYards float64 = 1.09361
 
 func main(){
-	var miles float64
-	fmt.Print("Enter miles: ")
-	fmt.Scanf("%f", &miles)
-	kilometers := miles * mToKm
-    fmt.Println(miles, " miles equals ", kilometers, " kilometers.")
+	var meters float64
+	fmt.Print("Enter meters swam: ")
+	fmt.Scanf("%v", &meters)
+	yards := meters * metersToYards
+	fmt.Println(meters, " meters is ", yards, " yards.")
 }
