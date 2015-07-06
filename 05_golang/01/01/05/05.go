@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-const mToKm = 1.60934
+const mToKm float64 = 1.60934
 
 func main(){
 	var miles float64
