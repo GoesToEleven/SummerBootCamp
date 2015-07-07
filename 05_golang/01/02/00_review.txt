@@ -1,0 +1,110 @@
+
+///////////////// WARNING /////////////////
+///// not all of this code is accurate ////
+///// fix as needed					   ////
+
+var myValue byte = 5
+var myValue uint16
+var (
+x = 5
+y = 6
+)
+
+const milesToKm int = 75
+var yourBool bool = true
+
+/*
+types:
+-bool
+- true, false
+
+-string
+--- “This is a string”
+--- `This is also a string with “BACK TICKS” baby`
+--- represented in computer as UTF-8
+--- len(“hello baby”)
+--- print strings
+--- concat strings with +
+--- slice strings (haven’t done this yet in class)
+--- parse strings (haven’t done this yet)
+--- “Hello”[1] (returns e b/c zero based index - gets second byte)
+
+
+-int
+--- they’re numbers
+--- they don’t have decimal (not floating)
+--- they can be represented by various amounts of bits (binary digits)
+--- signed / unsigned
+------ int8 / uint8
+------ -128 through 127 / 0 through 255
+
+-byte (same as uint8)
+
+-float64   (math.Abs(x-y) < 0.0000001)
+--- decimal places
+--- not exact
+------ workaround with subtract the two numbers, take absolute, compare to a really small number (sigma)
+
+
+*/
+
+
+package main
+
+import (
+“fmt”
+“math”
+)
+
+func main(){
+	fmt.Println(math.MaxInt16)
+
+
+}
+
+
+
+
+control structures
+for i:=0; i < 10; i++{
+	i--
+}
+
+for {}
+
+for {
+	fmt.Println(“Forever”)
+}
+
+for !creditCardMaxed {
+	havingFun := true
+}
+
+havingFun := true
+for havingFun {
+	fmt.Println(“Am I having fun?”)
+}
+
+for _, c := range “something” {
+	fmt.Println(c)
+}
+
+
+if 1==1 {
+} else if somethingWhichHasSideEffects() {
+
+} else {}
+
+
+
+
+switch i {
+case 42:
+	fmt.Println(“the answer”)
+case 77:
+	fmt.Println(“you’re in clovis”)
+case 99:
+	fmt.Println(“not false!”)
+default:
+fmt.Println(“wash … hmmmm … profit”)
+}
