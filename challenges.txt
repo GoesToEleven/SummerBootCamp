@@ -1,0 +1,1 @@
+create a program in go that takes an entry from the user at the terminal and then outputs an HTML page to the same directory
