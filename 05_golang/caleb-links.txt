@@ -1,3 +1,6 @@
 is.gd/gobootcamp
 
 is.gd/u2gQxk
+
+http://godoc.org/math
+
