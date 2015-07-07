@@ -1,13 +1,17 @@
 package main
 
 import "fmt"
+import "os"
+import "strconv"
 
 const miTokm = 1.60934
 
 func main() {
-	fmt.Print("Enter a number: ")
-	var number float64
-	fmt.Scanln(&number)
+	number, err := strconv.ParseFloat(os.Args[1], 64)
+	if err != nil {
+		panic(err)
+	}
+
 	fmt.Println("<!DOCTYPE html>")
 	fmt.Println("<html>")
 	fmt.Println("<head></head>")
@@ -22,6 +26,6 @@ func main() {
 at terminal
 
 go install
-06_challenge_HTML > /tmp/tmpfile.html
+07_challenge_HTML 43 > tmpfile.html
 
 */
