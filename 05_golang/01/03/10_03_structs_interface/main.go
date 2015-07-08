@@ -12,11 +12,11 @@ type Rectangle struct {
 	l, w float64
 }
 
-func circleArea(c Circle) float64 {
+func (c *Circle) circleArea() float64 {
 	return math.Pi * c.r * c.r
 }
 
-func rectangleArea(r Rectangle) float64 {
+func (r *Rectangle) rectangleArea() float64 {
 	return r.l * r.w
 }
 
@@ -29,6 +29,6 @@ func main() {
 	fmt.Println(c.x, c.y, c.r)
 	fmt.Println(r.l, r.w)
 
-	fmt.Println(circleArea(c))
-	fmt.Println(rectangleArea(r))
+	fmt.Println(c.circleArea())
+	fmt.Println(r.rectangleArea())
 }
