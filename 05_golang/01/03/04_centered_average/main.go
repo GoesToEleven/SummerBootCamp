@@ -14,21 +14,25 @@ func main() {
 	}
 
 	fmt.Println(x)
+
 	sort.Ints(x)
+
 	fmt.Println(x)
-	y := x[1:]
-	fmt.Println(y)
-	z := y[:(len(y)-1)]
-	fmt.Println(z)
+
+	x = x[1:]
+	fmt.Println(x)
+
+	x = x[:(len(x)-1)]
+	fmt.Println(x)
 
 	total := 0
 
-	for _, value := range z {
+	for _, value := range x {
 		total += value
 	}
 
 	fmt.Println(total)
-	fmt.Println(total/len(z))
+	fmt.Println(total/len(x))
 }
 
 /*
