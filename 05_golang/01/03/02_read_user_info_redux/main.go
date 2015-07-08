@@ -6,6 +6,7 @@ import (
 	"crypto/md5"
 	"io"
 	"encoding/hex"
+	"os"
 )
 
 func getGravatarHash(email string) string {
@@ -19,12 +20,7 @@ func getGravatarHash(email string) string {
 }
 
 func main() {
-	fmt.Print("Enter first name: ")
-	var name string
-	fmt.Scanln(&name)
-	fmt.Print("Enter email: ")
-	var email string
-	fmt.Scanln(&email)
+	var email string = os.Args[1]
 	var gravatarHash = getGravatarHash(email)
 	fmt.Println(`<!DOCTYPE html>
 <html lang="en">

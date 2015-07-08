@@ -1,11 +1,12 @@
 package main
 
 import (
-	"fmt"
-	"strings"
 	"crypto/md5"
-	"io"
 	"encoding/hex"
+	"fmt"
+	"io"
+	"os"
+	"strings"
 )
 
 func getGravatarHash(email string) string {
@@ -19,14 +20,14 @@ func getGravatarHash(email string) string {
 }
 
 func main() {
-	fmt.Print("Enter first name: ")
-	var name string
-	fmt.Scanln(&name)
-	fmt.Print("Enter email: ")
+	//	fmt.Print("Enter email: ")
+	//	fmt.Fprint(os.Stdout, "Enter email: ")
+	fmt.Fprint(os.Stderr, "Enter email: ")
 	var email string
 	fmt.Scanln(&email)
 	var gravatarHash = getGravatarHash(email)
-	fmt.Println(`<!DOCTYPE html>
+	//	fmt.Fprint(os.Stdout, `<!DOCTYPE html>
+	fmt.Print(`<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
