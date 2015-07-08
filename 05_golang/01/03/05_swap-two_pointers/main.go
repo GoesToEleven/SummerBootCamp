@@ -3,10 +3,12 @@ package main
 import "fmt"
 
 func swap(x, y *int) {
-	a := *x
-	b := *y
-	*x = b
-	*y = a
+//	a := *x
+//	b := *y
+//	*x = b
+//	*y = a
+	*x = *y
+	*y = *x
 }
 
 func main() {
@@ -17,6 +19,8 @@ func main() {
 	swap(&x,&y)
 	fmt.Println("x", x, &x)
 	fmt.Println("y", y, &y)
+//	m := 2
+//	m = m + 1
 }
 
 
