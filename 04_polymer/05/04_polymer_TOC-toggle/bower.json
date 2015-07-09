@@ -1,0 +1,19 @@
+{
+  "name": "04_polymer_TOC-toggle",
+  "version": "0.0.0",
+  "homepage": "https://github.com/GoesToEleven/SummerBootCamp",
+  "authors": [
+    "GoesToEleven <tuddleymc@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "iron-collapse": "PolymerElements/iron-collapse#~1.0.2"
+  }
+}

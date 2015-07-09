@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+</head>
+<body>
+	<template>
+		<img src="1-fresno-night.jpg" alt="">
+	</template>
+
+	<script>
+	var template = document.querySelector('template').content;
+
+	template.querySelector('img').src = '1-fresno-day.png';
+
+	var clone = template.cloneNode(true);
+	document.body.appendChild(clone);
+	</script>
+</body>
+</html>

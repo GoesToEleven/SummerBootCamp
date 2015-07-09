@@ -1,0 +1,12 @@
+<p>Component</p>
+
+<script>
+var parentDocument = document;
+var componentDocument = parentDocument.currentScript.ownerDocument;
+
+var here = componentDocument.querySelector('p');
+var there = parentDocument.querySelector('p');
+
+console.log(here);
+console.log(there);
+</script>

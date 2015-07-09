@@ -22,7 +22,7 @@ func WordCount(rdr io.Reader) map[string]int {
 }
 
 func main() {
-	srcFile, err := os.Open("moby.txt")
+	srcFile, err := os.Open("../resources/moby.txt")
 	if err != nil {
 		log.Fatalln(err)
 	}

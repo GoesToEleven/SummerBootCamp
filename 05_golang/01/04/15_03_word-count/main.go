@@ -30,7 +30,7 @@ func WordCount(searchIn, searchFor string) int {
 }
 
 func main() {
-	searchIn := "moby10b.txt"
+	searchIn := "../resources/moby.txt"
 	searchFor := "and"
 	fmt.Println(WordCount(searchIn, searchFor))
 }

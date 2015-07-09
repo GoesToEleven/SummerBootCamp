@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+</head>
+<body>
+	<fcc-logo></fcc-logo>
+
+	<template>
+		<a href="http://www.fresnocitycollege.edu/">
+			<img src="http://devfest.gdgfresno.com/img/partners/fcc.jpg" alt="Fresno City College">
+		</a>
+	</template>
+
+	<script>
+	var element = Object.create(HTMLElement.prototype);
+	var template = document.querySelector('template').content;
+
+	element.attachedCallback = function() {
+		var clone = template.cloneNode(true);
+		this.appendChild(clone);
+	};
+
+	document.registerElement('fcc-logo', {
+		prototype: element
+	});
+	</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<style>
+	h1 {
+		color: blue;
+	}
+	</style>
+</head>
+<body>
+	<h1>Foo</h1>
+	<div id="bar"></div>
+
+	<script>
+	var bar = document.querySelector('#bar');
+	var barShadowDOM = bar.createShadowRoot();
+
+	barShadowDOM.innerHTML = '<h1>Bar</h1>' +
+							 '<style>h1 { color: red; }</style>';
+	</script>
+</body>
+</html>

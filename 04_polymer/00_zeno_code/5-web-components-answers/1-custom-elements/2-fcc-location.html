@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+</head>
+<body>
+	<fcc-location></fcc-location>
+
+	<script>
+	var element = Object.create(HTMLElement.prototype);
+
+	element.attachedCallback = function() {
+		var that = this;
+
+		navigator.geolocation.getCurrentPosition(function(position) {
+			that.appendMap(position);
+		});
+	};
+
+	element.appendMap = function(position) {
+		var img = new Image();
+
+		img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + position.coords.latitude + "," + position.coords.longitude + "&zoom=17&size=700x700&sensor=false";
+
+		this.appendChild(img);
+	};
+
+	document.registerElement('fcc-location', {
+		prototype: element
+	});
+	</script>
+</body>
+</html>

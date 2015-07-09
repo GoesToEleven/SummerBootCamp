@@ -1,0 +1,30 @@
+<template>
+	<p><a href=""></a></p>
+</template>
+
+<script>
+var thatDoc = document;
+var thisDoc = document.currentScript.ownerDocument;
+
+var template = thisDoc.querySelector('template').content;
+var anchor = template.querySelector('a');
+
+var element = Object.create(HTMLElement.prototype);
+
+element.createdCallback = function() {
+	var shadowRoot = this.createShadowRoot();
+	var titles = thatDoc.querySelectorAll('h2');
+
+	for (var i = 0; i < titles.length; i++) {
+		anchor.href = '#' + titles[i].id;
+		anchor.textContent = titles[i].textContent;
+
+		var cloneItem = thatDoc.importNode(template, true);
+		shadowRoot.appendChild(cloneItem);
+	}
+};
+
+thatDoc.registerElement('fcc-toc', {
+	prototype: element
+});
+</script>

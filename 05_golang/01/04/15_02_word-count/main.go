@@ -25,7 +25,7 @@ func WordCount(book string) {
 }
 
 func main() {
-	searchIn := "moby10b.txt"
+	searchIn := "../resources/moby.txt"
 	WordCount(searchIn)
 }
 

@@ -1,0 +1,24 @@
+{
+  "name": "02_polymer",
+  "version": "0.1.0",
+  "homepage": "https://github.com/GoesToEleven/SummerBootCamp",
+  "authors": [
+    "GoesToEleven <tuddleymc@gmail.com>"
+  ],
+  "description": "my first",
+  "main": "index.html",
+  "keywords": [
+    "hahaha"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "iron-collapse": "PolymerElements/iron-collapse#~1.0.2"
+  }
+}
