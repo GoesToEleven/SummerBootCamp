@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"os"
 	"log"
 	"io/ioutil"
@@ -21,7 +20,7 @@ func main() {
 		//open file passed in
 		o, err2 := os.Open(v)
 		if err2 != nil {
-			log.Fatalln("couldn't open a file passed in," err.Error())
+			log.Fatalln("couldn't open a file passed in", err.Error())
 		}
 		defer o.Close()
 
