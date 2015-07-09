@@ -20,9 +20,10 @@ func main() {
 		line := scanner.Text()
 
 		if len(line) > 0 {
-			fmt.Println(">>>", line)
-			fmt.Println(strings.ToUpper(line[0:1]) + strings.ToLower(line[1:]))
-			fmt.Println(strings.ToUpper(string(line[0])) + strings.ToLower(line[1:]))
+			//			line := ">>>", line
+			//			line := strings.ToUpper(line[0:1]) + strings.ToLower(line[1:])
+			line := strings.ToUpper(string(line[0])) + strings.ToLower(line[1:])
 		}
+		fmt.Println(line)
 	}
 }

@@ -18,3 +18,8 @@ func main() {
 	result := WordCount(str)
 	fmt.Println("Number of cats:", result["cat"])
 }
+
+
+// might not be a complete working file
+// this file was just pulled part way through lecture
+// https://www.youtube.com/playlist?list=PLSak_q1UXfPqJ6pIpJt2oNJTPx9ByBy6K
