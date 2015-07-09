@@ -1,11 +1,19 @@
 package main
 
 import (
-	"fmt"
-	"os"
-	"log"
 	"encoding/csv"
+	"fmt"
+	"log"
+	"os"
 )
+
+// make a struct
+// give some "STRUCTURE" to your data
+type state struct {
+	abbreviation string
+	name         string
+	ocean        string
+}
 
 func main() {
 	// 0. get csv file - http://statetable.com/
@@ -25,10 +33,18 @@ func main() {
 		log.Fatalln("couldn't read it!", err.Error())
 	}
 
-	myStates := make(map[string]string)
+	// now add your struct to your map
+	myStates := make(map[string]state)
 
 	for _, value := range records {
-		myStates[value[2]] = value[1]
+
+		newState := state{
+			abbreviation: value[2],
+			name:         value[1],
+			ocean:        value[15],
+		}
+
+		myStates[value[2]] = newState
 	}
 
 	lookup := os.Args[1]
@@ -40,3 +56,6 @@ func main() {
 	// add an argument <STATE ABBREVIATION>
 
 }
+
+// example of what is in each record:
+//	[47 Washington WA USA state 10 current occupied  53 Wash. X 4 West 9 Pacific 9]
