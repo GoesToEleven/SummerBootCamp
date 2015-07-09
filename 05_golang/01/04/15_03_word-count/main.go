@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strings"
 )
 
 func WordCount(searchIn, searchFor string) int {
@@ -21,7 +22,7 @@ func WordCount(searchIn, searchFor string) int {
 
 	var result int
 	for scanner.Scan() {
-		if searchFor == scanner.Text() {
+		if searchFor == strings.ToLower(scanner.Text()) {
 			result++
 		}
 	}
