@@ -2,5 +2,8 @@ is.gd/gobootcamp
 
 is.gd/u2gQxk
 
+Create Javascript Cheat Sheet:
+is.gd/XaJQal
+
 http://godoc.org/math
 
