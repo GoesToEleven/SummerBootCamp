@@ -11,10 +11,9 @@ func main() {
 	// 1. Get csv file
 	// 2. open file
 	// 3. read file
-	// 4. parse file
-	// 5. display file
+	// 4. display file
 
-	src, err := os.Open("table.csv")
+	src, err := os.Open("../resources/table.csv")
 	if err != nil {
 		panic(err)
 	}
