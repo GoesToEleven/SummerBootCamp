@@ -17,5 +17,7 @@ func main() {
 		wg.Add(1)
 		go printHello(i)
 	}
+//	var input string
+//	fmt.Scanln(&input)
 	wg.Wait()
 }
