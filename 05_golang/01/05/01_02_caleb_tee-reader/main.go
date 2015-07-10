@@ -24,10 +24,17 @@ func main() {
 	}
 	defer dst2.Close()
 
+	dst3, err := os.Create("dst3-file")
+	if err != nil {
+		panic(err)
+	}
+	defer dst3.Close()
+
 	rdr := io.TeeReader(src, dst1)
 	rdr = io.TeeReader(rdr, os.Stdout)
+	rdr = io.TeeReader(rdr, dst2)
 
-	io.Copy(dst2, rdr)
+	io.Copy(dst3, rdr)
 
 }
 
