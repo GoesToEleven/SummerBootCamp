@@ -20,8 +20,8 @@ func main() {
 
 	myReader := csv.NewReader(f)
 
-//	fmt.Println(f)
-//	fmt.Println(myReader)
+	fmt.Println(f)
+	fmt.Println(myReader)
 
 	records, err := myReader.ReadAll()
 	if err != nil {
