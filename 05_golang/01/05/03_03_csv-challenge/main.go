@@ -7,27 +7,6 @@ import (
 	"os"
 )
 
-type record struct {
-	Date     string
-	Open     float64
-	High     float64
-	Low      float64
-	Close    float64
-	Volume   int
-	adjClose float64
-}
-
-type recordColumns struct {
-	columns map[int]string
-}
-
-func (r *recordColumns) setColumns(record []string) {
-	for idx, columnName := range record {
-		r.columns[idx] = columnName
-	}
-}
-
-
 func main() {
 	// 1. Get csv file
 	// 2. open file
@@ -56,15 +35,45 @@ func main() {
 	}
 
 	// 4. parse file
-	myData := make(map[int]record)
+	fmt.Println(`
+	<style>
+	table, td, th {
+    border: 1px solid green;
+}
 
-	for k, v := range data {
-		fmt.Println(k, v)
-		for _, value := range v {
-			myData[k].Date = value
+th {
+    background-color: green;
+    color: white;
+}
+	</style>
+			<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<table>
+`)
+
+	for key, value := range data {
+		fmt.Println(`<tr>`)
+		if key == 0 {
+			for _, v := range value {
+				fmt.Println(`<th>` + v + `</th>`)
+			}
+		} else {
+			for _, v := range value {
+				fmt.Println(`<td>` + v + `</td>`)
+			}
 		}
+		fmt.Println(`</tr>`)
 	}
-
+	fmt.Println(`
+	</table>
+</body>
+</html>
+`)
 }
 
 /*
