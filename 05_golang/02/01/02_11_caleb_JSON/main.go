@@ -24,9 +24,13 @@ func main() {
 	}
 
 	var buf bytes.Buffer
-	bs, err := json.NewEncoder(&buf).Encode([]int{1, 2, 3, 4})
+	err = json.NewEncoder(&buf).Encode([]int{1, 2, 3, 4})
 
 	//bs, err := json.Marshal()
-	fmt.Println(string(bs), err)
+	fmt.Println(buf.String())
 
 }
+
+
+// this code doesn't run
+// just captured in lecture
