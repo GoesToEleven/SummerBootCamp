@@ -21,3 +21,6 @@ func TestConvert(t *testing.T) {
 	}
 
 }
+
+// this code was grabbed from lecture
+// and does not actually work
