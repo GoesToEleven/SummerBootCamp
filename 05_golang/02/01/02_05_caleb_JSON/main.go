@@ -1,4 +1,5 @@
 package main
+
 import (
 	"encoding/json"
 	"fmt"
@@ -6,9 +7,7 @@ import (
 
 func main() {
 	jsonData := `
-	{
 	100
-	}
 	`
 
 	var obj interface{}
