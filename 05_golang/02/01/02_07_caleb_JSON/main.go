@@ -1,4 +1,5 @@
 package main
+
 import (
 	"encoding/json"
 	"fmt"
@@ -6,9 +7,7 @@ import (
 
 func main() {
 	jsonData := `
-	{
 	100
-	}
 	`
 
 	var obj interface{}
@@ -19,7 +18,7 @@ func main() {
 	}
 	fmt.Println(obj)
 
-	fmt.Printf("%T", obj)
+	fmt.Printf("%T\n", obj)
 
 	v, ok := obj.(float64)
 	if !ok {

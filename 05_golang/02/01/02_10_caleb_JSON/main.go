@@ -1,15 +1,14 @@
 package main
+
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
-	"bytes"
 )
 
 func main() {
 	jsonData := `
-	{
 	100
-	}
 	`
 
 	var obj interface{}
@@ -20,6 +19,6 @@ func main() {
 	}
 
 	var buf bytes.Buffer
-	bs, err := json.NewEncoder(&buf).Encode([]int{1,2,3,4})
-	fmt.Println(string(bs), err)
+	_ = json.NewEncoder(&buf).Encode([]int{1, 2, 3, 4})
+	fmt.Println(buf)
 }
