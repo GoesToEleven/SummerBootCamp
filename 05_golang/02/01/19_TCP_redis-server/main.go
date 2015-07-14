@@ -6,7 +6,7 @@ import (
 	"fmt"
 )
 
-var myMap = make(map[string]string)
+var db = make(map[string]string)
 
 func main() {
 	ln, err := net.Listen("tcp", ":9000")
