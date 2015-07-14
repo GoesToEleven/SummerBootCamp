@@ -7,3 +7,7 @@ is.gd/XaJQal
 
 http://godoc.org/math
 
+
+//////////// NOTES ////////////
+
+https://github.com/fzipp/pythia
