@@ -14,4 +14,7 @@ func main() {
 	http.ListenAndServe(":9000", nil)
 }
 
+// visit this page:
+// http://localhost:9000/?q="dog"
+
 

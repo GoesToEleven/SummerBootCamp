@@ -20,6 +20,8 @@ func main() {
 
 		fmt.Println(string(bs))
 		res.Header().Set("Content-Type", "text/html")
+
+		// you have to put enctype for uploading files
 		io.WriteString(res, `<form method="POST" enctype="multipart/form-data">
       <input type="file" name="q">
       <input type="submit">
