@@ -29,7 +29,7 @@ func main() {
 	}
 	err = tpl.Execute(os.Stdout, Page{
 		Title: "My Title 2",
-		Body: template.HTML(`hello world <script>alert("Yow!");</script>`)
+		Body: template.HTML(`hello world <script>alert("Yow!");</script>`),
 	})
 	if err != nil {
 		log.Fatalln(err)
