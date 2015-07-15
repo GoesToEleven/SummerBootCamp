@@ -4,6 +4,8 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"fmt"
+	"reflect"
 )
 
 type Person struct {
@@ -23,6 +25,9 @@ func main() {
 		// receive form submission
 		fName := req.FormValue("first")
 		lName := req.FormValue("last")
+		fmt.Println("fName: ", fName)
+		fmt.Println("[]byte(fName): ", []byte(fName))
+		fmt.Println("typeOf: ", reflect.TypeOf(fName))
 
 		// execute template
 		err = tpl.Execute(res, Person{fName, lName})
