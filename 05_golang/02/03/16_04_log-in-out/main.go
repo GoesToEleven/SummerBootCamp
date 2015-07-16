@@ -10,42 +10,37 @@ import (
 func main() {
 	tpls := template.New("templates")
 
-	tpls, err := tpls.ParseFiles("login.gohtml", "logout.gohtml")
+	tpls, err := tpls.ParseFiles("main.gohtml")
 	if err != nil {
 		log.Fatalln("couldn't parse templates", err, err.Error())
 	}
 
-	http.HandleFunc("/login/", func(res http.ResponseWriter, req *http.Request) {
-		// set cookie
+	http.HandleFunc("/", func(res http.ResponseWriter, req *http.Request) {
 		cookie, err := req.Cookie("my-cookie")
+
 		if err == http.ErrNoCookie {
-			cookie = &http.Cookie {
-				Name: "my-cookie",
-				Value: "Logged In",
+			cookie = &http.Cookie{
+				Name:  "my-cookie",
+				Value: "LOGGED OUT",
 			}
 		}
-		http.SetCookie(res, cookie)
-		// execute template
-		err = tpls.ExecuteTemplate(res, "login.gohtml", cookie.Value)
-		if err != nil {
-			log.Fatalln("couldn't respond", err, err.Error())
-		}
-	})
 
-	http.HandleFunc("/logout/", func(res http.ResponseWriter, req *http.Request) {
+		userName := req.FormValue("userName")
+		password := req.FormValue("password")
+		if userName == "You" && password == "Me" {
+			cookie.Value = "Logged In"
+		}
+
 		logout := req.FormValue("logout")
 		fmt.Println(logout)
-		if logout == "Submit" {
-			cookie, err := req.Cookie("my-cookie")
-			if err == http.ErrNoCookie {
-				cookie = &http.Cookie {
-					Name: "my-cookie",
-					Value: "Logged Out",
-				}
-			}
+		if logout == "logout" {
+			cookie.Value = "Logged Out"
 		}
 
-		err := tpls.ExecuteTemplate(res, "logout.gohtml", nil)
+		http.SetCookie(res, cookie)
+
+		// execute template
+		err = tpls.ExecuteTemplate(res, "main.gohtml", cookie.Value)
 		if err != nil {
 			log.Fatalln("couldn't respond", err, err.Error())
 		}
