@@ -29,7 +29,10 @@ func main() {
 	http.HandleFunc("/admin/upload", upload)
 	http.HandleFunc("/admin/logout", logout)
 	http.Handle("/assets/imgs/", http.StripPrefix("/assets/imgs/", http.FileServer(http.Dir("assets/imgs/"))))
-	http.ListenAndServe(":9000", context.ClearHandler(http.DefaultServeMux))
+	http.ListenAndServeTLS(":9000", "cert.pem", "key.pem", context.ClearHandler(http.DefaultServeMux))
+	/*
+	go run $(go env GOROOT)/src/crypto/tls/generate_cert.go --host=somedomainname.com
+	 */
 }
 
 func home(res http.ResponseWriter, req *http.Request) {
@@ -110,7 +113,6 @@ func upload(res http.ResponseWriter, req *http.Request) {
 }
 
 func logout(res http.ResponseWriter, req *http.Request) {
-	// TODO: create a link to this in the html file
 	// Get a session. We're ignoring the error resulted from decoding an
 	// existing session: Get() always returns a session, even if empty.
 	session, _ := store.Get(req, "session-name")
