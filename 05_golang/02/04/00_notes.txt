@@ -1,0 +1,16 @@
+zipped files
+http://golang.org/pkg/archive/zip/
+
+resize photos
+https://golang.org/pkg/image/
+https://golang.org/pkg/image/jpeg/
+
+digitalocean
+https://www.digitalocean.com/
+
+ssh gives you access to the machine
+at terminal
+ssh root@45.55.224.208
+(this is how you log into your remote machine)
+
+GOOS-linux go install
