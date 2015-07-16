@@ -3,17 +3,13 @@ package main
 import (
 	"fmt"
 	"net/http"
-
-	"github.com/alecthomas/template"
+	"html/template"
 	"github.com/gorilla/sessions"
 )
 
 func handleSomeRoute(res http.ResponseWriter, req *http.Request) {
 	// Step #1: Parse template
-	tpl, err := template.ParseFiles(
-		"assets/templates/index.gohtml",
-		"assets/templates/login.gohtml",
-	)
+	tpl, err := template.ParseFiles("assets/templates/index.gohtml")
 	if err != nil {
 		http.Error(res, err.Error(), 500)
 		return
@@ -26,7 +22,7 @@ func handleSomeRoute(res http.ResponseWriter, req *http.Request) {
 	}
 
 	// Step #2: Execute template
-	tpl.ExecuteTemplate(res, "assets/templates/login.gohtml", MyModel{
+	tpl.ExecuteTemplate(res, "assets/templates/index.gohtml", MyModel{
 		SomeField: 123,
 		Values:    []int{1, 2, 3, 4, 5},
 		Data:      "Some Value",

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pictures</title>
+</head>
+<body>
+<h1>PICTURES</h1>
+
+{{ if .LoggedIn }}
+<a href="/admin/logout">Log Out</a>
+{{ .LoggedIn }}
+{{ else }}
+{{ .LoggedIn }}
+<p>We are in the else</p>
+{{ end }}
+
+<a href="/admin">admin</a>
+{{ range .Photos }}
+<br/>
+{{ . }}
+<img src="{{ . }}" alt="ocean">
+
+{{ end }}
+</body>
+</html>

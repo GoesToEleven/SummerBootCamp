@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pictures</title>
+</head>
+<body>
+<h1>PICTURES</h1>
+
+<a href="/admin">admin</a>
+{{ range . }}
+<br/>
+{{ . }}
+<img src="{{ . }}" alt="ocean">
+
+{{ end }}
+</body>
+</html>
