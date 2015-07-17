@@ -2,17 +2,14 @@ package main
 
 import (
 	"net/http"
-
-	"github.com/gorilla/context"
 	"github.com/julienschmidt/httprouter"
+	"github.com/gorilla/context"
 )
 
 func init() {
-	//router := http.NewServeMux()
-	//router.HandleFunc("/", handleIndex)
 	router := httprouter.New()
+
 	router.GET("/:page", handleIndex)
-	//router.GET("/users/:name")
 
 	http.Handle("/", context.ClearHandler(router))
 	//http.ListenAndServe(":8080", context.ClearHandler(http.DefaultServeMux))

@@ -4,6 +4,7 @@ google.golang.org/appengine
 gorilla clear
 memcache
 
+memcache session
 
 /////// ALL NOTES ////////
 
