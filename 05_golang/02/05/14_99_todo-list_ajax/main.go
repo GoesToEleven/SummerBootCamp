@@ -3,12 +3,13 @@ package main
 import (
 	"encoding/json"
 	"net/http"
-
 	"google.golang.org/appengine/user"
 	"html/template"
 	"github.com/julienschmidt/httprouter"
 	"google.golang.org/appengine"
+	"google.golang.org/appengine/log"
 	"google.golang.org/appengine/datastore"
+	"log"
 )
 
 type ToDo struct {
@@ -28,11 +29,13 @@ func updateList(res http.ResponseWriter, req *http.Request, params httprouter.Pa
 	json.NewDecoder(req.Body).Decode(&item)
 	ctx := appengine.NewContext(req)
 	u := user.Current(ctx)
-	key := datastore.NewKey(ctx, "ToDo", u.Email, 0, nil)
+	key := datastore.NewKey(ctx, "ToDo", 0, 0, nil)
 	_, err := datastore.Put(ctx, key, &item)
 	if err != nil {
 		http.Error(res, err.Error(), 500)
 	}
+	// show new list
+	http.Redirect(res, req, "/", 302)
 }
 
 func showList(res http.ResponseWriter, req *http.Request, params httprouter.Params) {
@@ -41,29 +44,23 @@ func showList(res http.ResponseWriter, req *http.Request, params httprouter.Para
 		panic(err)
 	}
 
-	err = tpl.ExecuteTemplate(res, "todo-form", nil)
+	ctx := appengine.NewContext(req)
+	u := user.Current(ctx)
+	qp := datastore.NewQuery("ToDo")
+	ToDos := []ToDo{}
+	keys, error := qp.GetAll(ctx, &ToDos)
+	for _, value := range ToDos {
+
+	}
+
+	if error != nil {
+		log.Infof(ctx, "%v", error.Error())
+	}
+
+	json.NewEncoder(res).Encode(ToDos)
+
+	err = tpl.ExecuteTemplate(res, "todo-list", ToDos)
 	if err != nil {
 		http.Error(res, err.Error(), 500)
 	}
 }
-
-
-func getAPIProfile(res http.ResponseWriter, req *http.Request, params httprouter.Params) {
-
-	ctx := appengine.NewContext(req)
-	u := user.Current(ctx)
-	key := datastore.NewKey(ctx, "Profile", u.Email, 0, nil)
-	var profile Profile
-	err := datastore.Get(ctx, key, &profile)
-	if err != nil {
-		profile.Email = u.Email
-	}
-
-	json.NewEncoder(res).Encode(profile)
-}
-
-
-func showIndex(res http.ResponseWriter, req *http.Request, params httprouter.Params) {
-	http.Redirect(res, req, "/profile", 302)
-}
-
