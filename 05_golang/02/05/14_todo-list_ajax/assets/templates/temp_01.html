@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel='stylesheet'  href='http://fonts.googleapis.com/css?family=Open+Sans|Merienda:700'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        main {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            /*border: 1px solid black;*/
+            margin: 10px;
+        }
+        article {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            /*border: 1px solid black;*/
+            min-width: 600px;
+        }
+        section {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #2ec371;
+            width: 100%;
+            padding: 7px 12px 7px 10px;
+            margin: 5px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-family: 'Merienda', cursive;
+            font-size: 53px;
+            color: #2ec371;
+            margin: 10px;
+        }
+
+        h2 {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 16px;
+            max-width: 500px;
+        }
+
+        #new-item {
+            color: gray;
+        }
+
+        .fa-minus-circle {
+            color: red;
+        }
+
+        .fa-plus-circle {
+            color: green;
+        }
+
+    </style>
+</head>
+<body>
+
+<main>
+    <article>
+        <h1>TO-DO</h1>
+        <section>
+            <h2 contenteditable="true">todo item</h2>
+            <!--<i class="fa fa-plus-circle fa-2x"></i>-->
+            <i class="fa fa-minus-circle fa-2x"></i>
+        </section>
+        <section>
+            <h2 contenteditable="true">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut delectus dignissimos eveniet ex fuga nemo numquam quo suscipit vel voluptate. Architecto dolores fuga possimus reiciendis rerum totam veritatis vero voluptates.</h2>
+            <!--<i class="fa fa-plus-circle fa-2x"></i>-->
+            <i class="fa fa-minus-circle fa-2x"></i>
+        </section>
+        <section>
+            <h2 contenteditable="true">todo item</h2>
+            <!--<i class="fa fa-plus-circle fa-2x"></i>-->
+            <i class="fa fa-minus-circle fa-2x"></i>
+        </section>
+        <section>
+            <h2 contenteditable="true">todo item</h2>
+            <!--<i class="fa fa-plus-circle fa-2x"></i>-->
+            <i class="fa fa-minus-circle fa-2x"></i>
+        </section>
+        <section>
+            <h2 id="new-item" contenteditable="true">add item</h2>
+            <i class="fa fa-plus-circle fa-2x"></i>
+            <!--<i class="fa fa-minus-circle fa-2x"></i>-->
+        </section>
+    </article>
+</main>
+
+<script>
+
+    var newItem = document.querySelector('#new-item');
+
+    newItem.addEventListener('focus', function(e){
+        window.setTimeout(function(){
+            e.target.textContent = '';
+        }, 100);
+    }, false);
+
+//    this doesn't work - clears text but doesn't set cursor:
+//     newItem.addEventListener('focus', function(){
+//        newItem.textContent = '';
+//     }, false);
+
+    //receiving data from server
+    var article = document.querySelector('article');
+    var request = new XMLHttpRequest();
+    request.open('GET', '/api/profile');
+//    request.send(null); // why is this here?
+    request.addEventListener('readystatechange', function() {
+        if ((request.status === 200) && (request.readyState === 4)) {
+            var result = JSON.parse(request.responseText);
+
+            myNode = document.querySelector('body');
+            myNode.innerHTML = request.responseText;
+            console.log('new way');
+        } //ready
+    });
+
+    request.send();
+
+
+    //receiving data from server
+    function getProfile() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "/api/profile");
+        xhr.send(null);
+        xhr.onreadystatechange = function(evt) {
+            if (xhr.readyState === 4) {
+                var result = JSON.parse(xhr.responseText);
+                document.getElementById("email").value = result.Email;
+                document.getElementById("lastname").value = result.LastName;
+                document.getElementById("firstname").value = result.FirstName;
+                document.getElementById("age").value = result.Age;
+            }
+        };
+    }
+
+
+    // sending data to server
+    var profileForm = document.getElementById("profile-form");
+    profileForm.onsubmit = function(evt) {
+        evt.preventDefault();
+
+        var lastName = document.getElementById("lastname").value;
+        var firstName = document.getElementById("firstname").value;
+        var email = document.getElementById("email").value;
+        var age = parseInt(document.getElementById("age").value);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/api/profile");
+        xhr.send(JSON.stringify({
+            LastName: lastName,
+            FirstName: firstName,
+            Email: email,
+            Age: age
+        }));
+
+        getProfile();
+    };
+
+
+    getProfile();
+</script>
+
+</body>
+</html>
+
