@@ -1,4 +1,4 @@
-{{template "header"}}
+{{template "header" . }}
 
 <main>
     <section>
@@ -6,9 +6,8 @@
         <p id="post">post</p>
     </section>
     <section>
-        <i class="fa fa-user fa-2x"></i>
+        <i class="fa fa-user fa-2x">{{ .Profile.Username}}</i>
         <p id="post">post</p>
     </section>
 </main>
-
-{{template "footer"}}
+{{template "footer" . }}

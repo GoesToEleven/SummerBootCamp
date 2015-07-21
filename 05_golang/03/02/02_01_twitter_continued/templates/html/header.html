@@ -45,14 +45,10 @@
             padding: 14px 28px;
             font-size: 18px;
             color: #fff;
+            margin: 0 0 0 15px;
         }
 
         #login:hover {
-            border: 1px solid #fff;
-            border-radius: 5px;
-            padding: 14px 28px;
-            font-size: 18px;
-            color: #fff;
             background-color: #00acc1;
         }
 
@@ -106,6 +102,10 @@
             flex-direction: column;
         }
 
+        nav {
+            display: flex;
+        }
+
     </style>
 </head>
 <body>
@@ -114,8 +114,9 @@
     <header>
         <i class="fa fa-heart-o fa-3x"></i>
 
-        {{ if .Email }}
+        {{ if .Profile.Email }}
         <nav>
+            <a href="/logout"><p id="login">Tweet</p></a>
             <a href="/logout"><p id="login">Log Out</p></a>
         </nav>
         {{ else }}
@@ -128,5 +129,4 @@
     <p id="motto">One convenient location</p>
 
 </div>
-
 {{end}}
