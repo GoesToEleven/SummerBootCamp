@@ -11,7 +11,7 @@ import (
 func init() {
 	http.HandleFunc("/", home)
 	http.HandleFunc("/login", login)
-	http.HandleFunc("/post", post)
+	http.HandleFunc("/tweet", tweet)
 	http.HandleFunc("/logout", logout)
 	http.HandleFunc("/profile/", profile)
 	http.Handle("/favicon.ico", http.NotFoundHandler())
@@ -125,6 +125,10 @@ func profile(res http.ResponseWriter, req *http.Request) {
 	})
 
 	*/
+}
+
+func tweet(res http.ResponseWriter, req *http.Request) {
+
 }
 
 func logout(res http.ResponseWriter, req *http.Request) {
