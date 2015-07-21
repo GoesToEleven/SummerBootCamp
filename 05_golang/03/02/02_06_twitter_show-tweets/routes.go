@@ -114,9 +114,8 @@ func profile(res http.ResponseWriter, req *http.Request) {
 
 	// get user's tweets
 	ctx := appengine.NewContext(req)
-	u := user.Current(ctx)
 	var tweets []Tweet
-	tweets, err = userTweets(ctx, u.Email)
+	tweets, err = userTweets(ctx, profile.Email)
 	if err != nil {
 		http.Error(res, err.Error(), 500)
 		return
