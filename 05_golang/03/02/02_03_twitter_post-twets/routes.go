@@ -11,6 +11,7 @@ import (
 func init() {
 	http.HandleFunc("/", home)
 	http.HandleFunc("/login", login)
+	http.HandleFunc("/post", post)
 	http.HandleFunc("/logout", logout)
 	http.HandleFunc("/profile/", profile)
 	http.Handle("/favicon.ico", http.NotFoundHandler())
