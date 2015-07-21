@@ -26,13 +26,20 @@ func home(res http.ResponseWriter, req *http.Request) {
 	ctx := appengine.NewContext(req)
 	u := user.Current(ctx)
 	log.Infof(ctx, "user: ", u)
+	// pointers can be NIL so don't use a Profile * Profile here:
 	var model struct {
-		Profile *Profile
+		Profile Profile
 	}
 
 	if u != nil {
-		model.Profile = &Profile{Email: u.Email}
+		profile, err := getProfileByEmail(ctx, u.Email)
+		if err != nil {
+		http.Redirect(res, req, "/login", 302)
+			return
+		}
+		model.Profile = *profile
 	}
+
 	// TODO: get recent tweets
 
 
