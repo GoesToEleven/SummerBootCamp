@@ -1,0 +1,17 @@
+{{template "header" . }}
+
+<main>
+    <section>
+        <i class="fa fa-user fa-2x"> @{{ .Profile.Username }}</i>
+        <p id="post">your are on the HOME page</p>
+    </section>
+    <section>
+        <i class="fa fa-user fa-2x"> @{{ .Profile.Username }}</i>
+        <p id="post">yes, you are still on the home page</p>
+    </section>
+    <section>
+        <i class="fa fa-user fa-2x"> @{{ .Profile.Username }}</i>
+        <p id="post">this will eventually show all user posts</p>
+    </section>
+</main>
+{{template "footer" . }}
