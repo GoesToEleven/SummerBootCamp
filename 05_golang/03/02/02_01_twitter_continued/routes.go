@@ -5,6 +5,7 @@ import (
 	"google.golang.org/appengine/user"
 	"net/http"
 	"strings"
+	"google.golang.org/appengine/log"
 )
 
 func init() {
@@ -22,10 +23,20 @@ func home(res http.ResponseWriter, req *http.Request) {
 		return
 	}
 
+	ctx := appengine.NewContext(req)
+	u := user.Current(ctx)
+	log.Infof(ctx, "user: ", u)
+	var model struct {
+		Profile *Profile
+	}
+
+	if u != nil {
+		model.Profile = &Profile{Email: u.Email}
+	}
 	// TODO: get recent tweets
 
 
-	renderTemplate(res, "home.html", nil)
+	renderTemplate(res, "home.html",  model)
 }
 
 func login(res http.ResponseWriter, req *http.Request) {
