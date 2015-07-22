@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="../public/css/reset.css">
-    <link href='http://fonts.googleapis.com/css?family=Lobster|Open+Sans' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lobster|Open+Sans:700, 400' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <style>
 
@@ -97,7 +97,17 @@
         }
 
         #post {
-            padding: 10px;
+            padding: 10px 10px 0 10px;
+        }
+
+        .time-format {
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 12px;
+            margin: 0 0 0 10px;
+            padding: 0 0 10px 0;
+            border: 0;
+            color: #2ec371;
         }
 
         a {
@@ -212,13 +222,20 @@
 <main>
     <section>
         <i class="fa fa-user fa-2x"></i>
-        <p>@Username</p>
-        <p id="post">post</p>
+        <p class="user-name-display">@Username</p>
+        <div>
+            <p id="post">In a statement</p>
+            <p class="time-format">moments ago</p>
+
+        </div>
     </section>
     <section>
         <i class="fa fa-user fa-2x"></i>
         <p class="user-name-display">@Username</p>
-        <p id="post">In a statement, the campaign said Trump will meet with members of the National Border Patrol Council in Laredo, Texas, and then tour the border. He’s also expected to meet with law enforcement including Immigration and Customs Enforcement (ICE) and Drug Enforcement Administration (DEA) agents. Mentioning the visit during an interview with Fox News on Wednesday, Trump said local officials wanted him to come. “I’ve been invited by the Border Patrol and they want to honor me actually, thousands and thousands of them because I’m speaking up,” he said. “They called me, they want to honor me.” Highlighting potential security concerns, Trump added, “I may never see you again but we’re going to do it.” Trump has come under fire for accusing Mexico of sending illegal immigrant "rapists" and other violent criminals across the U.S. border. He has stood by those remarks, though, and continued to pre</p>
+        <div>
+            <p id="post">In a statement, the campaign said Trump will meet with members of the National Border Patrol Council in Laredo, Texas, and then tour the border. He’s also expected to meet with law enforcement including Immigration and Customs Enforcement (ICE) and Drug Enforcement Administration (DEA) agents. Mentioning the visit during an interview with Fox News on Wednesday, Trump said local officials wanted him to come. “I’ve been invited by the Border Patrol and they want to honor me actually, thousands and thousands of them because I’m speaking up,” he said. “They called me, they want to honor me.” Highlighting potential security concerns, Trump added, “I may never see you again but we’re going to do it.” Trump has come under fire for accusing Mexico of sending illegal immigrant "rapists" and other violent criminals across the U.S. border. He has stood by those remarks, thoug.</p>
+            <p class="time-format">moments ago</p>
+        </div>
     </section>
 </main>
 

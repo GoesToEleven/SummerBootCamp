@@ -3,8 +3,12 @@
 <main>
     {{ range .Tweets }}
     <section>
-        <i class="fa fa-user fa-2x"> @{{ .Username }}</i>
-        <p id="post">{{ .Message }}</p>
+        <i class="fa fa-user fa-2x"></i>
+        <p class="user-name-display">@{{ .Username}}</p>
+        <div>
+            <p id="post">{{ .Message }}</p>
+            <p class="time-format">moments ago</p>
+        </div>
     </section>
     {{ end }}
 </main>
