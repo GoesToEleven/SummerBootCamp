@@ -8,6 +8,7 @@ import (
 	"time"
 	"fmt"
 	"golang.org/x/net/context"
+	"google.golang.org/appengine/log"
 )
 
 type Profile struct {
@@ -106,5 +107,15 @@ func recentTweets(ctx context.Context) ([]Tweet, error) {
 //func delTweet(ctx context.Context, username string) (*Profile, error) {
 //
 //}
+// check cookie and get Logged-in status
+func checkLoggedInStats(req *http.Request) bool {
+	log.Infof(appengine.NewContext(req), "COOKIE: %v", req.Cookies())
+	if cookie, err := req.Cookie("logged_in"); err == nil {
+		return cookie.Value == "true"
+	}
+	return false
+}
+
+
 
 

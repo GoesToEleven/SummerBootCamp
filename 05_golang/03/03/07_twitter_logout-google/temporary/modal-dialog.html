@@ -1,9 +1,9 @@
-{{define "header"}}<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title></title>
-    <link rel="stylesheet" href="/public/css/reset.css">
+    <link rel="stylesheet" href="../public/css/reset.css">
     <link href='http://fonts.googleapis.com/css?family=Lobster|Open+Sans' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <style>
@@ -18,7 +18,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-color: rgba(46, 195, 113, 0.11);
+            rgba(46, 195, 113, 0.11);
         }
 
         #top {
@@ -90,24 +90,8 @@
             background-color: #f5f5f5;
         }
 
-        .user-name-display {
-            margin-left: 6px;
-            font-size: 24px;
-            font-weight: 900;
-        }
-
         #post {
-            padding: 10px 10px 0 10px;
-        }
-
-        .time-format {
-            font-weight: 900;
-            text-transform: uppercase;
-            font-size: 12px;
-            margin: 0 0 0 10px;
-            padding: 0 0 10px 0;
-            border: 0;
-            color: #2ec371;
+            padding: 10px;
         }
 
         a {
@@ -123,9 +107,7 @@
             display: flex;
         }
 
-        /*
-        modal dialog box styling
-        */
+        /* MODAL CSS */
 
         .modalDialog {
             position: fixed;
@@ -174,10 +156,9 @@
         #modal-tweet {
             width: 100%;
             border-radius: 10px;
-            border: 2px solid #2ec371;
+            border: 1px solid #2ec371;
             margin: 20px 0 0 0;
             font-size: 40px;
-            outline-width: 0;
         }
 
         #modal-submit {
@@ -196,6 +177,8 @@
             background-color: #00acc1;
         }
 
+
+
         #modal-form {
             display: flex;
             flex-direction: column;
@@ -205,24 +188,15 @@
     </style>
 </head>
 <body>
+<a href="#openModal">Open Modal</a>
 
-<div id="top">
-    <header>
-        <a href="/" id="opens-modal"><i class="fa fa-heart-o fa-3x"></i></a>
-
-        {{ if .Profile.Email }}
-        <nav>
-            <a href="#openModal" id="opens-modal"><p id="login">Tweet</p></a>
-            <a href="/logout"><p id="login">Log Out</p></a>
-        </nav>
-        {{ else }}
-        <nav>
-            <a href="/login"><p id="login">Log In</p></a>
-        </nav>
-        {{ end }}
-    </header>
-    <p id="motto">Seven Deadly Sins</p>
-    <p id="motto">One convenient location</p>
-
+<div id="openModal" class="modalDialog">
+    <div>	<a href="#close" title="Close" class="modal-close">X</a>
+        <form method="post" id="modal-form">
+            <textarea name="tweet" id="modal-tweet" rows="4" maxlength="140"></textarea>
+            <a href="/tweet"><p id="modal-submit">Tweet</p></a>
+        </form>
+    </div>
 </div>
-{{end}}
+</body>
+</html>

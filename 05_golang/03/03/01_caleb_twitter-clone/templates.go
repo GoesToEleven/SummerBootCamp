@@ -4,12 +4,9 @@ import (
 	"bytes"
 	"net/http"
 	"time"
-
 	"github.com/dustin/go-humanize"
-
 	"google.golang.org/appengine"
 	"google.golang.org/appengine/log"
-
 	"html/template"
 )
 

@@ -34,7 +34,10 @@ func home(res http.ResponseWriter, req *http.Request) {
 	var model struct {
 		Profile Profile
 		Tweets []Tweet
+		LoggedIn bool
 	}
+
+	model.LoggedIn = checkLoggedInStats(req)
 
 	if u != nil {
 		profile, err := getProfileByEmail(ctx, u.Email)
@@ -72,7 +75,10 @@ func login(res http.ResponseWriter, req *http.Request) {
 	var model struct {
 		Profile *Profile
 		Error   string
+		LoggedIn bool
 	}
+
+	model.LoggedIn = checkLoggedInStats(req)
 	model.Profile = &Profile{Email: u.Email}
 
 	// create the profile
@@ -125,8 +131,9 @@ func profile(res http.ResponseWriter, req *http.Request) {
 	var model struct {
 		Profile *Profile
 		Tweets []Tweet
+		LoggedIn bool
 	}
-
+	model.LoggedIn = checkLoggedInStats(req)
 	model.Profile = profile
 	model.Tweets = tweets
 
@@ -174,6 +181,12 @@ func receiveTweet(ctx context.Context, res http.ResponseWriter, req *http.Reques
 }
 
 func logout(res http.ResponseWriter, req *http.Request) {
-	http.SetCookie(res, &http.Cookie{Name: "logged_in", Value: ""})
-	http.Redirect(res, req, "/", 302)
+	ctx := appengine.NewContext(req)
+	http.SetCookie(res, &http.Cookie{Name: "logged_in", Value: "", MaxAge:-1})
+	url, err := user.LogoutURL(ctx, "/")
+	if err != nil {
+		http.Error(res, err.Error(), 500)
+		return
+	}
+	http.Redirect(res, req, url, 302)
 }
