@@ -7,7 +7,7 @@
         <p class="user-name-display">@{{ .Username}}</p>
         <div>
             <p id="post">{{ .Message }}</p>
-            <p class="time-format">moments ago {{ humanize_time .Time  }}</p>
+            <p class="time-format">{{ humanize_time .Time  }}</p>
         </div>
     </section>
     {{ end }}
