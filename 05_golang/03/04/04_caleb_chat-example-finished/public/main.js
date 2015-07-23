@@ -9,6 +9,7 @@ function apiRequest(method, endpoint, data, callback) {
         if (callback) {
           callback(JSON.parse(xhr.responseText), null);
         }
+          // any status other than 2XX, else ...
       } else {
         var msg;
         try {
