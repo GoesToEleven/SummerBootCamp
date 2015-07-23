@@ -164,10 +164,7 @@ func handleTweet(res http.ResponseWriter, req *http.Request) {
 	profile, err := getProfileByEmail(ctx, u.Email)
 	tweet.Username = profile.Username
 	// send emails to people mentioned in tweet
-	err = emailMentions(ctx, tweet)
-	if err != nil {
-		log.Errorf(ctx, "error: %v, an EMAIL did not get sent to a mentioned @username", err)
-	}
+	emailMentions(ctx, tweet)
 	// post the tweet
 	err = putTweet(ctx, tweet, u.Email)
 	if err != nil {
@@ -199,7 +196,7 @@ func logout(res http.ResponseWriter, req *http.Request) {
 	http.Redirect(res, req, url, 302)
 }
 
-func emailMentions(ctx context.Context, tweet *Tweet) error {
+func emailMentions(ctx context.Context, tweet *Tweet) {
 	u := user.Current(ctx)
 	var words []string
 	words = strings.Fields(tweet.Message)
@@ -218,7 +215,8 @@ func emailMentions(ctx context.Context, tweet *Tweet) error {
 				Body:    tweet.Message + " from " + tweet.Username + " - " + humanize.Time(tweet.Time),
 			}
 			if err := mail.Send(ctx, msg); err != nil {
-				log.Errorf("Alas, my user, the email failed to sendeth: %v", err)
+				log.Errorf(ctx, "Alas, my user, the email failed to sendeth: %v", err)
+				continue
 			}
 
 		}
