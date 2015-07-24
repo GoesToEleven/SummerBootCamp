@@ -20,6 +20,7 @@ const bucketName = "serious-water-88716.appspot.com"
 func init() {
 	http.HandleFunc("/put", handlePut)
 	http.HandleFunc("/get", handleGet)
+	http.HandleFunc("/download", handleDownload)
 	http.HandleFunc("/list", handleList)
 	http.Handle("/", http.FileServer(http.Dir("public/")))
 //	http.Handle("/css/", http.FileServer(http.Dir("/")))
@@ -76,7 +77,22 @@ func handleGet(res http.ResponseWriter, req *http.Request) {
 		return
 	}
 	defer rdr.Close()
+	io.Copy(res, rdr)
+}
 
+func handleDownload(res http.ResponseWriter, req *http.Request) {
+	ctx := appengine.NewContext(req)
+	cctx := getCloudContext(ctx)
+
+	fileName := req.FormValue("fname")
+
+	rdr, err := storage.NewReader(cctx, bucketName, fileName)
+	if err != nil {
+		http.Error(res, err.Error(), 500)
+		return
+	}
+	defer rdr.Close()
+	res.Header().Set("Content-Disposition", `attachment; filename="` + fileName + `"`)
 	io.Copy(res, rdr)
 }
 

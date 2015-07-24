@@ -61,7 +61,7 @@ function onMovies(movies) {
             for (var i = 0; i < length(movies); i++) {
 
             }
-            title.innerText =
+            title.innerText = '';
         });
         movieTitle.value = "";
         movieDescrip.value = "";
