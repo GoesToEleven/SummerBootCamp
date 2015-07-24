@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+            justify-content: left;
+        }
+        #search-box {
+            width: 700px;
+            font-size: 48px;
+        }
+
+        #results {
+            margin: 50px 0;
+            color: blue;
+        }
+
+        #search {
+            color: green;
+        }
+
+        #add {
+            color: red;
+        }
+
+        .submit-button {
+            width: 70px;
+        }
+    </style>
+</head>
+<body>
+<h1 id="add">ADD MOVIE</h1>
+<form method="POST">
+    <P>TITLE</P>
+    <input type="text" name="title" id="movie-title">
+    <p>DESCRIPTION</p>
+    <textarea name="description" id="movie-description" rows="10"></textarea>
+    <input type="submit" value="submit" class="submit-button">
+</form>
+<h1 id="search">MOVIE SEARCH</h1>
+<form method="GET">
+    <input type="text" name="search-term" id="search-box">
+    <input type="submit" value="submit" class="submit-button">
+</form>
+<h1 id="results">MOVIE RESULTS</h1>
+<script src="/public/js/scripts.js"></script>
+</body>
+</html>

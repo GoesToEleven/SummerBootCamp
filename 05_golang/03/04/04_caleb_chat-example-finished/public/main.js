@@ -80,6 +80,4 @@ apiRequest("POST", "channels", null, function(res, err) {
     }
   });
 });
-
-
 })();
