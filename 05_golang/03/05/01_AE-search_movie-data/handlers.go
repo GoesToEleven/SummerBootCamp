@@ -16,6 +16,10 @@ type Movie struct {
 }
 
 func handleIndex(res http.ResponseWriter, req *http.Request) {
+	renderTemplate(res, "index.html", nil)
+}
+
+func handleApi(res http.ResponseWriter, req *http.Request) {
 	ctx := appengine.NewContext(req)
 
 	var err error
@@ -27,8 +31,6 @@ func handleIndex(res http.ResponseWriter, req *http.Request) {
 	if err != nil {
 		http.Error(res, "error", 500)
 	}
-//	res.Header().Set("Content-Type", "text/html")
-	renderTemplate(res, "index.html", nil)
 }
 
 func handlePut(ctx context.Context, res http.ResponseWriter, req *http.Request) error {

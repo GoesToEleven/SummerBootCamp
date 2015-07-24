@@ -1,0 +1,18 @@
+you get 5gb free Google Cloud Storage with appengine
+-activate GCS
+-- WARNING: MULTIPLE FROM SAME IP = BLOCK FROM GOOGLE
+-- IF YOU HAVE MULTIPLE ACCOUNTS (CLASSROOM SETTING) HAVE STUDENTS DO THIS FROM HOME
+-- appengine.google.com
+---- old version of app engine developers console
+-- goto application settings
+---- cloud integration
+---- click: CREATE
+-------- Project creation is in progress
+- go to new developers console
+-- https://console.developers.google.com/project
+-- go into your project
+---- storage
+-------
+
+
+

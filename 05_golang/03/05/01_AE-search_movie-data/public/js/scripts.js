@@ -1,7 +1,7 @@
 // make an api request
 function apiRequest(method, endpoint, data, callback) {
     var xhr = new XMLHttpRequest();
-    xhr.open(method, "/api/" + endpoint);
+    xhr.open(method, "/" + endpoint);
     xhr.send(JSON.stringify(data));
     xhr.onreadystatechange = function(evt) {
         if (xhr.readyState === 4) {
@@ -25,60 +25,54 @@ function apiRequest(method, endpoint, data, callback) {
     };
 }
 
-// send a message
-function sendMessage(text, callback) {
-    apiRequest("POST", "messages", {
-        "Text": text
-    }, callback);
+// send data to server
+function sendMessage(obj, callback) {
+    apiRequest("POST", "api", obj, callback);
 }
 
-// when a message is received
-function onMessage(message) {
+// display data received from server
+function onMovies(movies) {
     var el = document.getElementById("messages");
     var p = document.createElement("p");
     p.textContent = message.Text;
     el.appendChild(p);
 }
 
+// IIFE
 (function() {
-
 // hook up text input
     var postForm = document.querySelector("post-form");
     postForm.addEventListener("submit", function(evt) {
         evt.preventDefault();
         var movieTitle = document.querySelector("movie-title");
         var movieDescrip = document.querySelector("movie-description");
-        var text = textInput.value;
-        sendMessage(text, function(res, err) {
-            if (err) {
-                alert(err);
+        var movie = {
+            "Title":movieTitle,
+            "Description":movieDescrip
+        };
+        sendMessage(movie, function(movies, err) {
+                if (err) {
+                    alert(err);
+                }
+            // call function that handles incoming obj of movies
+            // put on page
+            var title = document.createElement('h1');
+            var title = document.createElement('p');
+            for (var i = 0; i < length(movies); i++) {
+
             }
+            title.innerText =
         });
-        textInput.value = "";
+        movieTitle.value = "";
+        movieDescrip.value = "";
     }, false);
 
-
-    apiRequest("POST", "channels", null, function(res, err) {
+    apiRequest("GET", "api", null, function(movies, err) {
         if (err) {
             alert(err);
             return;
         }
-        var token = res;
-        var channel = new goog.appengine.Channel(token);
-        var socket = channel.open({
-            onopen: function() {
-                console.log("OPEN", arguments);
-            },
-            onmessage: function(msg) {
-                var data = JSON.parse(msg.data);
-                onMessage(data.Text);
-            },
-            onerror: function() {
-                console.log("ERROR", arguments);
-            },
-            onclose: function() {
-                console.log("CLOSE", arguments);
-            }
-        });
+        // call function that handles incoming obj of movies
+        // put on page
     });
 })();
