@@ -21,3 +21,4 @@ builds/**/images/*
 *.png
 *.jpeg
 general-images/
+*.pem
