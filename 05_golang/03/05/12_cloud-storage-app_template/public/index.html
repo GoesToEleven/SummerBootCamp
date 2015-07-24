@@ -1,0 +1,25 @@
+{{ define "index"}}<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<h1>UPLOAD A FILE</h1>
+<form method="POST" enctype="multipart/form-data" action="/put">
+    <label for="file">Choose File To Upload</label>
+    <input type="file" id="file" name="form-upload-file">
+    <br>
+    <input type="submit">
+</form>
+<h1>FILES</h1>
+<ul>
+    {{ range .}}
+    <li>
+        <a href="/download?fname={{ . }}">{{.}}</a>
+    </li>
+    {{ end }}
+</ul>
+</body>
+</html>{{ end }}

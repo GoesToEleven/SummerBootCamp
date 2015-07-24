@@ -3,9 +3,9 @@ function apiRequest(method, endpoint, data, callback) {
     var xhr = new XMLHttpRequest();
     xhr.open(method, "/" + endpoint);
     xhr.send(JSON.stringify(data));
-    xhr.onreadystatechange = function(evt) {
+    xhr.onreadystatechange = function (evt) {
         if (xhr.readyState === 4) {
-            if (Math.floor(xhr.status/100) === 2) {
+            if (Math.floor(xhr.status / 100) === 2) {
                 if (callback) {
                     callback(JSON.parse(xhr.responseText), null);
                 }
@@ -14,7 +14,7 @@ function apiRequest(method, endpoint, data, callback) {
                 var msg;
                 try {
                     msg = JSON.parse(xhr.responseText);
-                } catch(e) {
+                } catch (e) {
                     msg = xhr.responseText;
                 }
                 if (callback) {
@@ -39,21 +39,21 @@ function onMovies(movies) {
 }
 
 // IIFE
-(function() {
+(function () {
 // hook up text input
     var postForm = document.querySelector("post-form");
-    postForm.addEventListener("submit", function(evt) {
+    postForm.addEventListener("submit", function (evt) {
         evt.preventDefault();
         var movieTitle = document.querySelector("movie-title");
         var movieDescrip = document.querySelector("movie-description");
         var movie = {
-            "Title":movieTitle,
-            "Description":movieDescrip
+            "Title": movieTitle,
+            "Description": movieDescrip
         };
-        sendMessage(movie, function(movies, err) {
-                if (err) {
-                    alert(err);
-                }
+        sendMessage(movie, function (movies, err) {
+            if (err) {
+                alert(err);
+            }
             // call function that handles incoming obj of movies
             // put on page
             var title = document.createElement('h1');
@@ -67,7 +67,7 @@ function onMovies(movies) {
         movieDescrip.value = "";
     }, false);
 
-    apiRequest("GET", "api", null, function(movies, err) {
+    apiRequest("GET", "api", null, function (movies, err) {
         if (err) {
             alert(err);
             return;
