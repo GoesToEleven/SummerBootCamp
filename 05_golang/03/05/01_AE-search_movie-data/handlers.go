@@ -10,7 +10,7 @@ import (
 )
 
 // movie struct
-type Movies struct {
+type Movie struct {
 	Title       string
 	Description string
 }
@@ -27,8 +27,7 @@ func handleIndex(res http.ResponseWriter, req *http.Request) {
 	if err != nil {
 		http.Error(res, "error", 500)
 	}
-
-	res.Header().Set("Content-Type", "text/html")
+//	res.Header().Set("Content-Type", "text/html")
 	renderTemplate(res, "index.html", nil)
 }
 
@@ -38,9 +37,9 @@ func handlePut(ctx context.Context, res http.ResponseWriter, req *http.Request) 
 	if err != nil {
 		return nil, error
 	}
-	log.Debugf(ctx, "Here is the index: %v", index)
+	// log.Debugf(ctx, "Here is the index: %v", index)
 	// instance of movie struct
-	var movie Movies
+	var movie Movie
 	// receive JSON from form
 	err = json.NewDecoder(req.Body).Decode(&movie)
 	if err != nil {
@@ -68,10 +67,10 @@ func handleGet(ctx context.Context, res http.ResponseWriter, criteria string) er
 		iterator = index.Search(ctx, criteria, nil)
 	}
 	// slice of movie instances
-	var movies []Movies
+	var movies []Movie
 	for {
-		var movie Movies
-		id, err := iterator.Next(&movie)
+		var movie Movie
+		_, err := iterator.Next(&movie)
 		if err == search.Done {
 			break
 		}

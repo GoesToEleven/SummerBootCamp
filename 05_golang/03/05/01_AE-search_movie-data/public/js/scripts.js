@@ -43,10 +43,11 @@ function onMessage(message) {
 (function() {
 
 // hook up text input
-    var controls = document.getElementById("controls");
-    controls.addEventListener("submit", function(evt) {
+    var postForm = document.querySelector("post-form");
+    postForm.addEventListener("submit", function(evt) {
         evt.preventDefault();
-        var textInput = document.getElementById("text-input");
+        var movieTitle = document.querySelector("movie-title");
+        var movieDescrip = document.querySelector("movie-description");
         var text = textInput.value;
         sendMessage(text, function(res, err) {
             if (err) {
