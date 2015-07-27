@@ -2,9 +2,9 @@ package GCS
 
 import (
 	//	"google.golang.org/appengine"
-	"github.com/nu7hatch/gouuid"
 	"net/http"
-	"google.golang.org/appengine/memcache"
+	"google.golang.org/appengine"
+	"golang.org/x/net/context"
 )
 
 func index(res http.ResponseWriter, req *http.Request) {
@@ -12,29 +12,22 @@ func index(res http.ResponseWriter, req *http.Request) {
 		http.NotFound(res, req)
 		return
 	}
+
+	var ctx context.Context = appengine.NewContext(req)
 	//	ctx := appengine.NewContext(req)
+	session := getSession(ctx, req)
+
+	if req.Method == "POST" {
+		session.Bucket = req.FormValue("bucket")
+		session.Credentials = req.FormValue("credentials")
+		putSession(ctx, res)
+		http.Redirect(res, req, "/browse/", 302)
+		return
+	}
+
 	err := tpls.ExecuteTemplate(res, "index.html", nil)
 	if err != nil {
 		http.Error(res, err.Error(), 500)
-	}
-
-	if req.Method == "POST" {
-		// set cookie
-		sessionID, _ := uuid.NewV4()
-
-		cookie := &http.Cookie{
-			Name:  "Session",
-			Value: sessionID.String(),
-		}
-		http.SetCookie(res, cookie)
-		// set memcache
-		item1 := &memcache.Item{
-			Key:   sessionID.String(),
-			Value: []byte("bar"), // TODO: Get Value From FORM
-		}
-		if err := memcache.Set(c, item1); err != nil {
-			return err
-		}
 	}
 }
 
