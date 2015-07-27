@@ -9,7 +9,7 @@ import (
 )
 
 type Session struct {
-	Bucket, Credentials string
+	ID, Bucket, Credentials string
 }
 
 func getSession(ctx context.Context, req *http.Request) Session {
@@ -32,9 +32,23 @@ func getSession(ctx context.Context, req *http.Request) Session {
 	//	json.NewDecoder(bytes.NewReader(item.Value)).Decode(&session)
 	//  above way, or shorter way:
 	json.Unmarshal(item.Value, &session)
+	session.ID = cookie.Value
 	return session
 }
 
-func putSession(ctx context.Context, res http.ResponseWriter) Session {
+func putSession(ctx context.Context, res http.ResponseWriter, session Session) {
+	bs, err := json.Marshal(session)
+	if err != nil {
+		return
+	}
 
+	memcache.Set(ctx, &memcache.Item{
+		Key: session.ID,
+		Value: bs,
+	})
+
+	http.SetCookie(res, &http.Cookie{
+		Name: "sessionid",
+		Value: session.ID,
+	})
 }
