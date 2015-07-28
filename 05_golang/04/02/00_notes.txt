@@ -1,0 +1,18 @@
+
+//////////// CHARTS
+
+http://www.chartjs.org/
+
+cdnjs.com
+
+////////// STRIPE
+
+https://stripe.com/docs/libraries
+
+https://stripe.com/docs/api/go#intro
+
+http://godoc.org/github.com/stripe/stripe-go
+
+https://stripe.com/docs/tutorials/checkout
+
+////////////
