@@ -1,13 +1,12 @@
-		// go get uuid
-		// https://github.com/nu7hatch/gouuid
-		// NewV4
+// go get uuid
+// https://github.com/nu7hatch/gouuid
+// NewV4
 package main
 
 import (
-"fmt"
-"net/http"
-
-"github.com/nu7hatch/gouuid"
+	"fmt"
+	"net/http"
+	"github.com/nu7hatch/gouuid"
 )
 
 func main() {
@@ -28,6 +27,3 @@ func main() {
 	})
 	http.ListenAndServe(":9000", nil)
 }
-
-
-
