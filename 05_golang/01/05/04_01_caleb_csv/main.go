@@ -21,7 +21,7 @@ func makeRecord(row []string) record {
 }
 
 func main() {
-	f, err := os.Open("table.csv")
+	f, err := os.Open("../resources/table.csv")
 	if err != nil {
 		panic(err)
 	}

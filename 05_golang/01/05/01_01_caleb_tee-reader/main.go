@@ -34,6 +34,7 @@ func main() {
 /*
 WHAT TEEREADER DOES....
 
+func TeeReader(r Reader, w Writer) Reader
 
 func teeReader(rdr io.Reader) {
 	bs := make([]byte, 10)
